@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a1a1a">
+<title>Hybrid Plan · May 4–10</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23534AB7'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='600'>H</text></svg>">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+:root {
+  --bg: #FAFAF7;
+  --card: #FFFFFF;
+  --text: #1F1F1C;
+  --text-2: #5F5E5A;
+  --text-3: #888780;
+  --border: rgba(0,0,0,0.08);
+  --border-2: rgba(0,0,0,0.16);
+  --secondary: #F1EFE8;
+  --accent: #534AB7;
+  --accent-bg: #EEEDFE;
+  --accent-text: #3C3489;
+  --green: #1D9E75;
+  --green-bg: #E1F5EE;
+  --green-text: #0F6E56;
+  --green-text-dark: #04342C;
+  --blue: #185FA5;
+  --blue-bg: #E6F1FB;
+  --blue-text: #0C447C;
+  --orange: #BA7517;
+  --orange-bg: #FAEEDA;
+  --orange-text: #633806;
+  --red: #993C1D;
+  --red-bg: #FAECE7;
+  --input-bg: #FFFFFF;
+  --target: #888780;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1A1A18;
+    --card: #242422;
+    --text: #F1EFE8;
+    --text-2: #B4B2A9;
+    --text-3: #888780;
+    --border: rgba(255,255,255,0.08);
+    --border-2: rgba(255,255,255,0.16);
+    --secondary: #2C2C2A;
+    --accent: #AFA9EC;
+    --accent-bg: #26215C;
+    --accent-text: #CECBF6;
+    --green: #5DCAA5;
+    --green-bg: #04342C;
+    --green-text: #9FE1CB;
+    --green-text-dark: #E1F5EE;
+    --blue: #85B7EB;
+    --blue-bg: #042C53;
+    --blue-text: #B5D4F4;
+    --orange: #FAC775;
+    --orange-bg: #412402;
+    --orange-text: #FAEEDA;
+    --red: #F09595;
+    --red-bg: #501313;
+    --input-bg: #1A1A18;
+    --target: #B4B2A9;
+  }
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 15px;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+.container { max-width: 600px; margin: 0 auto; padding: 16px 14px 80px; }
+.hero { padding: 12px 0 14px; border-bottom: 0.5px solid var(--border); margin-bottom: 14px; }
+.hero-title { font-size: 19px; font-weight: 600; color: var(--text); }
+.hero-sub { font-size: 13px; color: var(--text-2); margin-top: 4px; }
+.philosophy { background: var(--secondary); padding: 12px 14px; border-radius: 10px; margin-bottom: 16px; font-size: 13px; color: var(--text-2); border-left: 3px solid var(--accent); line-height: 1.55; }
+.philosophy strong { color: var(--text); font-weight: 600; }
+.tabs { display: flex; gap: 6px; margin-bottom: 16px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 8px 0; position: sticky; top: 0; background: var(--bg); z-index: 10; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { padding: 9px 14px; border-radius: 10px; border: 0.5px solid var(--border-2); font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text-2); background: var(--card); white-space: nowrap; flex-shrink: 0; transition: all 0.15s ease; user-select: none; }
+.tab.active { background: var(--accent-bg); color: var(--accent-text); border-color: var(--accent); font-weight: 600; }
+.tab.travel { border-color: var(--orange); color: var(--orange-text); background: var(--card); }
+.tab.travel.active { background: var(--orange-bg); color: var(--orange-text); border-color: var(--orange); }
+.tab.done::after { content: '✓'; margin-left: 4px; color: var(--green); font-weight: 700; }
+.day { display: none; animation: fadeIn 0.25s ease-out; }
+.day.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.day-card { background: var(--card); border: 0.5px solid var(--border); border-radius: 14px; padding: 16px 16px; margin-bottom: 12px; }
+.day-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.day-name { font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.day-badge { font-size: 11px; padding: 4px 9px; border-radius: 8px; font-weight: 600; white-space: nowrap; letter-spacing: 0.02em; }
+.b-strength { background: var(--blue-bg); color: var(--blue-text); }
+.b-cardio { background: var(--green-bg); color: var(--green-text); }
+.b-recovery { background: var(--secondary); color: var(--text-2); }
+.b-hybrid { background: var(--accent-bg); color: var(--accent-text); }
+.b-travel { background: var(--orange-bg); color: var(--orange-text); }
+.meta { font-size: 12px; color: var(--text-2); margin-bottom: 14px; display: flex; gap: 12px; flex-wrap: wrap; }
+.meta-pill { display: inline-flex; align-items: center; gap: 4px; }
+.session-intent { font-size: 13px; color: var(--text-2); padding: 10px 12px; background: var(--secondary); border-radius: 10px; margin-bottom: 14px; line-height: 1.55; font-style: italic; }
+.session-intent em { font-style: normal; font-weight: 600; color: var(--text); }
+.phase-head { display: flex; align-items: center; gap: 8px; margin: 16px 0 8px; padding-bottom: 6px; border-bottom: 0.5px solid var(--border); }
+.phase-num { font-size: 11px; font-weight: 700; color: #FFF; background: var(--accent); padding: 3px 8px; border-radius: 12px; min-width: 22px; text-align: center; }
+.phase.recovery .phase-num { background: var(--green); }
+.phase.warmup .phase-num { background: #EF9F27; }
+.phase.cooldown .phase-num { background: #5DCAA5; }
+.phase-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
+.phase-time { font-size: 11px; color: var(--text-3); }
+.ex { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 0.5px dashed var(--border); }
+.ex:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.ex-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.ex-name { font-size: 15px; font-weight: 600; color: var(--text); flex: 1; line-height: 1.35; }
+.tut { font-size: 11px; color: var(--blue); cursor: pointer; border: 0.5px solid var(--blue); border-radius: 8px; padding: 4px 10px; background: var(--blue-bg); white-space: nowrap; text-decoration: none; font-weight: 600; flex-shrink: 0; min-height: 28px; display: inline-flex; align-items: center; }
+.tut:active { background: var(--blue); color: var(--card); }
+.set-table { width: 100%; margin: 8px 0 6px; border-radius: 8px; overflow: hidden; border: 0.5px solid var(--border); }
+.set-row { display: grid; grid-template-columns: 36px 1fr 70px 60px; gap: 6px; align-items: center; padding: 7px 8px; background: var(--secondary); border-bottom: 0.5px solid var(--border); }
+.set-row:last-child { border-bottom: none; }
+.set-row.header { background: transparent; padding: 4px 8px 2px; font-size: 10px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: none; }
+.set-num { font-size: 11px; font-weight: 700; color: var(--text-2); background: var(--card); border-radius: 6px; padding: 4px 0; text-align: center; font-variant-numeric: tabular-nums; }
+.set-target { font-size: 12px; color: var(--target); font-variant-numeric: tabular-nums; line-height: 1.3; font-weight: 500; }
+.set-input { width: 100%; font-size: 14px; font-weight: 600; padding: 7px 8px; border: 0.5px solid var(--border-2); border-radius: 6px; background: var(--input-bg); color: var(--text); text-align: center; font-family: inherit; font-variant-numeric: tabular-nums; -webkit-appearance: none; appearance: none; min-height: 36px; }
+.set-input:focus { outline: none; border-color: var(--accent); border-width: 1px; }
+.set-input.logged { background: var(--green-bg); color: var(--green-text-dark); border-color: var(--green); }
+.set-row.checkbox-row { grid-template-columns: 36px 1fr; }
+.set-checkbox { width: 28px; height: 28px; border: 1.5px solid var(--border-2); border-radius: 6px; background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: transparent; font-weight: 700; margin: 0 auto; transition: all 0.15s; -webkit-appearance: none; appearance: none; padding: 0; }
+.set-checkbox.checked { background: var(--green); border-color: var(--green); color: white; }
+.set-prescription { font-size: 13px; color: var(--text-2); font-weight: 500; }
+.note { font-size: 13px; color: var(--text-2); margin-top: 8px; padding: 9px 12px; background: var(--secondary); border-radius: 8px; border-left: 3px solid var(--text-3); line-height: 1.5; }
+.note strong { color: var(--text); font-weight: 600; }
+.note.injury { color: var(--red); background: var(--red-bg); border-left-color: var(--red); }
+.note.recovery-note { color: var(--green-text); background: var(--green-bg); border-left-color: var(--green); }
+.note.recovery-note strong { color: var(--green-text-dark); }
+.note.coach { color: var(--accent-text); background: var(--accent-bg); border-left-color: var(--accent); }
+.superset { font-size: 10px; font-weight: 700; color: var(--blue-text); background: var(--blue-bg); padding: 3px 8px; border-radius: 6px; margin-bottom: 6px; display: inline-block; letter-spacing: 0.06em; text-transform: uppercase; }
+.rpe-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 12px; }
+.rpe-label { color: var(--text-2); white-space: nowrap; font-weight: 500; }
+.rpe-bar { flex: 1; height: 5px; background: var(--secondary); border-radius: 3px; overflow: hidden; }
+.rpe-fill { height: 100%; }
+.notes-label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin: 8px 0 4px; display: block; }
+.log { width: 100%; font-size: 14px; padding: 10px 12px; border: 0.5px solid var(--border-2); border-radius: 8px; background: var(--input-bg); color: var(--text); resize: none; min-height: 60px; font-family: inherit; -webkit-appearance: none; appearance: none; line-height: 1.5; }
+.log:focus { outline: none; border-color: var(--accent); border-width: 1px; }
+.cardio-block { background: var(--green-bg); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+.cardio-head { font-size: 14px; font-weight: 700; color: var(--green-text); margin-bottom: 6px; }
+.cardio-step { font-size: 13px; color: var(--green-text); padding: 3px 0; line-height: 1.5; }
+.cardio-step b { color: var(--green-text-dark); font-weight: 700; }
+.complete-btn { width: 100%; margin-top: 14px; padding: 12px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; font-family: inherit; }
+.complete-btn:active { opacity: 0.85; }
+.complete-btn.done { background: var(--green); }
+.reset-btn { width: 100%; margin-top: 8px; padding: 10px; background: transparent; color: var(--text-3); border: 0.5px solid var(--border-2); border-radius: 10px; font-size: 12px; font-weight: 500; cursor: pointer; -webkit-appearance: none; appearance: none; font-family: inherit; }
+.export-btn { width: 100%; margin-top: 14px; padding: 12px; background: var(--green); color: white; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; font-family: inherit; }
+.export-btn:active { opacity: 0.85; }
+.install-hint { font-size: 11.5px; color: var(--text-3); text-align: center; padding: 12px 8px 0; line-height: 1.5; }
+@supports (-webkit-touch-callout: none) { .log, .set-input { font-size: 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+  <div class="hero-title">Week of May 4–10 · Hybrid</div>
+  <div class="hero-sub">Daily recovery built in · Shoulder + hip safe · Chicago Mon–Thu · Cincinnati Thu–Sun</div>
+</div>
+
+<div class="philosophy">
+  <strong>Approach:</strong> Each session has 4 phases — <strong>Prime</strong> (mobility), <strong>Move</strong> (main work), <strong>Cool</strong> (downregulate), <strong>PM Recovery Ritual</strong>. Log each set as you go — actuals turn green so you can see at a glance what's done. Personal notes go below each exercise.
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-day="mon">Mon</div>
+  <div class="tab" data-day="tue">Tue</div>
+  <div class="tab" data-day="wed">Wed</div>
+  <div class="tab" data-day="thu">Thu</div>
+  <div class="tab travel" data-day="fri">Fri ✈</div>
+  <div class="tab travel" data-day="sat">Sat ✈</div>
+  <div class="tab" data-day="sun">Sun</div>
+</div>
+
+<div class="day active" id="d-mon">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Monday — Push (low CNS)</div><span class="day-badge b-strength">Strength</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 65 min</div><div class="meta-pill">📍 FFC Gold Coast</div><div class="meta-pill">🌅 5:30 AM</div></div>
+    <div class="session-intent">Easing into the week. Shoulder-conservative pressing. Volume over intensity.</div>
+
+    <div class="phase warmup">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Prime — Daily Mobility</span><span class="phase-time">8 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Hip CARs</div><a class="tut" href="https://www.youtube.com/results?search_query=hip+CARs+functional+range+conditioning" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-hipcars-1">✓</button><div class="set-prescription">5 reps/direction · each leg</div></div></div>
+        <div class="note recovery-note">Daily non-negotiable for FAI. Slow, controlled. Stay tall.</div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Band Pull-Apart + Wall Slide</div><a class="tut" href="https://www.youtube.com/results?search_query=band+pull+apart+wall+slide" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-pull-apart-1">✓</button><div class="set-prescription">2 × 12 pull-aparts + 8 wall slides</div></div></div>
+        <div class="note recovery-note">Pre-press shoulder rehab. Wakes rear delts and rotator cuff.</div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Sidelying External Rotation</div><a class="tut" href="https://www.youtube.com/results?search_query=sidelying+external+rotation+rotator+cuff" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-er-1">✓</button><div class="set-prescription">5 lb · 2 × 12 each side</div></div></div>
+        <div class="note injury">⚠️ Direct rotator cuff. Light, slow, full ROM. Do NOT skip.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Move — Pressing Work</span><span class="phase-time">42 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Neutral-grip DB Floor Press</div><a class="tut" href="https://www.youtube.com/results?search_query=neutral+grip+dumbbell+floor+press" target="_blank">▶</a></div>
+        <div class="rpe-row"><span class="rpe-label">Target RPE 7</span><div class="rpe-bar"><div class="rpe-fill" style="width:70%; background:#378ADD;"></div></div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">50 × 8 · warm</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-floor-press-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-floor-press-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">70 × 8</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-floor-press-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-floor-press-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">85 × 6</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-floor-press-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-floor-press-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">85 × 6</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-floor-press-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-floor-press-4-r"></div>
+          <div class="set-row"><div class="set-num">5</div><div class="set-target">85 × 6</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-floor-press-5-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-floor-press-5-r"></div>
+        </div>
+        <div class="note injury">⚠️ Floor stops elbows before painful range. Neutral grip = less anterior shoulder stress.</div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="How did the shoulder feel? Form notes? RPE check?" data-key="mon-floor-press-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="superset">Superset A · 3 rounds</div>
+        <div class="ex-head"><div class="ex-name">Cable Chest Fly (low-to-high)</div><a class="tut" href="https://www.youtube.com/results?search_query=low+to+high+cable+chest+fly" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">30 × 12</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-fly-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-fly-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">35 × 12</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-fly-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-fly-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">35 × 12</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-fly-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-fly-3-r"></div>
+        </div>
+        <div class="note coach">Low-to-high keeps shoulders externally rotated. Pinch? Drop weight.</div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="Personal notes..." data-key="mon-fly-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Push-Up (slow eccentric)</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div></div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">15 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-pushup-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">15 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-pushup-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">AMRAP</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-pushup-3-r"></div>
+        </div>
+        <div class="note coach">3-second descent. Tempo is the load.</div>
+      </div>
+
+      <div class="ex">
+        <div class="superset">Superset B · 3 rounds</div>
+        <div class="ex-head"><div class="ex-name">Cable Tricep Pushdown (rope)</div><a class="tut" href="https://www.youtube.com/results?search_query=rope+cable+tricep+pushdown" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">50 × 12</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-tri-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-tri-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">55 × 12</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-tri-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-tri-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">55 × 10</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-tri-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-tri-3-r"></div>
+        </div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="Personal notes..." data-key="mon-tri-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Pallof Press</div><a class="tut" href="https://www.youtube.com/results?search_query=pallof+press+anti+rotation" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">— × 10/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-pallof-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-pallof-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">— × 10/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-pallof-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-pallof-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">— × 10/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="mon-pallof-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="mon-pallof-3-r"></div>
+        </div>
+        <div class="note coach">Anti-rotation core. Protects spine when running.</div>
+      </div>
+    </div>
+
+    <div class="phase cooldown">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Cool — Downregulate</span><span class="phase-time">5 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Pec Doorway + T-Spine Extension</div><a class="tut" href="https://www.youtube.com/results?search_query=doorway+pec+stretch+90+degrees" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-cool-1">✓</button><div class="set-prescription">2 × 30 sec/side · arm at 90° only</div></div></div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Box Breathing</div><a class="tut" href="https://www.youtube.com/results?search_query=box+breathing+technique" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-cool-2">✓</button><div class="set-prescription">2 min · inhale 4, hold 4, exhale 4, hold 4</div></div></div>
+      </div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">4</span><span class="phase-name">PM Recovery Ritual</span><span class="phase-time">10 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-pm-1">✓</button><div class="set-prescription">Foam roll quads + lats (90 sec each)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-pm-2">✓</button><div class="set-prescription">Frozen water bottle on right foot, 2 min</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-pm-3">✓</button><div class="set-prescription">5 min slow nasal breathing in bed</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="mon-pm-4">✓</button><div class="set-prescription">Lights out by 10:30 PM</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Day's overall notes</span>
+    <textarea class="log" placeholder="How did the day feel overall? Energy, sleep last night, anything to note?" data-key="mon-day-notes"></textarea>
+    <button class="complete-btn" data-day-key="mon">Mark Monday Complete</button>
+  </div>
+</div>
+
+<div class="day" id="d-tue">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Tuesday — Pull + Easy Run</div><span class="day-badge b-hybrid">Hybrid</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 70 min</div><div class="meta-pill">📍 FFC + Lakefront</div></div>
+    <div class="session-intent">Pull + easy run clustered. High-low strategy. Run is <em>truly easy</em>.</div>
+
+    <div class="phase warmup">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Prime — Daily Mobility</span><span class="phase-time">7 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Hip CARs + 90/90 Switches</div><a class="tut" href="https://www.youtube.com/results?search_query=90+90+hip+stretch+mobility" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="tue-mob-1">✓</button><div class="set-prescription">5 CARs/direction + 8 switches</div></div></div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Scap Pull-Up + Dead Hang</div><a class="tut" href="https://www.youtube.com/results?search_query=scapular+pull+up+dead+hang" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="tue-mob-2">✓</button><div class="set-prescription">2 × 5 + 20 sec hang</div></div></div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Move — Strength</span><span class="phase-time">35 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Trap Bar Deadlift</div><a class="tut" href="https://www.youtube.com/results?search_query=trap+bar+deadlift+hex+bar+form" target="_blank">▶</a></div>
+        <div class="rpe-row"><span class="rpe-label">Target RPE 7–8</span><div class="rpe-bar"><div class="rpe-fill" style="width:75%; background:#1D9E75;"></div></div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">135 × 5</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-tb-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-tb-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">165 × 5</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-tb-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-tb-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">185 × 5</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-tb-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-tb-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">185 × 5</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-tb-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-tb-4-r"></div>
+          <div class="set-row"><div class="set-num">5</div><div class="set-target">185 × 5</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-tb-5-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-tb-5-r"></div>
+        </div>
+        <div class="note injury">⚠️ Trap bar > conventional for FAI. Stop if groin pulls. Stay at 185.</div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="Personal notes..." data-key="tue-tb-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="superset">Superset · 3 rounds</div>
+        <div class="ex-head"><div class="ex-name">Pull-Up</div><a class="tut" href="https://www.youtube.com/results?search_query=pull+up+form+hollow+body" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div></div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">10 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-pu-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">8 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-pu-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">6 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-pu-3-r"></div>
+        </div>
+        <div class="note coach">Stop 1 rep before failure.</div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="Personal notes..." data-key="tue-pu-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Half-Kneeling SA Lat Pulldown</div><a class="tut" href="https://www.youtube.com/results?search_query=half+kneeling+single+arm+cable+pulldown" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">40 × 10/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-lpd-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-lpd-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">45 × 10/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-lpd-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-lpd-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">45 × 10/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-lpd-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-lpd-3-r"></div>
+        </div>
+        <div class="note coach">Half-kneeling = built-in hip flexor stretch + anti-rotation.</div>
+      </div>
+
+      <div class="ex">
+        <div class="superset">Superset · 3 rounds</div>
+        <div class="ex-head"><div class="ex-name">Chest-Supported DB Row</div><a class="tut" href="https://www.youtube.com/results?search_query=chest+supported+dumbbell+row" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">50 × 10</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-row-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-row-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">55 × 10</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-row-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-row-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">55 × 10</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-row-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-row-3-r"></div>
+        </div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="Personal notes..." data-key="tue-row-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Face Pull (high cable)</div><a class="tut" href="https://www.youtube.com/results?search_query=face+pull+high+cable+form" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">— × 15</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-fp-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-fp-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">— × 15</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-fp-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-fp-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">— × 15</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-fp-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-fp-3-r"></div>
+        </div>
+        <div class="note injury">⚠️ Shoulder rehab gold. External rotation at end position.</div>
+      </div>
+
+      <div class="ex">
+        <div class="superset">Finisher</div>
+        <div class="ex-head"><div class="ex-name">DB Hammer Curl + Cable Bicep Curl</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Hammer</div><div>Cable</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">10 each</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-arms-1-w"><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-arms-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">10 each</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-arms-2-w"><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-arms-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">10 each</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-arms-3-w"><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-arms-3-r"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Move — Easy Run</span><span class="phase-time">25 min</span></div>
+      <div class="cardio-block">
+        <div class="cardio-head">Zone 2 Aerobic — Lakefront</div>
+        <div class="cardio-step"><b>Duration:</b> 25 min · RPE 3–4 · conversational</div>
+      </div>
+      <div class="set-table" style="margin-top:8px;">
+        <div class="set-row header"><div>Set</div><div>Logged</div><div>Distance (mi)</div><div>Avg HR</div></div>
+        <div class="set-row"><div class="set-num">✓</div><div class="set-target">25 min run</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="tue-run-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="tue-run-r"></div>
+      </div>
+      <span class="notes-label">Run notes</span>
+      <textarea class="log" placeholder="Pace, how it felt, foot check..." data-key="tue-run-notes"></textarea>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">4</span><span class="phase-name">PM Recovery Ritual</span><span class="phase-time">10 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="tue-pm-1">✓</button><div class="set-prescription">10-min Peloton stretch class</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="tue-pm-2">✓</button><div class="set-prescription">Couch stretch + 90/90 hold (5 min)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="tue-pm-3">✓</button><div class="set-prescription">Frozen water bottle on right foot, 2 min</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="tue-pm-4">✓</button><div class="set-prescription">7.5+ hours sleep target</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Day's overall notes</span>
+    <textarea class="log" placeholder="Energy, sleep, anything to note for next week..." data-key="tue-day-notes"></textarea>
+    <button class="complete-btn" data-day-key="tue">Mark Tuesday Complete</button>
+  </div>
+</div>
+
+<div class="day" id="d-wed">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Wednesday — Recovery + Mobility</div><span class="day-badge b-recovery">Recovery</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 35–45 min</div><div class="meta-pill">📍 Home or FFC</div></div>
+    <div class="session-intent">Active recovery. Get blood moving, then rest.</div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Move — Aerobic Flush</span><span class="phase-time">25 min</span></div>
+      <div class="cardio-block">
+        <div class="cardio-head">Pick One · HR < 130</div>
+        <div class="cardio-step"><b>A:</b> 25 min Peloton recovery ride · RPE 3</div>
+        <div class="cardio-step"><b>B:</b> Lap swim — 20 min · zero shoulder strain</div>
+        <div class="cardio-step"><b>C:</b> 25 min lakefront walk</div>
+      </div>
+      <div class="set-table" style="margin-top:8px;"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-flush">✓</button><div class="set-prescription">Aerobic flush completed</div></div></div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Mobility — Hip + Shoulder</span><span class="phase-time">15 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">FAI Hip Mobility Flow</div><a class="tut" href="https://www.youtube.com/results?search_query=FAI+hip+impingement+mobility+routine" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-hip-1">✓</button><div class="set-prescription">Hip CARs · 5/direction</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-hip-2">✓</button><div class="set-prescription">90/90 hold · 1 min/side</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-hip-3">✓</button><div class="set-prescription">Pigeon variation · 1 min/side</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-hip-4">✓</button><div class="set-prescription">Banded hip distraction · 2 min/side</div></div>
+        </div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Shoulder Mobility</div><a class="tut" href="https://www.youtube.com/results?search_query=shoulder+mobility+routine+rotator+cuff" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-sh-1">✓</button><div class="set-prescription">Wall slides × 10</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-sh-2">✓</button><div class="set-prescription">Thread the needle × 8/side</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-sh-3">✓</button><div class="set-prescription">Sleeper stretch · 30 sec/side</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-sh-4">✓</button><div class="set-prescription">Band external rotation × 15/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Yoga (optional)</span><span class="phase-time">15 min</span></div>
+      <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-yoga">✓</button><div class="set-prescription">15-min Peloton restorative or gentle flow</div></div></div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">4</span><span class="phase-name">PM Recovery Ritual</span><span class="phase-time">5 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-pm-1">✓</button><div class="set-prescription">Contrast shower: 30 sec cold + 1 min hot · 3 cycles</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-pm-2">✓</button><div class="set-prescription">Frozen water bottle on right foot</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="wed-pm-3">✓</button><div class="set-prescription">Bed early — Thursday is travel day</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Day's overall notes</span>
+    <textarea class="log" placeholder="How did the recovery day feel?" data-key="wed-day-notes"></textarea>
+    <button class="complete-btn" data-day-key="wed">Mark Wednesday Complete</button>
+  </div>
+</div>
+
+<div class="day" id="d-thu">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Thursday — Lower + Tempo Run</div><span class="day-badge b-hybrid">Hybrid</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 70 min</div><div class="meta-pill">📍 FFC</div><div class="meta-pill">🌅 Early — travel PM</div></div>
+    <div class="session-intent">Last full-equipment day. Lower + tempo clustered. Hydrate, then travel.</div>
+
+    <div class="phase warmup">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Prime — Lower Activation</span><span class="phase-time">8 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Hip CARs + Glute Bridge March</div></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-mob-1">✓</button><div class="set-prescription">5 CARs/direction + 2 × 10 marches/side</div></div></div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Adductor Rockback + Cossack Squat</div><a class="tut" href="https://www.youtube.com/results?search_query=adductor+rockback+cossack+squat" target="_blank">▶</a></div>
+        <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-mob-2">✓</button><div class="set-prescription">8 rockbacks + 5 cossacks/side</div></div></div>
+        <div class="note injury">⚠️ Critical for groin strain history.</div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Move — Tempo Run</span><span class="phase-time">25 min</span></div>
+      <div class="cardio-block">
+        <div class="cardio-head">Treadmill / Lakefront Tempo</div>
+        <div class="cardio-step"><b>WU:</b> 0.75 mi easy</div>
+        <div class="cardio-step"><b>Work:</b> 3 × 5 min @ RPE 7 · 90s walk recovery</div>
+        <div class="cardio-step"><b>Pace:</b> ~8:00–8:15/mi</div>
+        <div class="cardio-step"><b>CD:</b> 0.5 mi very easy</div>
+      </div>
+      <div class="set-table" style="margin-top:8px;">
+        <div class="set-row header"><div>Set</div><div>Target</div><div>Pace</div><div>Avg HR</div></div>
+        <div class="set-row"><div class="set-num">1</div><div class="set-target">5 min @ RPE 7</div><input class="set-input" type="text" inputmode="text" placeholder="—" data-key="thu-tempo-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-tempo-1-r"></div>
+        <div class="set-row"><div class="set-num">2</div><div class="set-target">5 min @ RPE 7</div><input class="set-input" type="text" inputmode="text" placeholder="—" data-key="thu-tempo-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-tempo-2-r"></div>
+        <div class="set-row"><div class="set-num">3</div><div class="set-target">5 min @ RPE 7</div><input class="set-input" type="text" inputmode="text" placeholder="—" data-key="thu-tempo-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-tempo-3-r"></div>
+      </div>
+      <span class="notes-label">Run notes</span>
+      <textarea class="log" placeholder="Pace, foot check, breathing..." data-key="thu-run-notes"></textarea>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Move — Lower Strength</span><span class="phase-time">30 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Goblet Squat (3-1-1 tempo)</div><a class="tut" href="https://www.youtube.com/results?search_query=goblet+squat+tempo+form" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">40 × 8</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-gs-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-gs-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">60 × 8</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-gs-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-gs-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">70 × 8</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-gs-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-gs-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">70 × 8</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-gs-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-gs-4-r"></div>
+        </div>
+        <div class="note injury">⚠️ Goblet > barbell for FAI. Front-load forces upright torso.</div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="Personal notes..." data-key="thu-gs-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="superset">Superset · 3 rounds</div>
+        <div class="ex-head"><div class="ex-name">Bulgarian Split Squat</div><a class="tut" href="https://www.youtube.com/results?search_query=bulgarian+split+squat+form" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div>Weight</div><div>Reps/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">30 × 8/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-bss-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-bss-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">35 × 8/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-bss-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-bss-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">35 × 8/s</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="thu-bss-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-bss-3-r"></div>
+        </div>
+        <span class="notes-label">Notes</span>
+        <textarea class="log" placeholder="L vs R asymmetry?" data-key="thu-bss-notes"></textarea>
+      </div>
+
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Single-Leg Hip Bridge</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div></div><div>Reps/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">10/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-slhb-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">10/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-slhb-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">10/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-slhb-3-r"></div>
+        </div>
+      </div>
+
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Copenhagen Plank</div><a class="tut" href="https://www.youtube.com/results?search_query=copenhagen+plank+adductor" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Set</div><div>Target</div><div></div><div>Sec/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">20 sec/s</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-cop-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">20 sec/s</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-cop-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">20 sec/s</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="thu-cop-3-r"></div>
+        </div>
+        <div class="note injury">⚠️ Best exercise for groin strain prevention. Start short-lever.</div>
+      </div>
+    </div>
+
+    <div class="phase cooldown">
+      <div class="phase-head"><span class="phase-num">4</span><span class="phase-name">Cool — Pre-Travel Reset</span><span class="phase-time">5 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-cool-1">✓</button><div class="set-prescription">Hip flexor stretch (90 sec/side)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-cool-2">✓</button><div class="set-prescription">Figure-4 (60 sec/side)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-cool-3">✓</button><div class="set-prescription">2 min slow nasal breathing</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-cool-4">✓</button><div class="set-prescription">Hydrate aggressively before drive</div></div>
+      </div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">5</span><span class="phase-name">Travel Recovery (in transit)</span><span class="phase-time">—</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-tr-1">✓</button><div class="set-prescription">Phone alarm every 60 min — stand, walk, 5 hip CARs/s</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-tr-2">✓</button><div class="set-prescription">Half liter water per hour</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="thu-tr-3">✓</button><div class="set-prescription">Real protein meal within 2 hrs</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Day's overall notes</span>
+    <textarea class="log" placeholder="How did the day feel? Hip + foot check..." data-key="thu-day-notes"></textarea>
+    <button class="complete-btn" data-day-key="thu">Mark Thursday Complete</button>
+  </div>
+</div>
+
+<div class="day" id="d-fri">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Friday — Cincinnati Movement Day</div><span class="day-badge b-travel">Travel</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 40–50 min</div><div class="meta-pill">📍 Parents' · light DBs</div></div>
+    <div class="session-intent">Travel = maintain, not chase. Tempo replaces load.</div>
+
+    <div class="phase warmup">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Prime — Full Body</span><span class="phase-time">8 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Daily Mobility Flow</div><a class="tut" href="https://www.youtube.com/results?search_query=morning+mobility+flow+full+body" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-mob-1">✓</button><div class="set-prescription">Hip CARs · 5/direction</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-mob-2">✓</button><div class="set-prescription">Wall slides × 10</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-mob-3">✓</button><div class="set-prescription">Cat-cow × 8</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-mob-4">✓</button><div class="set-prescription">World's greatest stretch × 5/side</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-mob-5">✓</button><div class="set-prescription">External rotation × 12/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Move — Full Body Circuit</span><span class="phase-time">25 min</span></div>
+      <div class="note coach">4 rounds · 60 sec rest between rounds · heaviest available DBs · 3 sec down, 1 sec pause every rep</div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">DB Goblet Squat (3-1-1)</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Rd</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">12 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-gs-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-gs-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">12 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-gs-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-gs-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">12 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-gs-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-gs-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">12 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-gs-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-gs-4-r"></div>
+        </div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">DB Romanian Deadlift</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Rd</div><div>Target</div><div>Weight</div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">10 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rdl-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rdl-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">10 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rdl-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rdl-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">10 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rdl-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rdl-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">10 reps</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rdl-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rdl-4-r"></div>
+        </div>
+        <div class="note injury">⚠️ Slow, controlled. Stop at shin level.</div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Push-Up (3 sec down)</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Rd</div><div>Target</div><div></div><div>Reps</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">15 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-pu-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">15 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-pu-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">15 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-pu-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">15 reps</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-pu-4-r"></div>
+        </div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Single-Arm DB Row</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Rd</div><div>Target</div><div>Weight</div><div>Reps/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">10/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-row-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-row-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">10/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-row-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-row-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">10/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-row-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-row-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">10/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-row-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-row-4-r"></div>
+        </div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Reverse Lunge (alternating)</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Rd</div><div>Target</div><div>Weight</div><div>Reps/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">8/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rl-1-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rl-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">8/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rl-2-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rl-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">8/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rl-3-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rl-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">8/side</div><input class="set-input" type="number" inputmode="decimal" placeholder="—" data-key="fri-rl-4-w"><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-rl-4-r"></div>
+        </div>
+      </div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Dead Bug (slow)</div></div>
+        <div class="set-table">
+          <div class="set-row header"><div>Rd</div><div>Target</div><div></div><div>Reps/s</div></div>
+          <div class="set-row"><div class="set-num">1</div><div class="set-target">8/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-db-1-r"></div>
+          <div class="set-row"><div class="set-num">2</div><div class="set-target">8/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-db-2-r"></div>
+          <div class="set-row"><div class="set-num">3</div><div class="set-target">8/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-db-3-r"></div>
+          <div class="set-row"><div class="set-num">4</div><div class="set-target">8/side</div><div></div><input class="set-input" type="number" inputmode="numeric" placeholder="—" data-key="fri-db-4-r"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase cooldown">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Cool — Yoga Flow</span><span class="phase-time">15 min</span></div>
+      <div class="set-table"><div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-yoga">✓</button><div class="set-prescription">15-min Peloton beginner yoga · pigeon, low lunge, child's pose</div></div></div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">4</span><span class="phase-name">PM Recovery Ritual</span><span class="phase-time">10 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-pm-1">✓</button><div class="set-prescription">15 min walk after dinner</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-pm-2">✓</button><div class="set-prescription">Couch stretch (90 sec/side) before bed</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-pm-3">✓</button><div class="set-prescription">Box breathing in bed</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="fri-pm-4">✓</button><div class="set-prescription">Dark, cool room. No screens 30 min before bed.</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Day's overall notes</span>
+    <textarea class="log" placeholder="How was the travel + workout?" data-key="fri-day-notes"></textarea>
+    <button class="complete-btn" data-day-key="fri">Mark Friday Complete</button>
+  </div>
+</div>
+
+<div class="day" id="d-sat">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Saturday — Long Easy Run</div><span class="day-badge b-cardio">Endurance</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 60–80 min</div><div class="meta-pill">📍 Cincinnati</div></div>
+    <div class="session-intent">Conversational throughout. Should feel <em>too easy</em>.</div>
+
+    <div class="phase warmup">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Prime — Pre-Run</span><span class="phase-time">10 min</span></div>
+      <div class="ex">
+        <div class="ex-head"><div class="ex-name">Pre-Run Mobility</div><a class="tut" href="https://www.youtube.com/results?search_query=pre+run+dynamic+warm+up" target="_blank">▶</a></div>
+        <div class="set-table">
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-mob-1">✓</button><div class="set-prescription">Hip CARs · 5/direction</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-mob-2">✓</button><div class="set-prescription">Leg swings · 10 each direction</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-mob-3">✓</button><div class="set-prescription">Walking lunges × 8</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-mob-4">✓</button><div class="set-prescription">Calf raises × 15</div></div>
+          <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-mob-5">✓</button><div class="set-prescription">Walk 3-5 min before running</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Move — Long Run</span><span class="phase-time">60 min</span></div>
+      <div class="cardio-block">
+        <div class="cardio-head">Zone 2 Long Run</div>
+        <div class="cardio-step"><b>Distance:</b> 6–8 miles · your call</div>
+        <div class="cardio-step"><b>Pace:</b> ~8:30–9:30/mi · conversational</div>
+        <div class="cardio-step"><b>HR ceiling:</b> 145 bpm</div>
+        <div class="cardio-step"><b>Route:</b> Flat preferred</div>
+      </div>
+      <div class="set-table" style="margin-top:8px;">
+        <div class="set-row header"><div></div><div>Logged</div><div>Distance</div><div>Avg HR</div></div>
+        <div class="set-row"><div class="set-num">✓</div><div class="set-target">Long run</div><input class="set-input" type="number" inputmode="decimal" placeholder="mi" data-key="sat-run-w"><input class="set-input" type="number" inputmode="numeric" placeholder="bpm" data-key="sat-run-r"></div>
+      </div>
+      <div class="note injury">⚠️ FOOT CHECK first thing. Sharp/stiff out of bed? Walk 10 min + roll PF before running.</div>
+      <span class="notes-label">Run notes</span>
+      <textarea class="log" placeholder="Pace, foot, breathing, route, weather..." data-key="sat-run-notes"></textarea>
+    </div>
+
+    <div class="phase cooldown">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Cool — Post-Run</span><span class="phase-time">10 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-1">✓</button><div class="set-prescription">Walk 3 min until HR < 110</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-2">✓</button><div class="set-prescription">Calves stretch (60 sec/side)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-3">✓</button><div class="set-prescription">Hip flexors (60/side)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-4">✓</button><div class="set-prescription">Figure-4 (60/side)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-5">✓</button><div class="set-prescription">Hamstrings (60/side)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-6">✓</button><div class="set-prescription">Frozen water bottle on right foot · 2 min</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-7">✓</button><div class="set-prescription">Real food + 30g+ protein within 30 min</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-cool-8">✓</button><div class="set-prescription">Water + electrolytes</div></div>
+      </div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">4</span><span class="phase-name">PM Recovery Ritual</span><span class="phase-time">10 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-pm-1">✓</button><div class="set-prescription">Afternoon walk · 10-15 min</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-pm-2">✓</button><div class="set-prescription">10-min Peloton stretch (legs focus)</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-pm-3">✓</button><div class="set-prescription">Foam roll IT band, quads, calves</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-pm-4">✓</button><div class="set-prescription">Hydrate to clear urine</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sat-pm-5">✓</button><div class="set-prescription">Earliest reasonable bedtime</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Day's overall notes</span>
+    <textarea class="log" placeholder="Energy, weather, foot status..." data-key="sat-day-notes"></textarea>
+    <button class="complete-btn" data-day-key="sat">Mark Saturday Complete</button>
+  </div>
+</div>
+
+<div class="day" id="d-sun">
+  <div class="day-card">
+    <div class="day-head"><div class="day-name">Sunday — Full Recovery</div><span class="day-badge b-recovery">Rest</span></div>
+    <div class="meta"><div class="meta-pill">⏱ 30 min (optional)</div><div class="meta-pill">📍 Wherever</div></div>
+    <div class="session-intent">No training. Adaptations consolidate. Feel better tomorrow than today.</div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">1</span><span class="phase-name">Move — Gentle (optional)</span><span class="phase-time">30 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-move-a">✓</button><div class="set-prescription">A · 30 min outdoor walk</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-move-b">✓</button><div class="set-prescription">B · 30 min Peloton restorative or yin</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-move-c">✓</button><div class="set-prescription">C · Full rest (legitimate, no guilt)</div></div>
+      </div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">2</span><span class="phase-name">Targeted Mobility</span><span class="phase-time">10 min</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-mob-1">✓</button><div class="set-prescription">Pigeon × 90 sec/side</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-mob-2">✓</button><div class="set-prescription">Couch stretch × 60/side</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-mob-3">✓</button><div class="set-prescription">Doorway pec × 60/side</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-mob-4">✓</button><div class="set-prescription">Sleeper stretch × 30/side</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-mob-5">✓</button><div class="set-prescription">Calf wall stretch × 60/side</div></div>
+      </div>
+    </div>
+
+    <div class="phase recovery">
+      <div class="phase-head"><span class="phase-num">3</span><span class="phase-name">Nutrition + Sleep</span><span class="phase-time">—</span></div>
+      <div class="set-table">
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-nut-1">✓</button><div class="set-prescription">Aggressive hydration</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-nut-2">✓</button><div class="set-prescription">Protein 1.6 g/kg minimum</div></div>
+        <div class="set-row checkbox-row"><button class="set-checkbox" data-key="sun-nut-3">✓</button><div class="set-prescription">Sleep: 8 hours target</div></div>
+      </div>
+    </div>
+    <span class="notes-label">Week reflection — what to tell coach for next week</span>
+    <textarea class="log" placeholder="What hurt that shouldn't have? Sleep? Energy? Shoulder check, hip check, foot check..." data-key="sun-day-notes" style="min-height: 100px;"></textarea>
+    <button class="complete-btn" data-day-key="sun">Mark Sunday Complete</button>
+  </div>
+</div>
+
+<button class="export-btn" id="export-btn">📤 Export My Week (copy to clipboard)</button>
+<button class="reset-btn" id="reset-btn">Reset all logs (start fresh week)</button>
+<div class="install-hint">💡 Logs save automatically to your phone. Tap "Export" Sunday night to send your week to your trainer. Tap "Reset" only when starting a new week.</div>
+
+<div id="export-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); z-index:100; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--card); border-radius:14px; padding:20px; max-width:560px; width:100%; max-height:85vh; display:flex; flex-direction:column; gap:12px;">
+    <div style="font-size:16px; font-weight:600; color:var(--text);">Your Week's Logs</div>
+    <div style="font-size:13px; color:var(--text-2); line-height:1.5;">Copied to your clipboard. Paste into chat with your trainer. You can also tap below to copy again or share via your phone's share sheet.</div>
+    <textarea id="export-text" style="width:100%; min-height:240px; max-height:50vh; font-family:ui-monospace, SFMono-Regular, monospace; font-size:12px; padding:12px; border:0.5px solid var(--border-2); border-radius:8px; background:var(--input-bg); color:var(--text); resize:vertical; line-height:1.5;" readonly></textarea>
+    <div style="display:flex; gap:8px;">
+      <button id="export-copy-btn" style="flex:1; padding:11px; background:var(--accent); color:white; border:none; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; font-family:inherit;">Copy Again</button>
+      <button id="export-share-btn" style="flex:1; padding:11px; background:var(--green); color:white; border:none; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; font-family:inherit;">Share…</button>
+    </div>
+    <button id="export-close-btn" style="padding:9px; background:transparent; color:var(--text-3); border:0.5px solid var(--border-2); border-radius:10px; font-size:13px; cursor:pointer; font-family:inherit;">Close</button>
+  </div>
+</div>
+</div>
+
+<script>
+(function() {
+  const tabs = document.querySelectorAll('.tab');
+  const days = document.querySelectorAll('.day');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.day;
+      tabs.forEach(t => t.classList.remove('active'));
+      days.forEach(d => d.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('d-' + key).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      try { localStorage.setItem('hybrid-active-day', key); } catch(e) {}
+    });
+  });
+  try {
+    const saved = localStorage.getItem('hybrid-active-day');
+    if (saved) {
+      const tab = document.querySelector(`.tab[data-day="${saved}"]`);
+      if (tab) tab.click();
+    } else {
+      const dayMap = ['sun','mon','tue','wed','thu','fri','sat'];
+      const today = dayMap[new Date().getDay()];
+      const tab = document.querySelector(`.tab[data-day="${today}"]`);
+      if (tab) tab.click();
+    }
+  } catch(e) {}
+  document.querySelectorAll('.set-input').forEach(inp => {
+    const key = 'set-' + inp.dataset.key;
+    try {
+      const saved = localStorage.getItem(key);
+      if (saved) { inp.value = saved; inp.classList.add('logged'); }
+    } catch(e) {}
+    inp.addEventListener('input', () => {
+      try {
+        if (inp.value) { localStorage.setItem(key, inp.value); inp.classList.add('logged'); }
+        else { localStorage.removeItem(key); inp.classList.remove('logged'); }
+      } catch(e) {}
+    });
+  });
+  document.querySelectorAll('textarea[data-key]').forEach(ta => {
+    const key = 'log-' + ta.dataset.key;
+    try { const saved = localStorage.getItem(key); if (saved) ta.value = saved; } catch(e) {}
+    ta.addEventListener('input', () => { try { localStorage.setItem(key, ta.value); } catch(e) {} });
+  });
+  document.querySelectorAll('.set-checkbox').forEach(cb => {
+    const key = 'check-' + cb.dataset.key;
+    try { if (localStorage.getItem(key) === '1') cb.classList.add('checked'); } catch(e) {}
+    cb.addEventListener('click', () => {
+      const isChecked = cb.classList.toggle('checked');
+      try { localStorage.setItem(key, isChecked ? '1' : '0'); } catch(e) {}
+    });
+  });
+  function updateDayButton(btn) {
+    const dayKey = btn.dataset.dayKey;
+    const tab = document.querySelector(`.tab[data-day="${dayKey}"]`);
+    if (btn.classList.contains('done')) {
+      btn.textContent = '✓ Completed';
+      tab && tab.classList.add('done');
+    } else {
+      const cap = dayKey.charAt(0).toUpperCase() + dayKey.slice(1) + 'day';
+      btn.textContent = 'Mark ' + cap + ' Complete';
+      tab && tab.classList.remove('done');
+    }
+  }
+  document.querySelectorAll('.complete-btn').forEach(btn => {
+    const dayKey = btn.dataset.dayKey;
+    const storeKey = 'done-' + dayKey;
+    try { if (localStorage.getItem(storeKey) === '1') btn.classList.add('done'); } catch(e) {}
+    updateDayButton(btn);
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('done');
+      try { localStorage.setItem(storeKey, btn.classList.contains('done') ? '1' : '0'); } catch(e) {}
+      updateDayButton(btn);
+    });
+  });
+  const resetBtn = document.getElementById('reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (confirm('Reset all logs and check marks for this week? This cannot be undone.')) {
+        try { localStorage.clear(); } catch(e) {}
+        location.reload();
+      }
+    });
+  }
+
+  // ============ EXPORT FUNCTIONALITY ============
+  function dayLabel(key) {
+    return ({mon:'MONDAY', tue:'TUESDAY', wed:'WEDNESDAY', thu:'THURSDAY', fri:'FRIDAY', sat:'SATURDAY', sun:'SUNDAY'})[key] || key.toUpperCase();
+  }
+
+  function buildExportText() {
+    const dayKeys = ['mon','tue','wed','thu','fri','sat','sun'];
+    const lines = [];
+    lines.push('=== Week of May 4–10 — Hybrid Plan ===');
+    lines.push('');
+
+    dayKeys.forEach(dayKey => {
+      const dayEl = document.getElementById('d-' + dayKey);
+      if (!dayEl) return;
+
+      const dayName = dayEl.querySelector('.day-name')?.textContent.trim() || dayLabel(dayKey);
+      let isDone = false;
+      try { isDone = localStorage.getItem('done-' + dayKey) === '1'; } catch(e) {}
+
+      lines.push('--- ' + dayName + (isDone ? ' ✓' : '') + ' ---');
+
+      // Walk through every exercise (.ex element) in this day
+      const exercises = dayEl.querySelectorAll('.ex');
+      exercises.forEach(ex => {
+        const exName = ex.querySelector('.ex-name')?.textContent.trim();
+        if (!exName) return;
+
+        const setRows = ex.querySelectorAll('.set-row:not(.header):not(.checkbox-row)');
+        const checkboxRows = ex.querySelectorAll('.set-row.checkbox-row');
+        const exerciseLines = [];
+
+        // Numeric set rows (weight × reps style)
+        setRows.forEach(row => {
+          const inputs = row.querySelectorAll('.set-input');
+          if (inputs.length === 0) return;
+
+          const target = row.querySelector('.set-target')?.textContent.trim() || '';
+          const vals = Array.from(inputs).map(i => i.value.trim());
+          const allEmpty = vals.every(v => v === '');
+          if (allEmpty) return;
+
+          // Common patterns: [weight, reps] or just [reps] or [pace, hr]
+          let logged;
+          if (vals.length === 2) {
+            const w = vals[0] || '—';
+            const r = vals[1] || '—';
+            logged = w + (w !== '—' && !isNaN(w) ? ' lb' : '') + ' × ' + r;
+          } else if (vals.length === 1) {
+            logged = vals[0];
+          } else {
+            logged = vals.filter(v => v).join(' / ');
+          }
+          exerciseLines.push('  ' + logged + (target ? '   (target: ' + target + ')' : ''));
+        });
+
+        // Checkbox rows (mobility / recovery items)
+        const checkedItems = [];
+        const uncheckedItems = [];
+        checkboxRows.forEach(row => {
+          const cb = row.querySelector('.set-checkbox');
+          const desc = row.querySelector('.set-prescription')?.textContent.trim();
+          if (!cb || !desc) return;
+          if (cb.classList.contains('checked')) checkedItems.push(desc);
+          else uncheckedItems.push(desc);
+        });
+
+        // Notes
+        let notes = '';
+        const noteEl = ex.querySelector('textarea[data-key]');
+        if (noteEl && noteEl.value.trim()) notes = noteEl.value.trim();
+
+        // Only include this exercise if there's anything logged
+        if (exerciseLines.length === 0 && checkedItems.length === 0 && !notes) return;
+
+        lines.push(exName + ':');
+        if (exerciseLines.length > 0) {
+          lines.push(...exerciseLines);
+        }
+        if (checkedItems.length > 0) {
+          lines.push('  Done: ' + checkedItems.join(', '));
+        }
+        if (notes) {
+          lines.push('  Notes: ' + notes);
+        }
+      });
+
+      // Standalone phase-level checkboxes (PM rituals, cooldowns) not inside .ex
+      const phaseCheckboxes = dayEl.querySelectorAll('.phase > .set-table .set-row.checkbox-row');
+      const phaseChecked = [];
+      phaseCheckboxes.forEach(row => {
+        // skip ones inside .ex (already handled)
+        if (row.closest('.ex')) return;
+        const cb = row.querySelector('.set-checkbox');
+        const desc = row.querySelector('.set-prescription')?.textContent.trim();
+        if (cb && desc && cb.classList.contains('checked')) phaseChecked.push(desc);
+      });
+      if (phaseChecked.length > 0) {
+        lines.push('Recovery/cooldown done: ' + phaseChecked.join(', '));
+      }
+
+      // Day-level notes
+      const dayNotesEl = dayEl.querySelector('textarea[data-key$="-day-notes"]');
+      if (dayNotesEl && dayNotesEl.value.trim()) {
+        lines.push('DAY NOTES: ' + dayNotesEl.value.trim());
+      }
+
+      lines.push('');
+    });
+
+    lines.push('--- Body Check (fill in before sending) ---');
+    lines.push('Shoulder: __ /10');
+    lines.push('Hip: __ /10');
+    lines.push('Foot: __ /10');
+    lines.push('Avg sleep: __ hrs');
+    lines.push('Energy this week: ');
+    lines.push('Anything that hurt that shouldn\'t have: ');
+    lines.push('What got easy → ready to bump: ');
+    lines.push('What got hard → keep or drop: ');
+
+    return lines.join('\n');
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).then(() => true).catch(() => fallbackCopy(text));
+    }
+    return Promise.resolve(fallbackCopy(text));
+  }
+
+  function fallbackCopy(text) {
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch(e) { return false; }
+  }
+
+  const exportBtn = document.getElementById('export-btn');
+  const exportModal = document.getElementById('export-modal');
+  const exportTextEl = document.getElementById('export-text');
+  const exportCopyBtn = document.getElementById('export-copy-btn');
+  const exportShareBtn = document.getElementById('export-share-btn');
+  const exportCloseBtn = document.getElementById('export-close-btn');
+
+  if (exportBtn && exportModal) {
+    exportBtn.addEventListener('click', () => {
+      const text = buildExportText();
+      exportTextEl.value = text;
+      exportModal.style.display = 'flex';
+      copyToClipboard(text).then(ok => {
+        if (ok) exportBtn.textContent = '✓ Copied to clipboard';
+        setTimeout(() => { exportBtn.textContent = '📤 Export My Week (copy to clipboard)'; }, 2500);
+      });
+    });
+    exportCopyBtn.addEventListener('click', () => {
+      copyToClipboard(exportTextEl.value).then(ok => {
+        exportCopyBtn.textContent = ok ? '✓ Copied' : 'Copy failed — select text manually';
+        setTimeout(() => { exportCopyBtn.textContent = 'Copy Again'; }, 2000);
+      });
+    });
+    exportShareBtn.addEventListener('click', () => {
+      if (navigator.share) {
+        navigator.share({ title: 'My Week — Workout Logs', text: exportTextEl.value }).catch(() => {});
+      } else {
+        alert('Share not supported on this browser. Tap "Copy Again" and paste into your chat.');
+      }
+    });
+    exportCloseBtn.addEventListener('click', () => { exportModal.style.display = 'none'; });
+    exportModal.addEventListener('click', (e) => { if (e.target === exportModal) exportModal.style.display = 'none'; });
+  }
+})();
+</script>
+</body>
+</html>
