@@ -6,78 +6,59 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1a1a1a">
-<title>Hybrid Plan · May 11–17</title>
+<title>Hybrid Plan · May 19–25</title>
 <style>
   :root {
-    --bg: #1a1a1a;
-    --card: #242424;
-    --card2: #2c2c2c;
-    --border: #333;
-    --text: #f0f0f0;
-    --muted: #888;
-    --accent: #c8f04a;
-    --accent2: #4af0c8;
-    --warn: #f0a84a;
-    --danger: #f06060;
-    --done: #4af090;
-    --radius: 12px;
-    --radius-sm: 8px;
+    --bg: #1a1a1a; --card: #242424; --card2: #2c2c2c; --border: #333;
+    --text: #f0f0f0; --muted: #888; --accent: #c8f04a; --accent2: #4af0c8;
+    --warn: #f0a84a; --danger: #f06060; --done: #4af090; --radius: 12px; --radius-sm: 8px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif; font-size: 15px; min-height: 100vh; }
-  body { padding-bottom: 40px; }
+  body { padding-bottom: 48px; }
 
-  .site-header {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 16px 0;
-    position: sticky; top: 0; z-index: 100;
-  }
+  /* HEADER */
+  .site-header { background: var(--card); border-bottom: 1px solid var(--border); padding: 14px 16px 0; position: sticky; top: 0; z-index: 100; }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
   .site-title { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; color: var(--accent); }
-  .site-sub { font-size: 12px; color: var(--muted); margin-top: 2px; margin-bottom: 12px; }
+  .site-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .block-badge { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; background: rgba(200,240,74,0.12); border: 1px solid rgba(200,240,74,0.3); color: var(--accent); white-space: nowrap; margin-top: 2px; cursor: pointer; }
 
-  .day-tabs {
-    display: flex; gap: 6px; overflow-x: auto; padding-bottom: 0;
-    scrollbar-width: none;
-  }
+  .day-tabs { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
   .day-tabs::-webkit-scrollbar { display: none; }
-  .day-tab {
-    flex: 0 0 auto;
-    padding: 8px 14px 10px;
-    font-size: 13px; font-weight: 600;
-    cursor: pointer;
-    color: var(--muted);
-    background: transparent;
-    border: none;
-    border-bottom: 3px solid transparent;
-    white-space: nowrap;
-    transition: all 0.15s;
-    border-radius: 0;
-  }
+  .day-tab { flex: 0 0 auto; padding: 8px 13px 10px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); background: transparent; border: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.15s; }
   .day-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .day-tab.travel { color: var(--warn); }
-  .day-tab.travel.active { color: var(--warn); border-bottom-color: var(--warn); }
 
+  /* 5-WEEK OVERVIEW MODAL */
+  .overview-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 200; overflow-y: auto; padding: 20px 16px 40px; }
+  .overview-overlay.open { display: block; }
+  .overview-card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); padding: 16px; max-width: 480px; margin: 0 auto; }
+  .overview-title { font-size: 17px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .overview-sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  .close-btn { float: right; background: var(--card2); border: 1px solid var(--border); color: var(--muted); border-radius: 8px; padding: 4px 10px; font-size: 13px; cursor: pointer; }
+  .week-row { background: var(--card2); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 10px; border-left: 3px solid var(--border); }
+  .week-row.current { border-left-color: var(--accent); }
+  .week-row.future { border-left-color: var(--border); opacity: 0.7; }
+  .wr-label { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .wr-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .wr-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .wr-days { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .wr-day { font-size: 11px; padding: 3px 8px; border-radius: 20px; background: var(--card); border: 1px solid var(--border); color: var(--muted); }
+  .intensity-bar { display: flex; gap: 3px; margin-top: 8px; }
+  .int-seg { height: 4px; border-radius: 2px; background: var(--border); flex: 1; }
+  .int-seg.filled { background: var(--accent); }
+  .int-seg.filled.warn { background: var(--warn); }
+  .int-seg.filled.teal { background: var(--accent2); }
+  .int-seg.filled.deload { background: var(--done); }
+
+  /* DAY PANELS */
   .day-panel { display: none; padding: 16px; }
   .day-panel.active { display: block; }
 
-  .day-hero {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
-  }
+  .day-hero { background: var(--card); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 16px; border: 1px solid var(--border); }
   .day-hero-title { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
-  .day-hero-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-  .pill {
-    font-size: 11px; font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
+  .day-hero-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: var(--card2); border: 1px solid var(--border); color: var(--muted); }
   .pill-accent { background: rgba(200,240,74,0.12); border-color: rgba(200,240,74,0.3); color: var(--accent); }
   .pill-warn { background: rgba(240,168,74,0.12); border-color: rgba(240,168,74,0.3); color: var(--warn); }
   .pill-green { background: rgba(74,240,144,0.12); border-color: rgba(74,240,144,0.3); color: var(--done); }
@@ -85,465 +66,275 @@
   .day-hero-note { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
 
   .phase-block { margin-bottom: 20px; }
-  .phase-header {
-    display: flex; align-items: center; gap: 8px;
-    margin-bottom: 10px;
-  }
-  .phase-num {
-    width: 22px; height: 22px; border-radius: 50%;
-    background: var(--accent); color: #111;
-    font-size: 11px; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
+  .phase-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .phase-num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #111; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .phase-num.warn { background: var(--warn); }
   .phase-num.teal { background: var(--accent2); }
   .phase-num.green { background: var(--done); }
   .phase-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
   .phase-duration { font-size: 12px; color: var(--muted); margin-left: auto; }
 
-  .ex-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
-  .ex-header {
-    display: flex; align-items: flex-start;
-    padding: 12px 14px;
-    cursor: pointer;
-    gap: 10px;
-  }
+  .ex-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+  .ex-header { display: flex; align-items: flex-start; padding: 12px 14px; cursor: pointer; gap: 10px; }
   .ex-header-info { flex: 1; min-width: 0; }
   .ex-name { font-size: 14px; font-weight: 600; line-height: 1.3; }
   .ex-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
   .ex-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .video-btn {
-    display: inline-flex; align-items: center; gap: 4px;
-    font-size: 11px; font-weight: 600;
-    color: var(--accent2);
-    text-decoration: none;
-    padding: 4px 9px;
-    border: 1px solid rgba(74,240,200,0.3);
-    border-radius: 20px;
-    background: rgba(74,240,200,0.08);
-    white-space: nowrap;
-  }
+  .video-btn { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; color: var(--accent2); text-decoration: none; padding: 4px 9px; border: 1px solid rgba(74,240,200,0.3); border-radius: 20px; background: rgba(74,240,200,0.08); white-space: nowrap; }
   .toggle-icon { font-size: 20px; color: var(--muted); line-height: 1; flex-shrink: 0; }
-
   .ex-body { display: none; padding: 0 14px 14px; }
   .ex-body.open { display: block; }
+  .superset-badge { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(240,168,74,0.15); border: 1px solid rgba(240,168,74,0.3); color: var(--warn); border-radius: 20px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
 
-  .superset-badge {
-    display: inline-block;
-    font-size: 10px; font-weight: 700;
-    background: rgba(240,168,74,0.15);
-    border: 1px solid rgba(240,168,74,0.3);
-    color: var(--warn);
-    border-radius: 20px;
-    padding: 2px 7px;
-    margin-left: 6px;
-    vertical-align: middle;
-  }
-
-  .coaching {
-    font-size: 12px; line-height: 1.6; color: var(--muted);
-    background: var(--card2);
-    border-radius: var(--radius-sm);
-    padding: 9px 11px;
-    margin-bottom: 10px;
-  }
+  .coaching { font-size: 12px; line-height: 1.6; color: var(--muted); background: var(--card2); border-radius: var(--radius-sm); padding: 9px 11px; margin-bottom: 10px; }
   .coaching .warn-tag { color: var(--warn); font-weight: 700; }
-
-  .rest-line {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 11px; color: var(--muted);
-    margin-bottom: 8px;
-  }
+  .rest-line { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
 
   table.log-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 10px; }
-  table.log-table th {
-    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
-    color: var(--muted); text-align: left;
-    padding: 5px 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  table.log-table td { padding: 6px 6px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  table.log-table th { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); text-align: left; padding: 5px 5px; border-bottom: 1px solid var(--border); }
+  table.log-table td { padding: 6px 5px; border-bottom: 1px solid var(--border); vertical-align: middle; }
   table.log-table tr:last-child td { border-bottom: none; }
-  .set-badge {
-    width: 22px; height: 22px; border-radius: 50%;
-    background: var(--card2); border: 1px solid var(--border);
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 600; color: var(--muted);
-  }
+  .set-badge { width: 22px; height: 22px; border-radius: 50%; background: var(--card2); border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--muted); }
   .target-cell { color: var(--muted); font-size: 12px; }
-  .rpe-tag {
-    font-size: 11px; padding: 2px 7px; border-radius: 20px;
-    background: var(--card2); border: 1px solid var(--border); color: var(--muted);
-  }
-  .log-input {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text);
-    font-size: 13px;
-    padding: 5px 7px;
-    width: 100%;
-    -webkit-appearance: none;
-  }
+  .rpe-tag { font-size: 11px; padding: 2px 6px; border-radius: 20px; background: var(--card2); border: 1px solid var(--border); color: var(--muted); white-space: nowrap; }
+  .log-input { background: var(--card2); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 13px; padding: 5px 6px; width: 100%; -webkit-appearance: none; }
   .log-input:focus { outline: none; border-color: var(--accent); }
-  .log-input.filled { border-color: var(--done); color: var(--done); }
 
-  .notes-area {
-    width: 100%;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text);
-    font-size: 13px;
-    font-family: inherit;
-    padding: 8px 10px;
-    min-height: 54px;
-    resize: none;
-    margin-top: 6px;
-  }
+  .notes-area { width: 100%; background: var(--card2); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-size: 13px; font-family: inherit; padding: 8px 10px; min-height: 54px; resize: none; margin-top: 6px; }
   .notes-area:focus { outline: none; border-color: var(--accent); }
 
-  .check-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
   .check-item:last-child { border-bottom: none; }
-  .check-box {
-    width: 22px; height: 22px; border-radius: 6px;
-    border: 2px solid var(--border);
-    background: var(--card2);
-    flex-shrink: 0; margin-top: 1px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; transition: all 0.15s;
-  }
+  .check-box { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border); background: var(--card2); flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.15s; }
   .check-box.checked { background: var(--done); border-color: var(--done); color: #111; }
   .check-text { flex: 1; font-size: 13px; line-height: 1.5; }
   .check-detail { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-  .cardio-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 10px;
-  }
+  .cardio-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
   .cardio-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
   .cardio-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .cardio-row:last-child { border-bottom: none; }
+  .cardio-row:last-of-type { border-bottom: none; }
   .cardio-label { color: var(--muted); }
-  .cardio-val { font-weight: 500; }
   .cardio-input-row { display: flex; gap: 8px; margin-top: 10px; }
   .cardio-input-row .log-input { flex: 1; }
 
-  .peloton-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 10px;
-    display: flex; gap: 12px; align-items: flex-start;
-  }
+  .peloton-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start; }
   .pelo-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
   .pelo-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
   .pelo-detail { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-  .recovery-block {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 10px;
-  }
-  .recovery-title { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .recovery-block { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+  .recovery-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
 
-  .day-complete-btn {
-    display: block; width: 100%;
-    background: var(--accent); color: #111;
-    border: none; border-radius: var(--radius);
-    font-size: 15px; font-weight: 800;
-    padding: 14px;
-    cursor: pointer;
-    margin-top: 20px;
-    letter-spacing: -0.2px;
-    transition: opacity 0.15s;
-  }
+  .day-complete-btn { display: block; width: 100%; background: var(--accent); color: #111; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 800; padding: 14px; cursor: pointer; margin-top: 20px; letter-spacing: -0.2px; transition: opacity 0.15s; }
   .day-complete-btn:active { opacity: 0.8; }
   .day-complete-btn.done { background: var(--done); }
-
   .day-notes-wrap { margin-top: 16px; }
   .day-notes-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
 
-  .section-divider {
-    height: 1px; background: var(--border);
-    margin: 6px 0 14px;
-  }
-
-  .option-label {
-    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
-    color: var(--warn); margin-bottom: 8px; margin-top: 4px;
-  }
-
-  /* Body check */
-  .body-check-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 10px;
-  }
   .check-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-  .check-label { font-size: 12px; color: var(--muted); width: 95px; flex-shrink: 0; }
+  .check-label { font-size: 12px; color: var(--muted); width: 100px; flex-shrink: 0; }
   .rating-btns { display: flex; gap: 4px; flex-wrap: wrap; }
-  .rating-btn {
-    width: 28px; height: 28px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--card2);
-    color: var(--muted);
-    font-size: 11px; font-weight: 600;
-    cursor: pointer;
-  }
+  .rating-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border); background: var(--card2); color: var(--muted); font-size: 11px; font-weight: 600; cursor: pointer; }
   .rating-btn.selected { background: var(--accent); border-color: var(--accent); color: #111; }
 
-  /* Export/Reset */
-  .footer-actions {
-    display: flex; gap: 10px;
-    margin-top: 24px;
-  }
-  .export-btn, .reset-btn {
-    flex: 1; padding: 13px;
-    border-radius: var(--radius);
-    border: none; font-size: 14px; font-weight: 700;
-    cursor: pointer; transition: opacity 0.15s;
-  }
+  .footer-actions { display: flex; gap: 10px; margin-top: 24px; }
+  .export-btn, .reset-btn { flex: 1; padding: 13px; border-radius: var(--radius); border: none; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity 0.15s; }
   .export-btn { background: var(--accent2); color: #111; }
   .reset-btn { background: var(--card2); border: 1px solid var(--border); color: var(--muted); }
   .export-btn:active, .reset-btn:active { opacity: 0.7; }
 
-  .export-toast {
-    display: none;
-    background: var(--card);
-    border: 1px solid var(--done);
-    border-radius: var(--radius);
-    padding: 16px;
-    margin-top: 14px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
+  .export-toast { display: none; background: var(--card); border: 1px solid var(--done); border-radius: var(--radius); padding: 16px; margin-top: 14px; font-size: 13px; line-height: 1.6; }
   .export-toast.visible { display: block; }
   .toast-actions { display: flex; gap: 8px; margin-top: 12px; }
-  .toast-btn {
-    flex: 1; padding: 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: var(--card2); color: var(--text);
-    font-size: 13px; font-weight: 600;
-    cursor: pointer;
-  }
+  .toast-btn { flex: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--card2); color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer; }
 </style>
 </head>
 <body>
 
+<!-- 5-WEEK OVERVIEW MODAL -->
+<div class="overview-overlay" id="overview-modal">
+  <div class="overview-card">
+    <button class="close-btn" onclick="closeOverview()">✕ Close</button>
+    <div class="overview-title">5-Week Hybrid Block</div>
+    <div class="overview-sub">May 19 – Jun 22 · True Hybrid · Equal Strength + Cardio</div>
+
+    <div class="week-row current">
+      <div class="wr-label">WEEK 1 · May 19–25 · YOU ARE HERE</div>
+      <div class="wr-title">Re-Entry — Rebuild the Base</div>
+      <div class="wr-desc">Coming off a rest week with poor sleep. Weights pulled back 10–15% from previous bests. Run volume low (3–4 mi easy). Heavy hip mobility focus — hips tight from travel. Establish the habit, not the PR.</div>
+      <div class="wr-days">
+        <span class="wr-day">Mon · Push</span><span class="wr-day">Tue · Run + Pull</span><span class="wr-day">Wed · Lower</span><span class="wr-day">Thu · Rest + Mobility</span><span class="wr-day">Fri · Full Body</span><span class="wr-day">Sat · Long Run</span><span class="wr-day">Sun · Recovery</span>
+      </div>
+      <div class="intensity-bar"><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg"></div><div class="int-seg"></div><div class="int-seg"></div></div>
+    </div>
+
+    <div class="week-row future">
+      <div class="wr-label">WEEK 2 · May 26–Jun 1</div>
+      <div class="wr-title">Build — Add Load + Run Volume</div>
+      <div class="wr-desc">Weights return to previous bests. Run days add 0.5–1 mile. Introduce tempo intervals on Thursday. Core complexity increases — add half-kneeling and rotational work.</div>
+      <div class="wr-days">
+        <span class="wr-day">Mon · Push</span><span class="wr-day">Tue · Run + Pull</span><span class="wr-day">Wed · Lower</span><span class="wr-day">Thu · Tempo Run</span><span class="wr-day">Fri · Full Body</span><span class="wr-day">Sat · Long Run</span><span class="wr-day">Sun · Recovery</span>
+      </div>
+      <div class="intensity-bar"><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg"></div><div class="int-seg"></div></div>
+    </div>
+
+    <div class="week-row future">
+      <div class="wr-label">WEEK 3 · Jun 2–8</div>
+      <div class="wr-title">Accumulate — Volume Peak</div>
+      <div class="wr-desc">Highest training volume of the block. Strength: add sets (4 working sets on main lifts). Running: introduce 800m repeats on Thursdays. Long run reaches 7–8 miles. This is the hardest week — sleep and nutrition matter most.</div>
+      <div class="wr-days">
+        <span class="wr-day">Mon · Push</span><span class="wr-day">Tue · Run + Pull</span><span class="wr-day">Wed · Lower</span><span class="wr-day">Thu · Intervals</span><span class="wr-day">Fri · Full Body</span><span class="wr-day">Sat · Long Run 7–8mi</span><span class="wr-day">Sun · Recovery</span>
+      </div>
+      <div class="intensity-bar"><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg"></div></div>
+    </div>
+
+    <div class="week-row future">
+      <div class="wr-label">WEEK 4 · Jun 9–15</div>
+      <div class="wr-title">Intensify — Heavier, Faster</div>
+      <div class="wr-desc">Volume drops slightly, intensity increases. Strength: push to new working weights. Running: speed work on Friday (strides + short tempo). Long run maintained. Body should feel strong and sharp by end of week.</div>
+      <div class="wr-days">
+        <span class="wr-day">Mon · Push Heavy</span><span class="wr-day">Tue · Run + Pull</span><span class="wr-day">Wed · Lower Heavy</span><span class="wr-day">Thu · Speed Work</span><span class="wr-day">Fri · Full Body</span><span class="wr-day">Sat · Long Run</span><span class="wr-day">Sun · Recovery</span>
+      </div>
+      <div class="intensity-bar"><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg filled"></div><div class="int-seg filled warn"></div><div class="int-seg filled warn"></div></div>
+    </div>
+
+    <div class="week-row future">
+      <div class="wr-label">WEEK 5 · Jun 16–22</div>
+      <div class="wr-title">Deload — Recover + Test</div>
+      <div class="wr-desc">Volume cut ~40%. Keep intensity but drop sets and run distance. Let the body supercompensate. Friday: optional benchmark test (push-ups, pull-ups, 1-mile time). End of block body check — set goals for Block 2.</div>
+      <div class="wr-days">
+        <span class="wr-day">Mon · Push Light</span><span class="wr-day">Tue · Easy Run</span><span class="wr-day">Wed · Lower Light</span><span class="wr-day">Thu · Rest</span><span class="wr-day">Fri · Benchmark</span><span class="wr-day">Sat · Easy Run 4mi</span><span class="wr-day">Sun · Recovery</span>
+      </div>
+      <div class="intensity-bar"><div class="int-seg filled deload"></div><div class="int-seg filled deload"></div><div class="int-seg"></div><div class="int-seg"></div><div class="int-seg"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SITE HEADER -->
 <div class="site-header">
-  <div class="site-title">Hybrid Plan · May 11–17</div>
-  <div class="site-sub">Mon–Wed: FFC Gold Coast · Thu–Sat: Indianapolis · Sun: Full recovery</div>
+  <div class="header-top">
+    <div>
+      <div class="site-title">Hybrid Plan · May 19–25</div>
+      <div class="site-sub">Week 1 of 5 · FFC Gold Coast · 5:00–5:30 AM starts</div>
+    </div>
+    <button class="block-badge" onclick="openOverview()">5-Wk Plan ↗</button>
+  </div>
   <div class="day-tabs">
     <button class="day-tab active" onclick="showDay('mon',this)">Mon</button>
     <button class="day-tab" onclick="showDay('tue',this)">Tue</button>
     <button class="day-tab" onclick="showDay('wed',this)">Wed</button>
-    <button class="day-tab travel" onclick="showDay('thu',this)">Thu ✈</button>
-    <button class="day-tab travel" onclick="showDay('fri',this)">Fri ✈</button>
-    <button class="day-tab travel" onclick="showDay('sat',this)">Sat ✈</button>
+    <button class="day-tab" onclick="showDay('thu',this)">Thu</button>
+    <button class="day-tab" onclick="showDay('fri',this)">Fri</button>
+    <button class="day-tab" onclick="showDay('sat',this)">Sat</button>
     <button class="day-tab" onclick="showDay('sun',this)">Sun</button>
   </div>
 </div>
 
-<!-- ===== MONDAY ===== -->
+<!-- ===================== MONDAY ===================== -->
 <div id="day-mon" class="day-panel active">
   <div class="day-hero">
-    <div class="day-hero-title">Monday — Push (shoulder-safe)</div>
+    <div class="day-hero-title">Monday — Push</div>
     <div class="day-hero-meta">
       <span class="pill pill-accent">Strength</span>
       <span class="pill pill-teal">Core ×4</span>
-      <span class="pill">⏱ 65 min</span>
+      <span class="pill">⏱ 60 min</span>
       <span class="pill">📍 FFC Gold Coast</span>
-      <span class="pill">🌅 Early AM</span>
+      <span class="pill">🌅 5:00 AM</span>
     </div>
-    <div class="day-hero-note">Neutral-grip pressing protects both shoulders. Floor position limits painful ROM. Core circuit before lifting — not after. Build consistency at these weights before going heavier.</div>
+    <div class="day-hero-note">First session back after rest week + travel. Weights pulled back ~10% from your last bests — this is intentional. The goal today is quality movement, not PRs. Your hips will be tight; don't skip the mobility.</div>
   </div>
 
-  <!-- MOBILITY -->
   <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num">1</div>
-      <div class="phase-title">Mobility Warm-Up</div>
-      <div class="phase-duration">10 min</div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Hip + Shoulder Mobility</div><div class="phase-duration">10 min</div></div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Hip CARs</div><div class="ex-sub">5 reps/direction · each leg · slow and controlled</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hip+CARs+functional+range+conditioning" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body"><div class="coaching">Non-negotiable with your FAI and hips tight from travel. Go full but pain-free range. Slow and deliberate — this is training, not just warming up. Stay tall through the spine.</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Hip CARs</div>
-          <div class="ex-sub">5 reps/direction · each leg · slow and controlled</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+CARs+functional+range+conditioning" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">90/90 Hip Stretch</div><div class="ex-sub">90 sec/side · 2 rounds · breathe into the stretch</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=90+90+hip+stretch+mobility" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body">
-        <div class="coaching">Daily non-negotiable with your FAI. Go pain-free range only — no forcing depth. Stay tall through your spine. These protect the labrum and warm the hip socket.</div>
-      </div>
+      <div class="ex-body"><div class="coaching">Your hips are tight after a week of sitting/traveling. Spend extra time here today — this is the #1 thing you can do for your hip impingement. Sit tall, breathe out to sink deeper. Never force end range.</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Band Pull-Apart + Wall Slide <span class="superset-badge">superset</span></div>
-          <div class="ex-sub">2 × 12 pull-aparts + 8 wall slides · no rest between</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=band+pull+apart+wall+slide+shoulder" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Band Pull-Apart + Wall Slide <span class="superset-badge">superset</span></div><div class="ex-sub">2 × 12 pull-aparts + 8 wall slides</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=band+pull+apart+wall+slide+shoulder" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body">
-        <div class="coaching">Critical for both shoulders before any pressing. Wall slides: flatten your entire back against the wall — lower back included. Elbows graze the wall the whole way up. <span class="warn-tag">⚠️ Right shoulder:</span> stop if sharp pain, not just discomfort.</div>
-      </div>
+      <div class="ex-body"><div class="coaching">Shoulder health prerequisite before any pressing. Wall slides: entire back flat against wall, elbows graze wall the whole way up. Shoulders feel good today — keep them that way by not skipping this.</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Sidelying External Rotation</div>
-          <div class="ex-sub">5 lb · 2 × 12 each side</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=sidelying+external+rotation+rotator+cuff" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Sidelying External Rotation</div><div class="ex-sub">5 lb · 2 × 12/side</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=sidelying+external+rotation+rotator+cuff" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body">
-        <div class="coaching"><span class="warn-tag">⚠️ Stay at 5 lb.</span> This is activation, not strength work. Elbow pinned to your side, slow controlled rotation only. Do NOT skip — this is direct rotator cuff work.</div>
-      </div>
+      <div class="ex-body"><div class="coaching"><span class="warn-tag">⚠️ Stay at 5 lb always.</span> Rotator cuff activation — elbow pinned to side, slow full rotation. Direct shoulder injury prevention work.</div></div>
     </div>
   </div>
 
-  <!-- CORE -->
   <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num warn">2</div>
-      <div class="phase-title">Core Circuit</div>
-      <div class="phase-duration">10 min</div>
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Core Circuit</div><div class="phase-duration">10 min</div></div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Dead Bug <span class="superset-badge">circuit A</span></div><div class="ex-sub">3 × 10/side · 3 sec per rep · RPE 6</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body"><div class="coaching">Lower back pressed hard into floor — if it lifts, shorten the range. Exhale on extension. This is your single best anti-injury core exercise with your hip and groin history.</div><div class="rest-line">⟳ Go directly to Pallof press · 45 sec rest after both</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Dead Bug <span class="superset-badge">circuit A</span></div>
-          <div class="ex-sub">3 × 10 reps/side · slow · RPE 6</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=dead+bug+exercise+form" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Pallof Press <span class="superset-badge">circuit A</span></div><div class="ex-sub">3 × 12/side · 20 lb · RPE 6</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=pallof+press+anti+rotation+core" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body">
-        <div class="coaching">Lower back pressed hard into floor the entire time. If it lifts, shorten your range. 3–4 sec per rep. Exhale as you extend. Great for hip and groin stability too — builds anterior chain without hip flexor loading.</div>
-        <div class="rest-line">⟳ Move directly to Pallof press · rest 45 sec after both</div>
-      </div>
+      <div class="ex-body"><div class="coaching">Anti-rotation — resist the cable, shoulders square. 20 lb is your established weight. This week: focus on form quality, not adding weight.</div><div class="rest-line">⟳ 45 sec rest · repeat circuit A 3x</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Pallof Press <span class="superset-badge">circuit A</span></div>
-          <div class="ex-sub">3 × 12/side · 20 lb · RPE 6–7</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=pallof+press+anti+rotation+core" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Hanging Knee Raise <span class="superset-badge">circuit B</span></div><div class="ex-sub">3 × 10 · slow 3-sec lower</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hanging+knee+raise+core" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body">
-        <div class="coaching">Anti-rotation — resist the cable pulling you. Shoulders square throughout. Felt solid at 20 lb last week — stay there. Hip stabilizer benefit as a secondary effect.</div>
-        <div class="rest-line">⟳ 45 sec rest · repeat circuit A 3 times total</div>
-      </div>
+      <div class="ex-body"><div class="coaching">Knees only (not straight legs) — hip flexors and groin need to ease back in. 3 sec down. Stop the swing. <span class="warn-tag">⚠️ Right shoulder:</span> if hang is painful, sub cable crunch.</div><div class="rest-line">⟳ Go directly to cable crunch · 45 sec rest after both</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Hanging Knee Raise <span class="superset-badge">circuit B</span></div>
-          <div class="ex-sub">3 × 12 · slow eccentric · RPE 6</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=hanging+knee+raise+form" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Cable Crunch <span class="superset-badge">circuit B</span></div><div class="ex-sub">3 × 15 · 30 lb · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=cable+crunch+kneeling+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body">
-        <div class="coaching">Keep it to knees (not straight legs) to protect groin and hip flexors. Slow lower — 3 sec down. Stop dead swing. <span class="warn-tag">⚠️ Right shoulder:</span> if painful hanging, sub cable crunch instead.</div>
-        <div class="rest-line">⟳ Move directly to ab wheel · rest 45 sec after both</div>
-      </div>
-    </div>
-
-    <div class="ex-card">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Ab Wheel Rollout (or Cable Crunch) <span class="superset-badge">circuit B</span></div>
-          <div class="ex-sub">3 × 8–10 · slow · RPE 7</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=ab+wheel+rollout+form+beginners" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
-      </div>
-      <div class="ex-body">
-        <div class="coaching">From knees — full extension only if lower back stays flat. If it arches, shorten the rollout. Cable crunch is a solid sub. 8 good reps beats 12 sloppy ones.</div>
-        <div class="rest-line">⟳ 45 sec rest · repeat circuit B 3 times total</div>
-      </div>
+      <div class="ex-body"><div class="coaching">Kneeling, hands at forehead — crunch chest toward hips, not down toward floor. Small range, big squeeze. Start at 30 lb — adjust if too easy or hard.</div><div class="rest-line">⟳ 45 sec rest · repeat circuit B 3x</div></div>
     </div>
   </div>
 
-  <!-- MAIN LIFT -->
   <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num teal">3</div>
-      <div class="phase-title">Pressing Block</div>
-      <div class="phase-duration">38 min</div>
-    </div>
+    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Pressing Block</div><div class="phase-duration">33 min</div></div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Neutral-Grip DB Floor Press</div>
-          <div class="ex-sub">5 sets · progressive · RPE 7–8 working sets</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=neutral+grip+dumbbell+floor+press" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Neutral-Grip DB Floor Press</div><div class="ex-sub">5 sets · building to working weight · RPE 7 cap</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=neutral+grip+dumbbell+floor+press" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">You hit 90 lb × 6 (per hand) twice last week feeling strong. Stay there — consolidate at this weight before going heavier. Floor position stops elbows before the painful range. Neutral grip = less anterior shoulder stress. If it feels like RPE 5 again, that's a great sign — bump to 95 next week.</div>
+        <div class="coaching">Previous best: 90 lb × 6. This week: cap at 80 lb — intentional re-entry. Neutral grip protects right shoulder. Floor stops at the painful range automatically. 3-second lowering phase every rep. If 80 feels easy, that's good — we build from here.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 × 8 warm</td><td><span class="rpe-tag">4–5</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fp-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">70 × 8</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fp-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">85 × 6</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fp-3-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">4</span></td><td class="target-cell">90 × 6</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fp-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fp-4-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">5</span></td><td class="target-cell">90 × 6</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fp-5-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fp-5-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 8 warm</td><td><span class="rpe-tag">4</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fp-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">60 × 8</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fp-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">75 × 8</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fp-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">80 × 8</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fp-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fp-4-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">5</span></td><td class="target-cell">80 × 8</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fp-5-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fp-5-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 90 sec rest between sets</div>
@@ -553,74 +344,56 @@
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Cable Chest Fly (low-to-high) <span class="superset-badge">superset</span></div>
-          <div class="ex-sub">3 × 12 · RPE 7–8</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=low+to+high+cable+chest+fly" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Cable Chest Fly (low-to-high) <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 12 · 25 lb · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=low+to+high+cable+chest+fly" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">You called this RPE 9 at 26 lb last week — too high for a fly. Your chest and shoulder stabilizers are rebuilding. Stay at 26 lb and focus on the squeeze at the top. Pause 1 sec at peak contraction. If it feels more like RPE 7 by set 3, try 30 lb next week.</div>
+        <div class="coaching">Start at 25 lb coming off rest week. Low-to-high keeps shoulder externally rotated — safe position. Pause and squeeze 1 sec at the top. If this feels like RPE 5–6, note it and we'll bump next week.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">26 × 12</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fly-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fly-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">26 × 12</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fly-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fly-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">26 × 12</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-fly-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-fly-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">25 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fly-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fly-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">25 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fly-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fly-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">25 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-fly-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-fly-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ Superset with push-up · then 60 sec rest</div>
+        <div class="rest-line">⟳ Superset with push-up · 60 sec rest after both</div>
         <textarea class="notes-area" placeholder="Shoulder feel, squeeze quality..." data-key="mon-fly-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Push-Up (slow eccentric) <span class="superset-badge">superset</span></div>
-          <div class="ex-sub">3 × AMRAP · stop 2 reps shy of failure</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=push+up+slow+eccentric+form" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Push-Up (slow eccentric) <span class="superset-badge">superset</span></div><div class="ex-sub">3 × AMRAP · stop 2 shy of failure · 3-sec down</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=push+up+slow+eccentric+tempo+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">You hit 15–10–8 last week. Target: match or beat. 3 sec lowering phase. Hands slightly wider than shoulder width, elbows at 45° — not flared. Log your reps — this is a key progress marker week to week.</div>
+        <div class="coaching">Previous bests: 15–10–8. Log every rep — this is your push-up progress marker across the 5-week block. Elbows at 45°, 3 sec down, full extension at top.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Actual reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">15+ reps</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="mon-pu-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">10+ reps</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="mon-pu-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">AMRAP −2</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="mon-pu-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">AMRAP −2</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="mon-pu-2" oninput="saveLog(this)"></td></tr>
             <tr><td><span class="set-badge">3</span></td><td class="target-cell">AMRAP</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="mon-pu-3" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ 60 sec rest after superset · repeat from fly</div>
+        <div class="rest-line">⟳ 60 sec rest · repeat superset from fly</div>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info">
-          <div class="ex-name">Cable Tricep Pushdown (rope)</div>
-          <div class="ex-sub">3 × 12 · RPE 7–8</div>
-        </div>
-        <div class="ex-right">
-          <a class="video-btn" href="https://www.youtube.com/results?search_query=rope+cable+tricep+pushdown+form" target="_blank">▶ Demo</a>
-          <span class="toggle-icon">+</span>
-        </div>
+        <div class="ex-header-info"><div class="ex-name">Cable Tricep Pushdown (rope)</div><div class="ex-sub">3 × 12 · 45 lb start · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=rope+cable+tricep+pushdown+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">You dropped to 42.5 lb fatigued last week. Start at 45 lb and aim to get all 3 sets at 50 lb. Flare the rope out at the bottom, squeeze hard. Elbows stay pinned — if they float forward, drop the weight.</div>
+        <div class="coaching">Previous working weight: 50 lb. Start at 45 lb coming off rest week — if all 3 sets feel like RPE 6 or less, go to 50 on set 3. Flare the rope at bottom, elbows pinned.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 12</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-tri-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-tri-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">50 × 12</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-tri-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-tri-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">50 × 10</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="mon-tri-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="mon-tri-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 12</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-tri-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-tri-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">45 × 12</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-tri-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-tri-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">50 × 10</td><td><span class="rpe-tag">7–8</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="mon-tri-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="mon-tri-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 60 sec rest between sets</div>
@@ -629,173 +402,168 @@
     </div>
   </div>
 
-  <!-- COOLDOWN -->
   <div class="phase-block">
-    <div class="phase-header">
-      <div class="phase-num green">4</div>
-      <div class="phase-title">Recovery — do before you leave</div>
-      <div class="phase-duration">8 min</div>
-    </div>
+    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Recovery — before you leave</div><div class="phase-duration">8 min</div></div>
     <div class="recovery-block">
-      <div class="recovery-title">Cooldown sequence</div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pec doorway stretch · arm at 90° only · 2 × 30 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">T-spine extension over foam roller · 60–90 sec</div></div>
+      <div class="recovery-title">Post-lift cooldown</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pec doorway stretch · arm at 90° · 2 × 30 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">T-spine extension over foam roller · 90 sec</div></div>
       <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Thread the needle · 8 slow reps/side</div></div>
       <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Foam roll lats · 60 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">FFC Recovery Lounge (sauna/massage chair) if time allows</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon pose · 90 sec/side — hips are tight, do not skip</div></div>
     </div>
   </div>
 
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="How did today feel? Shoulder? Hip? Energy? What was easy, what was hard?" data-key="mon-day-notes" oninput="saveLog(this)"></textarea>
+  <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
+    <textarea class="notes-area" placeholder="Shoulder feel? Hip mobility improving? Energy on first day back? What felt easy or hard?" data-key="mon-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'mon')">Mark Monday Complete</button>
 </div>
 
-<!-- ===== TUESDAY ===== -->
+<!-- ===================== TUESDAY ===================== -->
 <div id="day-tue" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Tuesday — Pull + Easy Run</div>
+    <div class="day-hero-title">Tuesday — Easy Run + Pull</div>
     <div class="day-hero-meta">
       <span class="pill pill-warn">Hybrid</span>
       <span class="pill pill-teal">Core ×3</span>
-      <span class="pill">⏱ 70 min</span>
+      <span class="pill">⏱ 65 min</span>
       <span class="pill">📍 FFC + Lakefront</span>
     </div>
-    <div class="day-hero-note">Run first while legs are fresh. Pull work after. High-low strategy — run is truly easy, lifting is the load.</div>
+    <div class="day-hero-note">Run first — aerobic base building is the long game. Keep it genuinely easy. Pull work after. Deadlifts are your strength anchor this week; keep them controlled.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Easy Run First</div><div class="phase-duration">25–30 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Easy Run · Zone 2</div><div class="phase-duration">25 min</div></div>
     <div class="cardio-card">
-      <div class="cardio-title">Zone 2 Aerobic — Lakefront or Treadmill</div>
-      <div class="cardio-row"><span class="cardio-label">Distance</span><span class="cardio-val">3–4 miles</span></div>
-      <div class="cardio-row"><span class="cardio-label">RPE</span><span class="cardio-val">3–4 · conversational</span></div>
-      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span class="cardio-val">~145 bpm</span></div>
-      <div class="cardio-row"><span class="cardio-label">Pace</span><span class="cardio-val">~8:30–9:30/mi · slow is right</span></div>
+      <div class="cardio-title">Easy Aerobic Run · RPE 3–4</div>
+      <div class="cardio-row"><span class="cardio-label">Distance</span><span style="font-size:13px;font-weight:500">3 miles · first run back, keep it short</span></div>
+      <div class="cardio-row"><span class="cardio-label">Pace</span><span style="font-size:13px;font-weight:500">Conversational — full sentences throughout</span></div>
+      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span style="font-size:13px;font-weight:500">145 bpm · walk if you go over</span></div>
+      <div class="cardio-row"><span class="cardio-label">Calf/foot</span><span style="font-size:13px;font-weight:500">Walk 5 min first · drop to 2 mi if anything pulls</span></div>
       <div class="cardio-input-row">
         <input class="log-input" placeholder="Distance (mi)" data-key="tue-run-dist" oninput="saveLog(this)">
         <input class="log-input" placeholder="Avg HR" data-key="tue-run-hr" oninput="saveLog(this)">
+        <input class="log-input" placeholder="Pace" data-key="tue-run-pace" oninput="saveLog(this)">
       </div>
-      <textarea class="notes-area" placeholder="Run notes · calf or foot feel..." data-key="tue-run-notes" oninput="saveLog(this)"></textarea>
+      <textarea class="notes-area" placeholder="Run notes · calf · foot · legs feel..." data-key="tue-run-notes" oninput="saveLog(this)"></textarea>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Mobility + Core</div><div class="phase-duration">16 min</div></div>
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Mobility + Core</div><div class="phase-duration">15 min</div></div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Hip CARs + 90/90 Switches</div><div class="ex-sub">5 CARs/direction + 8 switches · each leg</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=90+90+hip+switch+mobility" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Hip CARs + 90/90 Switches</div><div class="ex-sub">5 CARs/direction + 8 switches · each side</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=90+90+hip+switch+mobility+flow" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">After the run your hips are warm — use that. Don't force external rotation if you feel the groin warning sign. Stop short of that.</div></div>
+      <div class="ex-body"><div class="coaching">Post-run your hips will be warmer — use that to get more ROM from the 90/90. Don't force groin end range. Transition smoothly between positions.</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Scap Pull-Up + Dead Hang</div><div class="ex-sub">2 × 5 scap pull-ups + 20–30 sec hang</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=scapular+pull+up+dead+hang" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Scap Pull-Up + Dead Hang</div><div class="ex-sub">2 × 5 scap pull-ups + 20 sec hang</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=scapular+pull+up+dead+hang+shoulder" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">Scap pull-ups are blade depressions only — no arm bend. Activates lower traps. Hang decompresses the shoulder. <span class="warn-tag">⚠️ Right shoulder:</span> if sharp pain on the hang, sub cat-cow instead.</div></div>
+      <div class="ex-body"><div class="coaching">Shoulder blade depressions only — no elbow bend. Activates lower traps before pulling. Hang decompresses both shoulder joints. <span class="warn-tag">⚠️ Right shoulder:</span> if hang is sharp, sub cat-cow.</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Hollow Body Hold <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 20–30 sec · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hollow+body+hold+core" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Hollow Body Hold <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 20 sec · build to 30 sec over 5 weeks</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hollow+body+hold+core+progression" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">Lower back pressed hard into floor, ribs down. Arms overhead makes it harder — bend knees to regress. Builds anterior chain stability that protects your hips on deadlift days.</div><div class="rest-line">⟳ Move directly to cable crunch · 45 sec rest after both</div></div>
+      <div class="ex-body"><div class="coaching">Lower back into floor, ribs down, arms overhead if possible — bend knees to regress. This is your 5-week progression marker: Week 1 = 20 sec, Week 5 = 40 sec. Track your time.</div><div class="rest-line">⟳ Go directly to cable crunch · 45 sec rest after both</div></div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Cable Crunch <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 15 · start at 30 lb · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=cable+crunch+form+kneeling" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Cable Crunch <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 15 · 30 lb · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=cable+crunch+kneeling+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">Kneeling, hands at forehead — crunch your chest toward your hips, not down toward the floor. Range is small. This hits upper abs distinctly from dead bugs and hollow body.</div><div class="rest-line">⟳ 45 sec rest · repeat circuit 3 times total</div></div>
+      <div class="ex-body"><div class="coaching">Kneeling, hands at forehead, crunch chest toward hips. Short range. Big squeeze at bottom.</div><div class="rest-line">⟳ 45 sec rest · 3 rounds total</div></div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Pull Strength Block</div><div class="phase-duration">35 min</div></div>
+    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Pull Strength Block</div><div class="phase-duration">30 min</div></div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Trap Bar Deadlift</div><div class="ex-sub">5 sets · build to 185 lb · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=trap+bar+deadlift+hex+bar+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Trap Bar Deadlift</div><div class="ex-sub">5 sets · top at 175 lb this week · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=trap+bar+hex+bar+deadlift+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">185 × 5 felt "heavy" last week. Keep top sets at 185 — focus on driving through the floor with your LEGS, not pulling with your back. Think "leg press the earth." Chalk or straps if grip is an issue — form over grip training.</div>
+        <div class="coaching">Previous working weight: 185 × 5. Pull back to 175 this week — intentional re-entry. Drive the floor away with your legs, not your back. Think "leg press the earth." Chalk or straps if grip is an issue — form first.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">135 × 5</td><td><span class="rpe-tag">4</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-dl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-dl-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">155 × 5</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-dl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-dl-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">185 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-dl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-dl-3-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">4</span></td><td class="target-cell">185 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-dl-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-dl-4-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">5</span></td><td class="target-cell">185 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-dl-5-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-dl-5-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">135 × 5</td><td><span class="rpe-tag">4</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-dl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-dl-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">155 × 5</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-dl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-dl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">175 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-dl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-dl-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">175 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-dl-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-dl-4-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">5</span></td><td class="target-cell">175 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-dl-5-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-dl-5-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 2 min rest between working sets</div>
-        <textarea class="notes-area" placeholder="Leg vs back feel, grip, low back fatigue..." data-key="tue-dl-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Leg vs back feel, grip, any low back fatigue..." data-key="tue-dl-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Pull-Up</div><div class="ex-sub">3 sets · stop 1–2 reps shy of failure · RPE 7–8</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=pull+up+form+dead+hang" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Pull-Up</div><div class="ex-sub">3 sets · dead hang start · RPE 7–8</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=pull+up+dead+hang+full+rom" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">You hit 10–8–6 last week feeling strong. Aim to match or beat. Pronated grip (palms away) is generally more comfortable for your right shoulder. Dead hang at the bottom — that's the most important part.</div>
+        <div class="coaching">Previous bests: 10–8–6. This week just hit solid reps with full dead hang at the bottom. Pronated grip (palms away) for right shoulder. No kipping. Stop 1 rep before failure.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Actual reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">10 reps</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="tue-pu-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">8 reps</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="tue-pu-2" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">AMRAP</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="tue-pu-3" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">8–10 reps</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="tue-pu-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">6–8 reps</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="tue-pu-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">AMRAP −1</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="tue-pu-3" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 90 sec rest between sets</div>
-        <textarea class="notes-area" placeholder="Notes..." data-key="tue-pu-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Shoulder on hang, lat feel, fatigue..." data-key="tue-pu-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Chest-Supported DB Row <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 10 · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=chest+supported+dumbbell+row+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Chest-Supported DB Row <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 10 · 50–55 lb · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=chest+supported+dumbbell+row+incline" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Last set at 55 lb felt tough to keep good form. Stay at 55 lb and focus on leading with your elbow, not your hand. Chest stays pinned — no rocking. Pull to your hip, not your armpit.</div>
+        <div class="coaching">Start at 50 lb — chest pinned to bench, lead with your elbow, pull to your hip. Last time 55 lb had form breaking on the 3rd set. Build the pattern clean this week.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-row-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-row-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-row-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-row-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-row-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-row-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-row-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-row-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-row-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-row-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-row-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-row-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ Superset with face pull · 60 sec rest after both</div>
-        <textarea class="notes-area" placeholder="Notes..." data-key="tue-row-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Form notes, elbow path, any shoulder..." data-key="tue-row-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Face Pull (high cable) <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 15 · 30 lb · RPE 6 · shoulder health work</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=face+pull+high+cable+external+rotation" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Face Pull (high cable) <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 15 · 30 lb · shoulder health work</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=face+pull+high+cable+external+rotation+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching"><span class="warn-tag">⚠️ Shoulder rehab gold.</span> Stay at 30 lb — this is not a heavy exercise, it's longevity. Pull to your nose/forehead and externally rotate at the end (thumbs point back). Direct rotator cuff and posterior capsule work.</div>
+        <div class="coaching"><span class="warn-tag">⚠️ Shoulder rehab — do not skip.</span> Pull to forehead, externally rotate at end (thumbs back). 30 lb. This protects your rotator cuff long term. Not a heavy exercise — it's longevity work.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">30 × 15</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-fp-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">30 × 15</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-fp-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">30 × 15</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="tue-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="tue-fp-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">30 × 15</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-fp-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">30 × 15</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-fp-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">30 × 15</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="tue-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="tue-fp-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 60 sec rest · repeat superset</div>
@@ -804,17 +572,17 @@
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Hammer Curl + Cable Bicep Curl <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 10 each · controlled squeeze every rep</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hammer+curl+cable+bicep+curl" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Hammer Curl + Cable Bicep Curl <span class="superset-badge">superset</span></div><div class="ex-sub">3 × 10 each · controlled squeeze · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hammer+curl+cable+bicep+curl+superset" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Hammer curls 25–30 lb/hand × 10, straight to cable curls 30 lb × 10. This is arm volume — not ego weight. Controlled squeeze on each rep, no swinging.</div>
+        <div class="coaching">Hammer curls 25 lb/hand × 10, straight into cable curls 30 lb × 10. No swing. Full squeeze at top. Re-entry week — not the week for ego weight.</div>
         <table class="log-table">
-          <thead><tr><th>Set</th><th>Hammer wt</th><th>Hammer reps</th><th>Cable wt</th><th>Cable reps</th></tr></thead>
+          <thead><tr><th>Set</th><th>Hammer</th><th>Reps</th><th>Cable</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-curl-1-hw" oninput="saveLog(this)"></td><td><input class="log-input" style="width:45px" placeholder="reps" data-key="tue-curl-1-hr" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-curl-1-cw" oninput="saveLog(this)"></td><td><input class="log-input" style="width:45px" placeholder="reps" data-key="tue-curl-1-cr" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-curl-2-hw" oninput="saveLog(this)"></td><td><input class="log-input" style="width:45px" placeholder="reps" data-key="tue-curl-2-hr" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-curl-2-cw" oninput="saveLog(this)"></td><td><input class="log-input" style="width:45px" placeholder="reps" data-key="tue-curl-2-cr" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-curl-3-hw" oninput="saveLog(this)"></td><td><input class="log-input" style="width:45px" placeholder="reps" data-key="tue-curl-3-hr" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-curl-3-cw" oninput="saveLog(this)"></td><td><input class="log-input" style="width:45px" placeholder="reps" data-key="tue-curl-3-cr" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-hc-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:44px" placeholder="reps" data-key="tue-hc-1-r" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-cc-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:44px" placeholder="reps" data-key="tue-cc-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-hc-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:44px" placeholder="reps" data-key="tue-hc-2-r" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-cc-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:44px" placeholder="reps" data-key="tue-cc-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-hc-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:44px" placeholder="reps" data-key="tue-hc-3-r" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="lb" data-key="tue-cc-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:44px" placeholder="reps" data-key="tue-cc-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 60 sec rest between supersets</div>
@@ -825,68 +593,70 @@
   <div class="phase-block">
     <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Recovery</div><div class="phase-duration">8 min</div></div>
     <div class="recovery-block">
-      <div class="recovery-title">Cooldown</div>
+      <div class="recovery-title">Post-lift cooldown</div>
       <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calf stretch · 60 sec/side (plantar fascia)</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip flexor / pigeon · 60 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon / figure-4 · 90 sec/side</div></div>
       <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hamstring stretch · 60 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Sleeper stretch · 30 sec/side (right shoulder priority)</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Sleeper stretch · 30 sec/side (right shoulder)</div></div>
     </div>
   </div>
 
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Run feel, hip/groin, shoulder on deadlifts and pull-ups, energy..." data-key="tue-day-notes" oninput="saveLog(this)"></textarea>
+  <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
+    <textarea class="notes-area" placeholder="Run feel, calf/foot, hip/groin on deadlifts, shoulder on pull-ups..." data-key="tue-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'tue')">Mark Tuesday Complete</button>
 </div>
 
-<!-- ===== WEDNESDAY ===== -->
+<!-- ===================== WEDNESDAY ===================== -->
 <div id="day-wed" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Wednesday — Lower Body Strength</div>
+    <div class="day-hero-title">Wednesday — Lower Body</div>
     <div class="day-hero-meta">
       <span class="pill pill-green">Strength</span>
       <span class="pill pill-teal">Core ×3</span>
-      <span class="pill">⏱ 70 min</span>
+      <span class="pill">⏱ 65 min</span>
       <span class="pill">📍 FFC Gold Coast</span>
-      <span class="pill pill-warn">Last gym day</span>
     </div>
-    <div class="day-hero-note">Last FFC session before driving to Indy. Goblet squat over barbell today — better for your hip anatomy. Do your full post-lift stretch before you get in the car.</div>
+    <div class="day-hero-note">Hip mobility warm-up is extra important today — 3rd consecutive day, hips will be accumulating fatigue. Weights are intentionally conservative this week. Copenhagen planks are in every week for groin prevention.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility Warm-Up</div><div class="phase-duration">10 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Hip Mobility Warm-Up</div><div class="phase-duration">10 min</div></div>
+
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
         <div class="ex-header-info"><div class="ex-name">Hip CARs + World's Greatest Stretch</div><div class="ex-sub">5 CARs/direction + 5 reps/side WGS</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=worlds+greatest+stretch+full+body+warm+up" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=worlds+greatest+stretch+hip+mobility" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">WGS is the single best warm-up for your injury profile — hip flexors, groin, t-spine rotation, and ankle mobility together. Take your time here. This is real training, not just a formality.</div></div>
+      <div class="ex-body"><div class="coaching">WGS is the best pre-lower warm-up for your profile — hits hip flexors, groin, thoracic rotation, and ankle all at once. Take your time on each rep. This is direct FAI management.</div></div>
     </div>
+
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
         <div class="ex-header-info"><div class="ex-name">Banded Clamshell + Lateral Band Walk</div><div class="ex-sub">2 × 15 clamshells/side + 10 steps each direction</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=banded+clamshell+lateral+band+walk+glute+med" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">Glute med activation — critical for your hip structure. Weak glute med is a major contributor to groin strains. Light to medium band. Feel it in the side of the glute, not the hip flexor.</div></div>
+      <div class="ex-body"><div class="coaching">Glute med activation — directly prevents groin strains. Feel it in the side of the glute, not the hip flexor. Light-medium band. This is in every lower day for the full 5-week block.</div></div>
     </div>
   </div>
 
   <div class="phase-block">
     <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Core Circuit</div><div class="phase-duration">8 min</div></div>
+
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Copenhagen Plank <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 20–30 sec/side · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=copenhagen+plank+adductor+groin" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Copenhagen Plank <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 20 sec/side · modified version (bottom knee down)</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=copenhagen+plank+modified+adductor+groin" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching"><span class="warn-tag">⚠️ Best exercise for groin injury prevention.</span> Research-backed for hip adductor strength. Start with modified version (bottom knee on ground) if full is too intense. You'll feel this in your inner thigh and obliques — that's exactly right.</div><div class="rest-line">⟳ Move to bird dog · 45 sec rest after both</div></div>
+      <div class="ex-body"><div class="coaching"><span class="warn-tag">⚠️ Best groin injury prevention exercise that exists.</span> Modified version (bottom knee on ground) this week — 20 sec/side. Week 3 we progress to full Copenhagen. Feel inner thigh and oblique working together.</div><div class="rest-line">⟳ Go directly to bird dog · 45 sec rest after both</div></div>
     </div>
+
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Bird Dog <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 10/side · slow · 3 sec hold at extension</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=bird+dog+exercise+core+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Bird Dog <span class="superset-badge">circuit</span></div><div class="ex-sub">3 × 10/side · 3 sec hold at extension</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=bird+dog+exercise+spinal+stability" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-      <div class="ex-body"><div class="coaching">Opposite arm and leg extend while spine stays completely neutral — no lower back arch or rotation. Think "squeeze your glute at the top." Builds spinal stability that protects your back on lift days.</div><div class="rest-line">⟳ 45 sec rest · repeat 3 times total</div></div>
+      <div class="ex-body"><div class="coaching">Opposite arm and leg, spine completely neutral — no arch or rotation. Glute squeeze at top. Builds spinal stability that protects your back on all lifting days.</div><div class="rest-line">⟳ 45 sec rest · 3 rounds total</div></div>
     </div>
   </div>
 
@@ -895,80 +665,80 @@
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Leg Extension + Leg Curl <span class="superset-badge">superset</span></div><div class="ex-sub">4 × 12 each · 1 warm-up + 3 working sets</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=leg+extension+leg+curl+superset" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Leg Extension + Leg Curl <span class="superset-badge">superset</span></div><div class="ex-sub">4 sets (1 warm + 3 working) · 3-sec eccentric on curls</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=leg+extension+seated+leg+curl+superset" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Extensions: you hit 120 × 12 feeling strong — try 120 for all 3 working sets. Curls: try 85 for all 3. Slow the curl eccentric — 3 sec lowering. This is how you rebuild hamstring tendon health and prevent re-pulls.</div>
+        <div class="coaching">Extensions: previous best 120 × 12 — start at 110 this week. Curls: previous best 85 × 10 — start at 75 this week. The eccentric on curls is your hamstring injury prevention. 3 sec lowering, every single rep.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Extension</th><th>Actual</th><th>Curl</th><th>Actual</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">100 × 12</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-ext-1" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-curl-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">120 × 12</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-ext-2" oninput="saveLog(this)"></td><td class="target-cell">85 × 10</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-curl-2" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">120 × 12</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-ext-3" oninput="saveLog(this)"></td><td class="target-cell">85 × 10</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-curl-3" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">4</span></td><td class="target-cell">120 × 12</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-ext-4" oninput="saveLog(this)"></td><td class="target-cell">85 × 10</td><td><input class="log-input" style="width:65px" placeholder="lb×reps" data-key="wed-curl-4" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">90 × 12</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-ext-1" oninput="saveLog(this)"></td><td class="target-cell">65 × 10</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-curl-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">110 × 12</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-ext-2" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-curl-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">110 × 12</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-ext-3" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-curl-3" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">110 × 12</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-ext-4" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" style="width:64px" placeholder="lb×reps" data-key="wed-curl-4" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 60 sec rest after each superset</div>
-        <textarea class="notes-area" placeholder="Hamstring feel, groin tightness, knee comfort..." data-key="wed-legss-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Hamstring feel on eccentric, groin, knee comfort..." data-key="wed-legs-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Goblet Squat (3-1-1 tempo)</div><div class="ex-sub">4 × 10 · RPE 7 · hip-safe variation</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat+tempo+hip+safe" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Goblet Squat (3-1-1 tempo)</div><div class="ex-sub">4 × 10 · 35–40 lb · RPE 6–7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat+tempo+upright+torso" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Goblet over barbell today: forces upright torso (reduces impingement at depth), no spinal loading, easier on the groin. You hit 25 lb in Cincinnati on limited sleep. Try 35–40 lb today rested. 3 sec down, 1 sec pause, drive up — don't bounce out of the hole.</div>
+        <div class="coaching">Goblet squat is your primary squat variation for the 5-week block — it forces upright torso and reduces hip impingement at depth versus barbell. 3 sec down, 1 sec pause, drive up. Previous best: 40 lb. Start at 35 lb this week — hips are tight.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">25 × 10</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-gsq-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-gsq-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">35 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-gsq-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-gsq-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">40 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-gsq-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-gsq-3-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">4</span></td><td class="target-cell">40 × 10</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-gsq-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-gsq-4-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">25 × 10</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-gsq-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-gsq-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">35 × 10</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-gsq-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-gsq-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">35 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-gsq-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-gsq-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">40 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-gsq-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-gsq-4-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 90 sec rest between sets</div>
-        <textarea class="notes-area" placeholder="Hip feel at depth, groin, knee tracking..." data-key="wed-gsq-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Hip depth, groin, knee tracking, any impingement..." data-key="wed-gsq-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">DB Romanian Deadlift</div><div class="ex-sub">4 × 10 · slow eccentric · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dumbbell+romanian+deadlift+rdl+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">DB Romanian Deadlift</div><div class="ex-sub">4 × 10 · 3-sec lowering · RPE 7</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dumbbell+romanian+deadlift+rdl+hinge" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">You hit 50 lb on limited sleep in Cincinnati. Try 55–60 lb today. Push your hips back toward the wall behind you — hinge, don't squat. Feel the hamstring stretch. Stop before your lower back rounds. <span class="warn-tag">⚠️ Calf caution:</span> stop before any pulling sensation.</div>
+        <div class="coaching">Previous best: 60 lb × 10. Start at 50 lb this week. Hip hinge — push your hips back to the wall, soft knee bend, feel the hamstring stretch. Stop before lower back rounds. <span class="warn-tag">⚠️ Calf:</span> stop before any pulling sensation in the calf.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 × 10</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-rdl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-rdl-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-rdl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-rdl-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">60 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-rdl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-rdl-3-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">4</span></td><td class="target-cell">60 × 10</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-rdl-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:50px" placeholder="reps" data-key="wed-rdl-4-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 10</td><td><span class="rpe-tag">5</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-rdl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-rdl-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">50 × 10</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-rdl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-rdl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">50 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-rdl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-rdl-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">50 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-rdl-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="wed-rdl-4-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 90 sec rest between sets</div>
-        <textarea class="notes-area" placeholder="Hamstring, calf, lower back..." data-key="wed-rdl-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Hamstring stretch feel, lower back, calf..." data-key="wed-rdl-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card">
       <div class="ex-header" onclick="toggleEx(this)">
         <div class="ex-header-info"><div class="ex-name">Reverse Lunge (alternating)</div><div class="ex-sub">3 × 8/side · RPE 7</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=reverse+lunge+dumbbell+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=reverse+lunge+dumbbell+alternating" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Reverse lunge is safer than forward for your hip impingement — less anterior hip compression. You hit 50 lb (total) in Cincinnati. Try 55–60 lb today. Big step back = more glute. Knee tracks over toes, back knee near floor.</div>
+        <div class="coaching">Reverse over forward lunge — less anterior hip compression for your FAI. Big step back = more glute. Previous best: 55 lb. Start at 45–50 lb this week. Knee tracks toes, back knee grazes floor.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps/side</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 lb × 8/s</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-lunge-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:55px" placeholder="reps" data-key="wed-lunge-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 lb × 8/s</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-lunge-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:55px" placeholder="reps" data-key="wed-lunge-2-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">3</span></td><td class="target-cell">55 lb × 8/s</td><td><input class="log-input" style="width:55px" placeholder="lb" data-key="wed-lunge-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:55px" placeholder="reps" data-key="wed-lunge-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 8/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-lunge-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="wed-lunge-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">50 × 8/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-lunge-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="wed-lunge-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">50 × 8/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="wed-lunge-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="wed-lunge-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
         <div class="rest-line">⟳ 90 sec rest between sets</div>
@@ -978,211 +748,301 @@
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Pre-Drive Recovery</div><div class="phase-duration">10 min</div></div>
+    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Recovery</div><div class="phase-duration">8 min</div></div>
     <div class="recovery-block">
-      <div class="recovery-title">Do before getting in the car</div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip flexor stretch · 90 sec/side — car will tighten these right back up</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon / figure-4 · 90 sec/side</div></div>
+      <div class="recovery-title">Post-lower cooldown — don't skip these after leg day</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip flexor / couch stretch · 90 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon · 90 sec/side</div></div>
       <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hamstring stretch · 60 sec/side</div></div>
       <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calf stretch · 60 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">FFC Recovery Lounge (sauna/massage chair) if time allows</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Foam roll quads + IT band · 60 sec/side</div></div>
     </div>
   </div>
 
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Legs feel, hip depth in squats, groin, energy, anything before road trip..." data-key="wed-day-notes" oninput="saveLog(this)"></textarea>
+  <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
+    <textarea class="notes-area" placeholder="Hip depth in squats, groin on Copenhagen planks, overall fatigue after 3 days..." data-key="wed-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'wed')">Mark Wednesday Complete</button>
 </div>
 
-<!-- ===== THURSDAY ===== -->
+<!-- ===================== THURSDAY ===================== -->
 <div id="day-thu" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Thursday — Easy Run + Core</div>
+    <div class="day-hero-title">Thursday — Active Recovery + Mobility</div>
     <div class="day-hero-meta">
-      <span class="pill pill-warn">Indianapolis</span>
-      <span class="pill pill-teal">Core ×2</span>
-      <span class="pill">⏱ 45 min</span>
-      <span class="pill">🏃 Outdoors + Peloton</span>
+      <span class="pill pill-green">Recovery</span>
+      <span class="pill">⏱ 35–40 min</span>
+      <span class="pill">📍 Home or FFC</span>
     </div>
-    <div class="day-hero-note">Legs are fatigued from three gym days. Keep the run easy. Peloton core class keeps your 4x/week core target on track.</div>
+    <div class="day-hero-note">Three hard days Mon–Wed. Thursday is a true recovery day — not optional, not a "light workout." Active recovery accelerates adaptation. Your hips especially need this. From Week 2 onward, Thursday becomes a tempo run day.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Easy Outdoor Run</div><div class="phase-duration">30 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Aerobic Flush · pick one</div><div class="phase-duration">20–25 min</div></div>
     <div class="cardio-card">
-      <div class="cardio-title">Zone 2 Aerobic · RPE 3–4</div>
-      <div class="cardio-row"><span class="cardio-label">Distance</span><span class="cardio-val">3–4 miles</span></div>
-      <div class="cardio-row"><span class="cardio-label">Pace</span><span class="cardio-val">Conversational — full sentences</span></div>
-      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span class="cardio-val">~145 bpm</span></div>
-      <div class="cardio-row"><span class="cardio-label">Calf/foot</span><span class="cardio-val">Walk first 5 min · drop to 2 mi if anything pulls</span></div>
-      <div class="cardio-input-row">
-        <input class="log-input" placeholder="Distance (mi)" data-key="thu-run-dist" oninput="saveLog(this)">
-        <input class="log-input" placeholder="Avg HR" data-key="thu-run-hr" oninput="saveLog(this)">
-      </div>
-      <textarea class="notes-area" placeholder="Run notes · calf · foot · legs..." data-key="thu-run-notes" oninput="saveLog(this)"></textarea>
+      <div class="cardio-title">Low-intensity movement · HR under 130</div>
+      <div class="cardio-row"><span class="cardio-label">Option A</span><span style="font-size:13px">20 min Peloton easy ride · RPE 2–3</span></div>
+      <div class="cardio-row"><span class="cardio-label">Option B</span><span style="font-size:13px">20 min lakefront walk</span></div>
+      <div class="cardio-row"><span class="cardio-label">Option C</span><span style="font-size:13px">20 min easy swim (zero shoulder strain)</span></div>
+      <textarea class="notes-area" placeholder="Which option, how did it feel..." data-key="thu-flush-notes" oninput="saveLog(this)"></textarea>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Peloton Core</div><div class="phase-duration">15 min</div></div>
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Hip + Shoulder Mobility Flow</div><div class="phase-duration">15 min</div></div>
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">FAI Hip Mobility Flow</div><div class="ex-sub">Full sequence · slow holds</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hip+impingement+FAI+mobility+routine" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">This is the most important session of the week for your hip health. Spend time here.</div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip CARs · 5/direction · both legs</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">90/90 hold · 90 sec/side · breathe into it</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon variation · 90 sec/side</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Banded hip distraction · 2 min/side (if band available)</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Couch stretch / hip flexor · 90 sec/side</div></div>
+      </div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Shoulder Mobility</div><div class="ex-sub">Full sequence</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=shoulder+mobility+routine+rotator+cuff+rehab" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Wall slides × 10</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Thread the needle × 8/side</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Sleeper stretch · 30 sec/side</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Band external rotation × 15/side</div></div>
+      </div>
+    </div>
     <div class="peloton-card">
       <div class="pelo-icon">📱</div>
       <div>
-        <div class="pelo-title">Peloton App · 15-min Core Strength</div>
-        <div class="pelo-detail">Search: "10–15 min Core Strength" · Emma Lovewell or Adrian Williams · no equipment · avoid heavy hip flexor loading if groin is sore from Wed squats</div>
+        <div class="pelo-title">Optional: Peloton Yoga or Stretch (15–20 min)</div>
+        <div class="pelo-detail">Denis Morton or Anna Greenberg · focus on hip openers and low back · a great Thursday addition if you have the time</div>
       </div>
     </div>
-    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Peloton core class done</div></div>
   </div>
 
-  <div class="phase-block">
-    <div class="phase-header"><div class="phase-num green">3</div><div class="phase-title">Post-Run Stretch</div><div class="phase-duration">8 min</div></div>
-    <div class="recovery-block">
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calf stretch · 90 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip flexor low lunge · 60 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon / figure-4 · 90 sec/side</div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hamstring stretch · 60 sec/side</div></div>
-    </div>
-  </div>
-
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Run feel in Indy, calf, groin, travel fatigue..." data-key="thu-day-notes" oninput="saveLog(this)"></textarea>
+  <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
+    <textarea class="notes-area" placeholder="How do hips feel after 3 days? Shoulder mobility improving? Energy level mid-week?" data-key="thu-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'thu')">Mark Thursday Complete</button>
 </div>
 
-<!-- ===== FRIDAY ===== -->
+<!-- ===================== FRIDAY ===================== -->
 <div id="day-fri" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Friday — Peloton Strength + Run</div>
+    <div class="day-hero-title">Friday — Full Body</div>
     <div class="day-hero-meta">
-      <span class="pill pill-warn">Indianapolis</span>
-      <span class="pill pill-teal">Core included</span>
-      <span class="pill">⏱ 55 min</span>
+      <span class="pill pill-accent">Strength</span>
+      <span class="pill pill-teal">Core ×3</span>
+      <span class="pill">⏱ 60 min</span>
+      <span class="pill">📍 FFC Gold Coast</span>
     </div>
-    <div class="day-hero-note">Pick your option based on how your legs and energy feel this morning.</div>
+    <div class="day-hero-note">Full body day — one push, one pull, one lower movement done as a circuit. Efficient and effective. This format gives your body a complete stimulus in the least time. Core is built into the circuit so you hit your 4x weekly target.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Option A — Legs feel fresh</div><div class="phase-duration">~50 min</div></div>
-    <div class="option-label">OPTION A</div>
-    <div class="peloton-card">
-      <div class="pelo-icon">📱</div>
-      <div>
-        <div class="pelo-title">Peloton · 20–30 min Full Body Strength</div>
-        <div class="pelo-detail">Search: "Full Body Strength" no equipment · Ben Alldis or Chase Tucker · upper body push/pull and core focus — legs had Mon–Wed</div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Warm-Up</div><div class="phase-duration">8 min</div></div>
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Daily Mobility Flow</div><div class="ex-sub">Full body · 8 min</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=full+body+morning+mobility+warm+up+flow" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
       </div>
-    </div>
-    <div class="peloton-card">
-      <div class="pelo-icon">🏃</div>
-      <div>
-        <div class="pelo-title">Outdoor run · 20–25 min · easy-moderate</div>
-        <div class="pelo-detail">RPE 4–5 · Zone 2–3 · neighborhood run · walk/run fine if fatigued · enjoy it</div>
+      <div class="ex-body">
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip CARs · 5/direction</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">World's greatest stretch × 5/side</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Wall slides × 10</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Band pull-apart × 15</div></div>
+        <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Leg swings × 10/side</div></div>
       </div>
-    </div>
-    <div class="cardio-input-row">
-      <input class="log-input" placeholder="Run distance (mi)" data-key="fri-run-dist" oninput="saveLog(this)">
-      <input class="log-input" placeholder="Avg HR" data-key="fri-run-hr" oninput="saveLog(this)">
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Option B — Fatigued or big day ahead</div><div class="phase-duration">~30 min</div></div>
-    <div class="option-label">OPTION B</div>
-    <div class="peloton-card">
-      <div class="pelo-icon">📱</div>
-      <div>
-        <div class="pelo-title">Peloton · Yoga or Mobility (20–30 min)</div>
-        <div class="pelo-detail">Search: "Yoga Flow" or "Full Body Stretch" · Denis Morton or Anna Greenberg · prioritize hip openers and shoulder mobility — this is real training</div>
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Full Body Circuit · 4 rounds</div><div class="phase-duration">45 min</div></div>
+    <div style="background:var(--card2);border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--muted);line-height:1.6;">
+      Complete exercises A→B→C→D→E in sequence with minimal rest between exercises. Rest 90 sec after completing all 5. Repeat 4 rounds total. This format takes ~40–45 min.
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">A · Push-Up (3 sec down)</div><div class="ex-sub">4 × 12–15 reps · control the eccentric</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=push+up+slow+eccentric+chest+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Full body circuit opens with push-ups — shoulder warm while CNS is fresh. 3 sec down, elbows at 45°. Log reps — this is a weekly marker too.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Target</th><th>Actual reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">12–15</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="fri-pu-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">12–15</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="fri-pu-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">12–15</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="fri-pu-3" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">AMRAP</td><td><input class="log-input" style="width:70px" placeholder="reps" data-key="fri-pu-4" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Peloton yoga / mobility done</div></div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">B · DB Goblet Squat</div><div class="ex-sub">4 × 12 · 35–40 lb · 3-1-1 tempo</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat+dumbbell+form+tempo" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Hip-safe squat variation. 3 sec down, 1 sec pause, drive up. Start lighter than Wednesday — this is circuit training, not max effort sets.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">35 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-gsq-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-gsq-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">35 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-gsq-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-gsq-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">40 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-gsq-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-gsq-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">40 × 12</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-gsq-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-gsq-4-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">C · Single-Arm DB Row</div><div class="ex-sub">4 × 10/side · 45–50 lb</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=single+arm+dumbbell+row+form+elbow" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Knee on bench, opposite hand for support. Pull elbow to hip — not armpit. Full stretch at bottom. This is the single-arm row you did well in Cincinnati at 25 lb; bump to 45–50 lb now.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Target</th><th>Weight</th><th>Reps/side</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 10/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-row-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="fri-row-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">50 × 10/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-row-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="fri-row-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">50 × 10/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-row-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="fri-row-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">50 × 10/s</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-row-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:54px" placeholder="reps" data-key="fri-row-4-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">D · DB Romanian Deadlift</div><div class="ex-sub">4 × 10 · 50 lb · slow hinge</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dumbbell+rdl+romanian+deadlift+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Same weight as Wednesday. Hip hinge — push hips back. Slow descent. Feel the hamstring. Stop when lower back wants to round. <span class="warn-tag">⚠️ Calf check:</span> any tightness, stop at shin level only.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-rdl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-rdl-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-rdl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-rdl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-rdl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-rdl-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" style="width:54px" placeholder="lb" data-key="fri-rdl-4-w" oninput="saveLog(this)"></td><td><input class="log-input" style="width:48px" placeholder="reps" data-key="fri-rdl-4-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ex-card">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">E · Dead Bug (slow)</div><div class="ex-sub">4 × 8/side · 3 sec per rep · RPE 6</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dead+bug+core+slow+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Core finisher each round. Back flat, exhale as you extend. This is your 4th core session of the week — keep it quality, not rushed.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Target</th><th>Done</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">8/side</td><td><input class="log-input" style="width:70px" placeholder="✓" data-key="fri-db-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">8/side</td><td><input class="log-input" style="width:70px" placeholder="✓" data-key="fri-db-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">8/side</td><td><input class="log-input" style="width:70px" placeholder="✓" data-key="fri-db-3" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">8/side</td><td><input class="log-input" style="width:70px" placeholder="✓" data-key="fri-db-4" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ 90 sec rest after full round · repeat from push-up</div>
+      </div>
+    </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Core (bodyweight · no equipment)</div><div class="phase-duration">10 min</div></div>
-    <div class="ex-card">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Dead Bug</div><div class="ex-sub">3 × 10/side · slow and controlled</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body"><div class="coaching">Back flat to floor, exhale on extension. Core anchor movement for travel weeks.</div></div>
-    </div>
-    <div class="ex-card">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Plank Variations</div><div class="ex-sub">3 × 30–45 sec · front + side plank</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=plank+side+plank+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body"><div class="coaching">Front plank: squeeze everything — glutes, abs, quads. Side plank: stack feet or stagger. <span class="warn-tag">⚠️ Right shoulder:</span> forearm plank if straight-arm hurts.</div></div>
-    </div>
-    <div class="ex-card">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Glute Bridge Hold</div><div class="ex-sub">3 × 15 reps or 45 sec hold</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=glute+bridge+hold+form" target="_blank">▶ Demo</a><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body"><div class="coaching">Squeeze hard at top. Ribs down — don't hyperextend the lower back. Active hip rehab and groin/glute med work with zero equipment.</div></div>
+    <div class="phase-header"><div class="phase-num green">3</div><div class="phase-title">Recovery</div><div class="phase-duration">8 min</div></div>
+    <div class="recovery-block">
+      <div class="recovery-title">Post-lift cooldown</div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">15 min Peloton stretch class OR</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pigeon · 90 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Low lunge / hip flexor · 60 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Pec doorway stretch · 30 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calf stretch · 60 sec/side</div></div>
     </div>
   </div>
 
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Which option, how did it feel, wedding week energy..." data-key="fri-day-notes" oninput="saveLog(this)"></textarea>
+  <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
+    <textarea class="notes-area" placeholder="Circuit feel, anything too hard or too easy, hip on squats, energy end of week..." data-key="fri-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'fri')">Mark Friday Complete</button>
 </div>
 
-<!-- ===== SATURDAY ===== -->
+<!-- ===================== SATURDAY ===================== -->
 <div id="day-sat" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Saturday — Wedding Day</div>
+    <div class="day-hero-title">Saturday — Long Easy Run</div>
     <div class="day-hero-meta">
-      <span class="pill pill-warn">Indianapolis</span>
-      <span class="pill pill-green">Light + Recovery</span>
-      <span class="pill">⏱ 20–30 min max</span>
+      <span class="pill pill-warn">Endurance</span>
+      <span class="pill">⏱ 55–70 min</span>
+      <span class="pill">📍 Lakefront Trail</span>
+      <span class="pill">🌅 Early AM</span>
     </div>
-    <div class="day-hero-note">Keep it short. Save your legs for dancing. Morning movement makes you feel better — not worse — on a big day.</div>
+    <div class="day-hero-note">Week 1: 5–6 miles easy. This builds over 5 weeks to 9–10 miles by Week 3. Truly conversational — if you're breathing hard, you're going too fast. The lakefront trail is your backyard for this block.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Morning · pick one</div><div class="phase-duration">20 min</div></div>
-    <div class="peloton-card">
-      <div class="pelo-icon">📱</div>
-      <div>
-        <div class="pelo-title">Option A: Peloton Yoga / Mobility (20 min)</div>
-        <div class="pelo-detail">Gentle hip openers and shoulder work · protects hips and shoulders before you're on your feet all day</div>
-      </div>
-    </div>
-    <div class="peloton-card">
-      <div class="pelo-icon">🚶</div>
-      <div>
-        <div class="pelo-title">Option B: Easy 20-min walk or light jog</div>
-        <div class="pelo-detail">RPE 2–3 · Zone 1 · not a training stimulus, just nervous system activation · save your legs</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Core · 10 min in room</div><div class="phase-duration">10 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Pre-Run Mobility</div><div class="phase-duration">8 min</div></div>
     <div class="recovery-block">
-      <div class="recovery-title">2 quick rounds · keeps 4x/week core target</div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Dead bug · 10/side<div class="check-detail">Back flat, exhale on extension</div></div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Glute bridge · 15 reps<div class="check-detail">Squeeze hard at top</div></div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Side plank · 20 sec/side<div class="check-detail">Hips up and stacked</div></div></div>
-      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Bird dog · 8/side<div class="check-detail">3 sec hold at extension</div></div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip CARs · 5/direction</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Leg swings · 10 each direction/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Walking lunges × 10</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calf raises × 15 (plantar fascia wake-up)</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Walk 5 min before starting to run</div></div>
     </div>
   </div>
 
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Wedding day! How are you feeling? Hip, shoulder, calf heading into next week?" data-key="sat-day-notes" oninput="saveLog(this)"></textarea>
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Long Run · Zone 2</div><div class="phase-duration">50–60 min</div></div>
+    <div class="cardio-card">
+      <div class="cardio-title">Easy Long Run · RPE 3–4 · Lakefront</div>
+      <div class="cardio-row"><span class="cardio-label">Target</span><span style="font-size:13px;font-weight:500">5–6 miles · Week 1 baseline</span></div>
+      <div class="cardio-row"><span class="cardio-label">Pace</span><span style="font-size:13px;font-weight:500">~8:30–9:30/mi · slower is better</span></div>
+      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span style="font-size:13px;font-weight:500">145 bpm · walk if above this</span></div>
+      <div class="cardio-row"><span class="cardio-label">Hills</span><span style="font-size:13px;font-weight:500">Don't attack them — ease over them today</span></div>
+      <div class="cardio-row"><span class="cardio-label">Foot/calf</span><span style="font-size:13px;font-weight:500">Check both before starting · walk 5 min first</span></div>
+      <div class="cardio-input-row">
+        <input class="log-input" placeholder="Distance (mi)" data-key="sat-run-dist" oninput="saveLog(this)">
+        <input class="log-input" placeholder="Avg HR" data-key="sat-run-hr" oninput="saveLog(this)">
+        <input class="log-input" placeholder="Avg pace" data-key="sat-run-pace" oninput="saveLog(this)">
+      </div>
+      <textarea class="notes-area" placeholder="Run notes · calf · foot · hips · energy · lakefront conditions..." data-key="sat-run-notes" oninput="saveLog(this)"></textarea>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num green">3</div><div class="phase-title">Post-Run Recovery</div><div class="phase-duration">10 min</div></div>
+    <div class="recovery-block">
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Walk 3–5 min until HR drops below 110</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Calf stretch · 90 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hip flexors · 60 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Figure-4 / pigeon · 60 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Hamstrings · 60 sec/side</div></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><div class="check-text">Protein + carbs within 30 min of finishing</div></div>
+    </div>
+  </div>
+
+  <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
+    <textarea class="notes-area" placeholder="Distance, pace, how legs felt after the week, lakefront conditions, foot/calf/hip check..." data-key="sat-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'sat')">Mark Saturday Complete</button>
 </div>
 
-<!-- ===== SUNDAY ===== -->
+<!-- ===================== SUNDAY ===================== -->
 <div id="day-sun" class="day-panel">
   <div class="day-hero">
     <div class="day-hero-title">Sunday — Full Recovery</div>
@@ -1190,7 +1050,7 @@
       <span class="pill pill-green">Rest</span>
       <span class="pill">⏱ 30 min optional</span>
     </div>
-    <div class="day-hero-note">No training. Adaptations consolidate today. Feel better tomorrow than today.</div>
+    <div class="day-hero-note">No training. Week 1 of 5 done. Adaptations happen during recovery, not workouts. Optional gentle movement only.</div>
   </div>
 
   <div class="phase-block">
@@ -1199,7 +1059,7 @@
       <div class="pelo-icon">📱</div>
       <div>
         <div class="pelo-title">Peloton · Restorative Yoga or Yin (20–30 min)</div>
-        <div class="pelo-detail">Search: "Restorative Yoga" or "Yin Yoga" · Denis Morton or Anna Greenberg · priority poses: pigeon, supine figure-4, thread the needle, low lunge · you've earned it</div>
+        <div class="pelo-detail">Denis Morton or Anna Greenberg · long holds · pigeon, supine figure-4, thread the needle, low lunge · easiest thing you can do for next week's performance</div>
       </div>
     </div>
   </div>
@@ -1216,83 +1076,85 @@
     </div>
 
     <div style="margin-bottom:10px;">
-      <div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">What felt easy → ready to progress</div>
-      <textarea class="notes-area" placeholder="e.g. DB floor press felt like RPE 5, pull-ups strong..." data-key="sun-easy" oninput="saveLog(this)"></textarea>
+      <div class="day-notes-label">What felt easy → ready to progress</div>
+      <textarea class="notes-area" placeholder="e.g. floor press RPE 5, deadlifts felt light..." data-key="sun-easy" oninput="saveLog(this)"></textarea>
     </div>
     <div style="margin-bottom:10px;">
-      <div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">What was hard → keep or modify</div>
-      <textarea class="notes-area" placeholder="e.g. cable fly still rough, goblet squat hip depth limited..." data-key="sun-hard" oninput="saveLog(this)"></textarea>
+      <div class="day-notes-label">What was hard → keep or modify</div>
+      <textarea class="notes-area" placeholder="e.g. hip depth still limited, cable fly shoulder..." data-key="sun-hard" oninput="saveLog(this)"></textarea>
     </div>
     <div>
-      <div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Anything that hurt that shouldn't have</div>
-      <textarea class="notes-area" placeholder="Flag anything — trainer adjusts next week's plan accordingly..." data-key="sun-hurt" oninput="saveLog(this)"></textarea>
+      <div class="day-notes-label">Anything that hurt that shouldn't have</div>
+      <textarea class="notes-area" placeholder="Flag anything — used to adjust Week 2..." data-key="sun-hurt" oninput="saveLog(this)"></textarea>
     </div>
   </div>
 
-  <div class="day-notes-wrap">
-    <div class="day-notes-label">Week reflection — paste into chat for next week's plan</div>
-    <textarea class="notes-area" placeholder="Overall week notes, how you feel heading into week 3..." data-key="sun-week-notes" oninput="saveLog(this)"></textarea>
+  <div class="day-notes-wrap"><div class="day-notes-label">Week 1 reflection</div>
+    <textarea class="notes-area" placeholder="Overall how was the first week back? Energy? Sleep improving? What are you most looking forward to building in Week 2?" data-key="sun-week-notes" oninput="saveLog(this)"></textarea>
   </div>
 
   <div class="footer-actions">
     <button class="export-btn" onclick="exportLogs()">📤 Export My Week</button>
     <button class="reset-btn" onclick="resetLogs()">Reset all logs</button>
   </div>
-
   <div class="export-toast" id="export-toast">
     <div style="font-weight:700;margin-bottom:6px;">Copied to clipboard ✓</div>
-    <div style="color:var(--muted);">Paste into your chat with your trainer to build next week's plan.</div>
+    <div style="color:var(--muted);">Paste into chat with your trainer to build Week 2.</div>
     <div class="toast-actions">
       <button class="toast-btn" onclick="copyAgain()">Copy again</button>
       <button class="toast-btn" onclick="shareLogs()">Share…</button>
       <button class="toast-btn" onclick="document.getElementById('export-toast').classList.remove('visible')">Close</button>
     </div>
   </div>
+
+  <button class="day-complete-btn" onclick="markComplete(this,'sun')">Mark Sunday Complete</button>
 </div>
 
 <script>
-var logs = JSON.parse(localStorage.getItem('workout-logs-may11') || '{}');
-var ratings = JSON.parse(localStorage.getItem('workout-ratings-may11') || '{}');
+var STORE_KEY = 'workout-logs-may19';
+var RATE_KEY  = 'workout-ratings-may19';
+var logs    = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+var ratings = JSON.parse(localStorage.getItem(RATE_KEY)  || '{}');
 
 function saveLog(el) {
   logs[el.dataset.key] = el.value;
-  localStorage.setItem('workout-logs-may11', JSON.stringify(logs));
+  localStorage.setItem(STORE_KEY, JSON.stringify(logs));
 }
-
 function loadLogs() {
   Object.keys(logs).forEach(function(k) {
     var el = document.querySelector('[data-key="' + k + '"]');
-    if (el) { el.value = logs[k]; if(el.value) el.classList.add('filled'); }
+    if (el) el.value = logs[k];
+  });
+  ['mon','tue','wed','thu','fri','sat','sun'].forEach(function(d) {
+    if (logs['complete-'+d]) {
+      var btn = document.querySelector('#day-'+d+' .day-complete-btn');
+      if (btn) { btn.classList.add('done'); btn.textContent = d.charAt(0).toUpperCase()+d.slice(1)+' Complete ✓'; }
+    }
   });
 }
-
 function showDay(day, tab) {
   document.querySelectorAll('.day-panel').forEach(function(p) { p.classList.remove('active'); });
   document.querySelectorAll('.day-tab').forEach(function(t) { t.classList.remove('active'); });
   document.getElementById('day-' + day).classList.add('active');
   tab.classList.add('active');
 }
-
 function toggleEx(header) {
   var body = header.nextElementSibling;
   var icon = header.querySelector('.toggle-icon');
-  if (body.classList.contains('open')) {
-    body.classList.remove('open'); icon.textContent = '+';
-  } else {
-    body.classList.add('open'); icon.textContent = '−';
-  }
+  if (body.classList.contains('open')) { body.classList.remove('open'); icon.textContent = '+'; }
+  else { body.classList.add('open'); icon.textContent = '−'; }
 }
-
 function toggleCheck(item) {
   item.querySelector('.check-box').classList.toggle('checked');
 }
-
 function markComplete(btn, day) {
   btn.classList.add('done');
   btn.textContent = day.charAt(0).toUpperCase() + day.slice(1) + ' Complete ✓';
   logs['complete-' + day] = '1';
-  localStorage.setItem('workout-logs-may11', JSON.stringify(logs));
+  localStorage.setItem(STORE_KEY, JSON.stringify(logs));
 }
+function openOverview()  { document.getElementById('overview-modal').classList.add('open'); }
+function closeOverview() { document.getElementById('overview-modal').classList.remove('open'); }
 
 function buildRatings(id, labels) {
   var c = document.getElementById(id); if (!c) return;
@@ -1301,14 +1163,12 @@ function buildRatings(id, labels) {
     if (ratings[id] === l) b.classList.add('selected');
     b.onclick = function() {
       c.querySelectorAll('.rating-btn').forEach(function(x) { x.classList.remove('selected'); });
-      b.classList.add('selected');
-      ratings[id] = l;
-      localStorage.setItem('workout-ratings-may11', JSON.stringify(ratings));
+      b.classList.add('selected'); ratings[id] = l;
+      localStorage.setItem(RATE_KEY, JSON.stringify(ratings));
     };
     c.appendChild(b);
   });
 }
-
 buildRatings('rshoulder', ['1','2','3','4','5','6','7','8','9','10']);
 buildRatings('lshoulder', ['1','2','3','4','5','6','7','8','9','10']);
 buildRatings('hips',      ['1','2','3','4','5','6','7','8','9','10']);
@@ -1318,48 +1178,36 @@ buildRatings('sleep',     ['5','5.5','6','6.5','7','7.5','8','8+']);
 
 function buildExport() {
   var days = ['mon','tue','wed','thu','fri','sat','sun'];
-  var names = {mon:'Monday — Push',tue:'Tuesday — Pull + Run',wed:'Wednesday — Lower',thu:'Thursday — Indy Run',fri:'Friday — Indy Strength',sat:'Saturday — Wedding Day',sun:'Sunday — Recovery'};
-  var lines = ['=== Week of May 11–17 — Hybrid Plan ===\n'];
+  var names = {mon:'Monday — Push',tue:'Tuesday — Run + Pull',wed:'Wednesday — Lower',thu:'Thursday — Recovery',fri:'Friday — Full Body',sat:'Saturday — Long Run',sun:'Sunday — Rest'};
+  var lines = ['=== Week of May 19–25 — Hybrid Block Week 1 of 5 ===\n'];
   days.forEach(function(d) {
     lines.push('--- ' + names[d] + (logs['complete-'+d] ? ' ✓' : '') + ' ---');
-    Object.keys(logs).filter(function(k) { return k.startsWith(d+'-') && !k.includes('complete'); }).forEach(function(k) {
-      if (logs[k]) lines.push(k.replace(d+'-','').replace(/-/g,' ') + ': ' + logs[k]);
+    Object.keys(logs).filter(function(k) { return k.startsWith(d+'-') && k !== 'complete-'+d; }).forEach(function(k) {
+      if (logs[k]) lines.push('  ' + k.replace(d+'-','').replace(/-/g,' ') + ': ' + logs[k]);
     });
     lines.push('');
   });
   lines.push('--- Body Check ---');
   ['rshoulder','lshoulder','hips','groin','foot','sleep'].forEach(function(k) {
-    if (ratings[k]) lines.push(k + ': ' + ratings[k] + '/10');
+    if (ratings[k]) lines.push(k + ': ' + ratings[k]);
   });
   return lines.join('\n');
 }
-
 function exportLogs() {
   var text = buildExport();
-  navigator.clipboard.writeText(text).then(function() {
-    document.getElementById('export-toast').classList.add('visible');
-  }).catch(function() {
-    document.getElementById('export-toast').classList.add('visible');
-  });
+  navigator.clipboard.writeText(text).catch(function(){});
+  document.getElementById('export-toast').classList.add('visible');
 }
-
 function copyAgain() { navigator.clipboard.writeText(buildExport()); }
-
 function shareLogs() {
-  if (navigator.share) {
-    navigator.share({ title: 'My Week of May 11 Workout Logs', text: buildExport() });
-  } else { copyAgain(); }
+  if (navigator.share) navigator.share({ title: 'Week of May 19 Workout Logs', text: buildExport() });
+  else copyAgain();
 }
-
 function resetLogs() {
-  if (confirm('Reset all logs for this week? This cannot be undone.')) {
-    logs = {}; ratings = {};
-    localStorage.removeItem('workout-logs-may11');
-    localStorage.removeItem('workout-ratings-may11');
-    location.reload();
+  if (confirm('Reset all logs for this week? Cannot be undone.')) {
+    localStorage.removeItem(STORE_KEY); localStorage.removeItem(RATE_KEY); location.reload();
   }
 }
-
 window.addEventListener('load', loadLogs);
 </script>
 </body>
