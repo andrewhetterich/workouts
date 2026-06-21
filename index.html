@@ -6,9 +6,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1a1a1a">
-<meta name="version" content="jun15">
-<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0615">
-<title>Hybrid Plan · Jun 15–21</title>
+<meta name="version" content="jun22">
+<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0622">
+<title>Hybrid Plan · Jun 22–28</title>
 <style>
   :root {
     --bg: #1a1a1a; --card: #242424; --card2: #2c2c2c; --border: #333;
@@ -55,26 +55,22 @@
   .pill-warn { background: rgba(240,168,74,0.12); border-color: rgba(240,168,74,0.3); color: var(--warn); }
   .pill-green { background: rgba(74,240,144,0.12); border-color: rgba(74,240,144,0.3); color: var(--done); }
   .pill-teal { background: rgba(74,240,200,0.12); border-color: rgba(74,240,200,0.3); color: var(--accent2); }
-  .pill-test { background: rgba(240,96,96,0.18); border-color: rgba(240,96,96,0.4); color: var(--danger); }
+  .pill-travel { background: rgba(240,96,96,0.18); border-color: rgba(240,96,96,0.4); color: var(--danger); }
   .day-hero-note { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
   .trainer-callout { background: rgba(74,240,200,0.08); border: 1px solid rgba(74,240,200,0.3); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 16px; }
   .tc-label { font-size: 10px; font-weight: 800; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
   .tc-text { font-size: 13px; color: var(--text); line-height: 1.5; }
-  .test-callout { background: rgba(240,96,96,0.08); border: 1px solid rgba(240,96,96,0.3); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 16px; }
-  .test-callout .tc-label { color: var(--danger); }
   .phase-block { margin-bottom: 18px; }
   .phase-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
   .phase-num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #111; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .phase-num.warn { background: var(--warn); }
   .phase-num.teal { background: var(--accent2); }
   .phase-num.green { background: var(--done); }
-  .phase-num.test { background: var(--danger); }
   .phase-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
   .phase-duration { font-size: 12px; color: var(--muted); margin-left: auto; }
   .ex-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s; }
   .ex-card.complete { border-color: var(--done); }
   .ex-card.complete .ex-name { color: var(--done); }
-  .ex-card.test-card { border-color: rgba(240,96,96,0.4); }
   .ex-header { display: flex; align-items: flex-start; padding: 12px 14px; cursor: pointer; gap: 10px; }
   .ex-header-info { flex: 1; min-width: 0; }
   .ex-name { font-size: 14px; font-weight: 600; line-height: 1.3; }
@@ -86,14 +82,13 @@
   .toggle-icon { font-size: 20px; color: var(--muted); line-height: 1; flex-shrink: 0; padding-left: 2px; }
   .ex-body { display: none; padding: 0 14px 14px; }
   .ex-body.open { display: block; }
-  .test-badge { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(240,96,96,0.18); border: 1px solid rgba(240,96,96,0.4); color: var(--danger); border-radius: 20px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
-  .deload-badge { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(74,240,144,0.15); border: 1px solid rgba(74,240,144,0.3); color: var(--done); border-radius: 20px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
   .superset-badge { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(240,168,74,0.15); border: 1px solid rgba(240,168,74,0.3); color: var(--warn); border-radius: 20px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
+  .new-badge { display: inline-block; font-size: 10px; font-weight: 700; background: rgba(200,240,74,0.15); border: 1px solid rgba(200,240,74,0.3); color: var(--accent); border-radius: 20px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
   .coaching { font-size: 12px; line-height: 1.6; color: var(--muted); background: var(--card2); border-radius: var(--radius-sm); padding: 9px 11px; margin-bottom: 10px; }
   .coaching .warn-tag { color: var(--warn); font-weight: 700; }
   .coaching .accent-tag { color: var(--accent); font-weight: 700; }
   .coaching .danger-tag { color: var(--danger); font-weight: 700; }
-  .rest-line { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .rest-line { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
   .warm-up-banner { background: rgba(240,168,74,0.08); border: 1px solid rgba(240,168,74,0.25); border-radius: var(--radius-sm); padding: 8px 10px; margin-bottom: 10px; }
   .warm-up-banner .wu-label { font-size: 10px; font-weight: 800; color: var(--warn); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
   .warm-up-banner .wu-text { font-size: 12px; color: var(--text); line-height: 1.5; }
@@ -132,10 +127,6 @@
   .pelo-detail { font-size: 12px; color: var(--muted); line-height: 1.5; }
   .recovery-block { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
   .recovery-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
-  .foam-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start; }
-  .foam-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
-  .foam-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .foam-detail { font-size: 12px; color: var(--muted); line-height: 1.5; }
   .day-complete-btn { display: block; width: 100%; background: var(--accent); color: #111; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 800; padding: 14px; cursor: pointer; margin-top: 20px; }
   .day-complete-btn.done { background: var(--done); }
   .day-notes-wrap { margin-top: 16px; }
@@ -153,12 +144,12 @@
   .export-toast.visible { display: block; }
   .toast-actions { display: flex; gap: 8px; margin-top: 12px; }
   .toast-btn { flex: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--card2); color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer; }
-  .block-progress { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 16px; }
-  .bp-title { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
-  .bp-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
-  .bp-row:last-child { border-bottom: none; }
-  .bp-label { color: var(--muted); }
-  .bp-value { color: var(--accent); font-weight: 600; }
+  .baseline-card { background: rgba(200,240,74,0.06); border: 1px solid rgba(200,240,74,0.25); border-radius: var(--radius); padding: 14px; margin-bottom: 16px; }
+  .bl-title { font-size: 12px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .bl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .bl-item { background: var(--card2); border-radius: var(--radius-sm); padding: 8px 10px; }
+  .bl-item-label { font-size: 11px; color: var(--muted); }
+  .bl-item-value { font-size: 13px; color: var(--text); font-weight: 600; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -166,35 +157,38 @@
 <div class="overview-overlay" id="overview-modal">
   <div class="overview-card">
     <button class="close-btn" onclick="closeOverview()">✕ Close</button>
-    <div class="overview-title">5-Week Block 1 — FINAL WEEK</div>
-    <div class="overview-sub">May 19 – Jun 21 · True Hybrid</div>
-    <div class="week-row done"><div class="wr-label done">WEEK 1 · COMPLETE ✓</div><div class="wr-title">Re-Entry</div></div>
-    <div class="week-row done"><div class="wr-label done">WEEK 2 · COMPLETE ✓</div><div class="wr-title">Build</div></div>
-    <div class="week-row done"><div class="wr-label done">WEEK 3 · COMPLETE ✓</div><div class="wr-title">Refine — Lower Deload + Dedicated Abs</div></div>
-    <div class="week-row done"><div class="wr-label done">WEEK 4 · COMPLETE ✓</div><div class="wr-title">Intensify — Selective Push</div><div class="wr-desc">Deadlift PR 195. Goblet 40 locked. Tue rows 80. Ab form fixes hit.</div></div>
-    <div class="week-row current">
-      <div class="wr-label">WEEK 5 · Jun 15–21 · YOU ARE HERE</div>
-      <div class="wr-title">Deload + Benchmark</div>
-      <div class="wr-desc">Volume cut ~40%, weights cut 15-20% on main lifts. Three benchmark tests spread Mon (push-ups), Wed (pull-ups), Fri (1-mile). Tests at the START of sessions when fresh. Long run drops to 4 mi. Yoga replaces stretches on Tue/Thu/Sun.</div>
-      <div class="wr-days">
-        <span class="wr-day">Mon · Push-up test + light push</span><span class="wr-day">Tue · Easy run + light pull + yoga</span><span class="wr-day">Wed · Pull-up test + light lower</span><span class="wr-day">Thu · Hip yoga</span><span class="wr-day">Fri · 1mi TT + light circuit</span><span class="wr-day">Sat · Easy 4mi</span><span class="wr-day">Sun · Yoga rest</span>
+    <div class="overview-title">Block 2 — Diversify + Develop</div>
+    <div class="overview-sub">Jun 22 – Jul 19 · 4 weeks</div>
+    <div class="baseline-card">
+      <div class="bl-title">🎯 Block 1 Baselines · Block 2 Targets</div>
+      <div class="bl-grid">
+        <div class="bl-item"><div class="bl-item-label">Push-ups (max)</div><div class="bl-item-value">35 → 40+</div></div>
+        <div class="bl-item"><div class="bl-item-label">Pull-ups (max)</div><div class="bl-item-value">13 → 15+</div></div>
+        <div class="bl-item"><div class="bl-item-label">1-Mile TT</div><div class="bl-item-value">6:52 → sub 6:40</div></div>
+        <div class="bl-item"><div class="bl-item-label">Trap Bar DL</div><div class="bl-item-value">195 → 205+</div></div>
       </div>
     </div>
-    <div class="week-row future">
-      <div class="wr-label">BLOCK 2 · Jun 22+</div>
-      <div class="wr-title">Plan after Sunday reflection</div>
-      <div class="wr-desc">We'll set new strength targets, decide if you want to start training toward a specific goal (race, lift PR, etc.), and rebuild from the benchmark numbers.</div>
+    <div class="week-row current">
+      <div class="wr-label">WEEK 1 · Jun 22–28 · YOU ARE HERE</div>
+      <div class="wr-title">Refresh + Travel</div>
+      <div class="wr-desc">Mix-up week. Cable fly REPLACED with DB pullover (left shoulder click). Rear-Foot Elevated Split Squat added Wed for hip development. Cincinnati travel Thu PM-Sun: Fri at Black Sheep 24/7, Sat hill run at parents'. Rest times, cooldowns, foam rolling all restored.</div>
+      <div class="wr-days">
+        <span class="wr-day">Mon · Push</span><span class="wr-day">Tue · Tempo + Pull</span><span class="wr-day">Wed · Lower</span><span class="wr-day">Thu · Recovery</span><span class="wr-day">Fri · BSP Travel</span><span class="wr-day">Sat · Hill run</span><span class="wr-day">Sun · Drive + rest</span>
+      </div>
     </div>
+    <div class="week-row future"><div class="wr-label">WEEK 2 · Jun 29–Jul 5</div><div class="wr-title">Build · Push lifts back to PR weights</div></div>
+    <div class="week-row future"><div class="wr-label">WEEK 3 · Jul 6–12</div><div class="wr-title">Intensify · Mix in speed work</div></div>
+    <div class="week-row future"><div class="wr-label">WEEK 4 · Jul 13–19</div><div class="wr-title">Deload + Re-Benchmark</div></div>
   </div>
 </div>
 
 <div class="site-header">
   <div class="header-top">
     <div>
-      <div class="site-title">Hybrid Plan · Jun 15–21</div>
-      <div class="site-sub">Week 5 of 5 · Deload + Benchmark · Block 1 finale</div>
+      <div class="site-title">Hybrid Plan · Jun 22–28</div>
+      <div class="site-sub">Block 2 · Week 1 of 4 · Refresh + Travel</div>
     </div>
-    <button class="block-badge" onclick="openOverview()">5-Wk Plan ↗</button>
+    <button class="block-badge" onclick="openOverview()">B2 Plan ↗</button>
   </div>
   <div class="day-tabs">
     <button class="day-tab active" data-day="mon" onclick="showDay('mon',this)">Mon</button>
@@ -210,115 +204,96 @@
 <!-- MONDAY -->
 <div id="day-mon" class="day-panel active">
   <div class="day-hero">
-    <div class="day-hero-title">Monday — Push-Up Test + Light Push</div>
-    <div class="day-hero-meta"><span class="pill pill-test">Benchmark</span><span class="pill pill-green">Deload</span><span class="pill">⏱ 50 min</span><span class="pill">📍 FFC</span></div>
-    <div class="day-hero-note">Block 1 finale week. Push-up max test at the very start (fresh chest), then a much lighter push session. Floor press drops to 80, fewer sets. Abs reduced to 2 sets per move.</div>
+    <div class="day-hero-title">Monday — Push + Abs</div>
+    <div class="day-hero-meta"><span class="pill pill-accent">Strength</span><span class="pill pill-teal">Abs ×1 of 3</span><span class="pill">⏱ 60 min</span><span class="pill">📍 FFC</span></div>
+    <div class="day-hero-note">First week of Block 2. Cable fly REPLACED with DB Pullover — new angle, no shoulder click. Floor press back to 90 (you crushed it in Block 1). Adding cooldown + foam rolling.</div>
   </div>
-  <div class="test-callout">
-    <div class="tc-label">🎯 BENCHMARK TEST — Push-Ups</div>
-    <div class="tc-text">Max reps in a single set with strict form. Standard tempo (no 3-sec down — that's training, not testing). Full range of motion: chest to floor, full lockout at top. Stop when form breaks (elbows flaring, sagging hips, partial reps). <strong>This becomes your Block 1 push-up baseline.</strong> Take a full 5-min rest after warming up before you go.</div>
+  <div class="trainer-callout">
+    <div class="tc-label">Block 2 mix-up · what's new on Monday</div>
+    <div class="tc-text"><strong>OUT:</strong> Cable chest fly — your left shoulder clicked through every set of Block 1, even at deloaded 20 lb. Time to swap.<br><strong>IN:</strong> Dumbbell Pullover — totally different shoulder pattern, hits chest + lats + serratus, lengthens under load. Better stimulus, happier shoulder.<br>Also: cooldown stretches and foam rolling are back (sorry for dropping them in Week 5 — you flagged it, you were right).</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility + Warm-Up</div><div class="phase-duration">7 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility</div><div class="phase-duration">6 min</div></div>
     <div class="ex-card" data-ex="mon-mob">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Pre-Test Mobility</div><div class="ex-sub">Get warm but don't fatigue · 7 min</div></div>
+        <div class="ex-header-info"><div class="ex-name">Pre-Push Mobility</div><div class="ex-sub">3 movements · 6 min</div></div>
         <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-mob')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Light warm-up only — don't fatigue chest before the test. Skip the band external rotation today (saves shoulder for max push-ups).</div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Band pull-apart + wall slide · 10 + 8 <a class="check-video" href="https://www.youtube.com/results?search_query=band+pull+apart+wall+slide" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Easy push-ups × 8 (warm-up reps only) <div class="mob-detail">Then rest 3-5 min before the test set</div></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs+functional+range" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Band pull-apart + wall slide · 12 + 8 <a class="check-video" href="https://www.youtube.com/results?search_query=band+pull+apart+wall+slide" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Sidelying external rotation · 5 lb × 12/side <a class="check-video" href="https://www.youtube.com/results?search_query=sidelying+external+rotation+rotator+cuff" target="_blank">▶</a></div></div></div>
         <textarea class="notes-area" placeholder="Mobility notes..." data-key="mon-mob-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num test">2</div><div class="phase-title">🎯 Push-Up Max Test</div><div class="phase-duration">10 min</div></div>
-    <div class="ex-card test-card" data-ex="mon-test">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Push-Up Max Test <span class="test-badge">BENCHMARK</span></div><div class="ex-sub">1 set · max strict reps · standard tempo</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=push+up+strict+form+max" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-test')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <div class="coaching"><span class="danger-tag">STRICT FORM RULES:</span> chest to floor (or fist) on every rep, full lockout at top, body in a straight line. The moment elbows flare wide, hips sag, or you can't get chest down — STOP. That's the rep count. Don't grind out half-reps.<br><br>Andrew, you went 16/16/16/15 in tempo push-ups on Fridays — at fast tempo with one shot, you should hit 25-35+. Be ambitious.</div>
-        <table class="log-table">
-          <thead><tr><th>Test</th><th>Reps</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">MAX</span></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:90px" placeholder="reps" data-key="mon-test-reps" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-test-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="What gave out first — chest, triceps, shoulders, core?" data-key="mon-test-notes" oninput="saveLog(this)"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Light Push Session</div><div class="phase-duration">25 min</div></div>
+    <div class="phase-header"><div class="phase-num teal">2</div><div class="phase-title">Pressing Block</div><div class="phase-duration">35 min</div></div>
 
     <div class="ex-card" data-ex="mon-fp">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Neutral-Grip DB Floor Press <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 working sets · 80 lb · normal tempo</div></div>
+        <div class="ex-header-info"><div class="ex-name">Neutral-Grip DB Floor Press</div><div class="ex-sub">3 working sets · 90 lb · RPE 7–8</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=neutral+grip+dumbbell+floor+press" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-fp')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Dropped from 90 to 80 — banking the strength gain so we come back fresh to 90+ in Block 2. Normal tempo this week (no 3-sec down). 2 working sets, not 3.</div>
+        <div class="coaching">Back to 90 lb working sets. You were here for 4 weeks at 9 RPE → 7.5 RPE — strength is consolidated. Block 2 finale: test 95.</div>
         <div class="warm-up-banner">
-          <div class="wu-label">⚙️ Warm-up · don't log</div>
-          <div class="wu-text">50 × 8</div>
+          <div class="wu-label">⚙️ Warm-up sets · don't log</div>
+          <div class="wu-text">Set 1: 50 × 8 · Set 2: 70 × 8 · Set 3: 80 × 6</div>
         </div>
         <table class="log-table">
-          <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
+          <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">80 × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fp-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">80 × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fp-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">90 × 8</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fp-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">90 × 8</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fp-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">90 × 8</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fp-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ 90 sec rest</div>
+        <div class="rest-line">⟳ Rest 90 sec between sets</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-fp-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Shoulder feel..." data-key="mon-fp-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
-    <div class="ex-card" data-ex="mon-fly">
+    <div class="ex-card" data-ex="mon-pullover">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Cable Chest Fly <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 12 · 22 lb (lighter — protect the left shoulder)</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=low+to+high+cable+chest+fly" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-fly')">✓</span><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">DB Pullover <span class="new-badge">NEW</span></div><div class="ex-sub">3 × 12 · 35 lb · slow controlled stretch</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dumbbell+pullover+chest+lat+form" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-pullover')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">26 was RPE 9 for three weeks running. Dropping to 22 to give the left shoulder a real break. Block 2 we'll try a different chest accessory entirely if it doesn't improve.</div>
+        <div class="coaching">Lie on bench, hold one DB with both hands overhead. Soft elbow bend, slowly lower DB behind your head until you feel a deep chest/lat stretch. Pull back over your chest with control. This is a totally different stimulus than fly — you'll feel it in your chest AND lats AND serratus. Start at 35 lb to find your range; we'll progress weekly.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">22 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fly-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fly-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">22 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-fly-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-fly-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">35 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-pull-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-pull-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">35 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-pull-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-pull-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">35 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-pull-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-pull-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ 60 sec rest</div>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-fly-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Left shoulder check — better at lighter weight?" data-key="mon-fly-notes" oninput="saveLog(this)"></textarea>
+        <div class="rest-line">⟳ Rest 75 sec between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-pull-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Where did you feel it most — chest, lats, serratus? Left shoulder happy?" data-key="mon-pull-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card" data-ex="mon-tri">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Cable Tricep Pushdown <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 10 · 45 lb (light)</div></div>
+        <div class="ex-header-info"><div class="ex-name">Cable Tricep Pushdown (rope)</div><div class="ex-sub">4 × 10 · 55 lb · normal tempo</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=rope+cable+tricep+pushdown" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-tri')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Dropped from 55 to 45. Focus on perfect form, elbows pinned. Banking the tricep strength.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">45 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-tri-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-tri-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">45 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-tri-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-tri-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-tri-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-tri-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-tri-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-tri-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-tri-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-tri-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-tri-4-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-tri-4-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ 60 sec rest</div>
+        <div class="rest-line">⟳ Rest 60 sec between sets</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-tri-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="mon-tri-notes" oninput="saveLog(this)"></textarea>
       </div>
@@ -326,48 +301,82 @@
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">4</div><div class="phase-title">Light Ab Block (deload)</div><div class="phase-duration">8 min</div></div>
+    <div class="phase-header"><div class="phase-num warn">3</div><div class="phase-title">Dedicated Ab Block (1 of 3 this week)</div><div class="phase-duration">10 min</div></div>
 
     <div class="ex-card" data-ex="mon-hlr">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Hanging Leg Raise <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 8 · strict form · ab straps if available</div></div>
+        <div class="ex-header-info"><div class="ex-name">Hanging Leg Raise</div><div class="ex-sub">3 × 10 · ab straps if available</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hanging+leg+raise+ab+straps+strict" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-hlr')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">8</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-hlr-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">8</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-hlr-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">10</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-hlr-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">10</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-hlr-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">AMRAP</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-hlr-3" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
+        <div class="rest-line">⟳ Rest 60 sec between sets</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-hlr-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Grip held longer this time?" data-key="mon-hlr-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Notes..." data-key="mon-hlr-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card" data-ex="mon-aw">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Ab Wheel Rollout <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 8</div></div>
+        <div class="ex-header-info"><div class="ex-name">Ab Wheel Rollout</div><div class="ex-sub">3 × 10 from knees</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=ab+wheel+rollout+from+knees" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-aw')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Dropped decline sit-ups this week (hip flexors were getting bombed). Just ab wheel + hanging leg raise — your two strongest moves.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">8</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-aw-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">8</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-aw-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">10</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-aw-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">10</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-aw-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">AMRAP</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="mon-aw-3" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
+        <div class="rest-line">⟳ Rest 60 sec between sets</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-aw-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="mon-aw-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
+
+    <div class="ex-card" data-ex="mon-cc">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Cable Crunch (kneeling) <span class="new-badge">added back for variety</span></div><div class="ex-sub">3 × 12 · 65 lb (where you ended Block 1)</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=cable+crunch+kneeling+form" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'mon-cc')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">You ended Block 1 at 65 lb × 12. Start there. Round your spine (don't hinge at hips), bring chest toward hips, 2-sec slow lower.</div>
+        <table class="log-table">
+          <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">65 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-cc-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-cc-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">65 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-cc-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-cc-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">65 × 12</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="mon-cc-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="mon-cc-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 45 sec between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="mon-cc-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Notes..." data-key="mon-cc-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Cooldown</div><div class="phase-duration">6 min</div></div>
+    <div class="recovery-block">
+      <div class="recovery-title">Push-session cooldown</div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pec doorway stretch · 45 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=pec+doorway+stretch" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Foam Rolling · 4 min <div class="mob-detail">Standard lower body routine (calves, IT bands, hamstrings, groin, quads, hips)</div></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pigeon · 60 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=pigeon+pose+stretch" target="_blank">▶</a></div></div></div>
+    </div>
   </div>
 
   <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Push-up test result? Feel fresh into deload?" data-key="mon-day-notes" oninput="saveLog(this)"></textarea>
+    <textarea class="notes-area" placeholder="DB pullover feel? Left shoulder happier?" data-key="mon-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'mon')">Mark Monday Complete</button>
 </div>
@@ -375,87 +384,135 @@
 <!-- TUESDAY -->
 <div id="day-tue" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Tuesday — Easy Run + Light Pull + Yoga</div>
-    <div class="day-hero-meta"><span class="pill pill-green">Deload</span><span class="pill pill-teal">Yoga</span><span class="pill">⏱ 60 min</span></div>
-    <div class="day-hero-note">No tempo this week (saving the 1-mile TT for Friday). Easy Z2 run only. Pull session cut to minimal — Wednesday is the pull-up test. Yoga replaces post-workout stretching.</div>
+    <div class="day-hero-title">Tuesday — Tempo + Pull</div>
+    <div class="day-hero-meta"><span class="pill pill-warn">Hybrid</span><span class="pill">⏱ 75 min</span><span class="pill">📍 FFC + Lakefront</span></div>
+    <div class="day-hero-note">Tempo at 3 × 7 min (held from Block 1 final). Deadlift back to 195. Lat pulldown added as variety alongside chest-supported row. Bicep superset has rest times explicit this time.</div>
+  </div>
+  <div class="trainer-callout">
+    <div class="tc-label">Block 2 mix-up · Tuesday</div>
+    <div class="tc-text">Adding lat pulldown to give you a different pulling angle. Chest-supported rows hit horizontal pull; pulldowns hit vertical. Both make pull-ups bigger.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility</div><div class="phase-duration">5 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility + Stability</div><div class="phase-duration">8 min</div></div>
     <div class="ex-card" data-ex="tue-mob">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Pre-Run Mobility</div><div class="ex-sub">Quick activation · 5 min</div></div>
+        <div class="ex-header-info"><div class="ex-name">Pre-Run Mobility + Pallof</div><div class="ex-sub">8 min</div></div>
         <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-mob')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
         <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Walking lunge × 5/side <a class="check-video" href="https://www.youtube.com/results?search_query=walking+lunge+warmup" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Scap pull-up + dead hang · 5 + 15 sec <a class="check-video" href="https://www.youtube.com/results?search_query=scapular+pull+up+dead+hang" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Walking lunge with rotation · 5/side <a class="check-video" href="https://www.youtube.com/results?search_query=walking+lunge+with+rotation" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Scap pull-up + dead hang · 5 + 20 sec <a class="check-video" href="https://www.youtube.com/results?search_query=scapular+pull+up+dead+hang" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pallof press · 2 × 10/side at 25 lb <a class="check-video" href="https://www.youtube.com/results?search_query=pallof+press+anti+rotation" target="_blank">▶</a></div></div></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="tue-mob-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">2</div><div class="phase-title">Easy Run · Pure Z2</div><div class="phase-duration">25 min</div></div>
+    <div class="phase-header"><div class="phase-num">2</div><div class="phase-title">Tempo Run · 3 × 7 min</div><div class="phase-duration">28 min</div></div>
     <div class="cardio-card">
-      <div class="cardio-title">Easy Z2 Lakefront Run · No tempo this week</div>
-      <div class="cardio-row"><span class="cardio-label">Duration</span><span style="font-size:13px;font-weight:500">25 min easy continuous</span></div>
-      <div class="cardio-row"><span class="cardio-label">Pace</span><span style="font-size:13px;font-weight:500">10:00-10:30/mi · whatever stays in Z2</span></div>
-      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span style="font-size:13px;font-weight:500">145 max · stay conservative</span></div>
-      <div class="cardio-row"><span class="cardio-label">Distance</span><span style="font-size:13px;font-weight:500">~2.5 mi (don't push)</span></div>
+      <div class="cardio-title">Lakefront Tempo</div>
+      <div class="cardio-row"><span class="cardio-label">Structure</span><span style="font-size:13px;font-weight:500">5 min easy → 3 × (7 min tempo, 2 min easy) → 2 min cool</span></div>
+      <div class="cardio-row"><span class="cardio-label">Easy pace</span><span style="font-size:13px;font-weight:500">~10:00/mi · HR &lt;145</span></div>
+      <div class="cardio-row"><span class="cardio-label">Tempo pace</span><span style="font-size:13px;font-weight:500">~8:45/mi · RPE 6 · HR 155–160<br><span style="color:var(--muted);font-weight:400">(Bumping pace 15s/mi after 6:52 mile)</span></span></div>
       <div class="cardio-input-row">
         <input class="log-input" inputmode="decimal" placeholder="Distance" data-key="tue-run-dist" oninput="saveLog(this)">
         <input class="log-input" inputmode="numeric" pattern="[0-9]*" placeholder="Avg HR" data-key="tue-run-hr" oninput="saveLog(this)">
-        <input class="log-input" placeholder="Avg pace" data-key="tue-run-pace" oninput="saveLog(this)">
+        <input class="log-input" placeholder="Tempo pace" data-key="tue-run-pace" oninput="saveLog(this)">
       </div>
       <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-run-rpe" oninput="saveLog(this)"></div>
-      <textarea class="notes-area" placeholder="Easy feel? Saving legs for Friday's TT?" data-key="tue-run-notes" oninput="saveLog(this)"></textarea>
+      <textarea class="notes-area" placeholder="Tempo feel, pace held..." data-key="tue-run-notes" oninput="saveLog(this)"></textarea>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Light Pull Session</div><div class="phase-duration">18 min</div></div>
+    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Pull Strength</div><div class="phase-duration">32 min</div></div>
 
     <div class="ex-card" data-ex="tue-dl">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Trap Bar Deadlift <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 sets · 165 lb · keep crisp</div></div>
+        <div class="ex-header-info"><div class="ex-name">Trap Bar Deadlift</div><div class="ex-sub">3 working sets · 195 lb · RPE 7–8</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=trap+bar+deadlift+form" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-dl')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">195 PR is banked — dropping to 165 to deload. Don't grind, just hit clean reps and move on. Block 2 starts at 200+.</div>
+        <div class="coaching">Back to 195 from the deload. We test 200 next week, 205 the week after if it feels right. Chalk + driving the floor away.</div>
         <div class="warm-up-banner">
-          <div class="wu-label">⚙️ Warm-up · don't log</div>
-          <div class="wu-text">135 × 5</div>
+          <div class="wu-label">⚙️ Warm-up sets · don't log</div>
+          <div class="wu-text">Set 1: 135 × 5 · Set 2: 165 × 5</div>
         </div>
+        <table class="log-table">
+          <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">195 × 5</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-dl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-dl-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">195 × 5</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-dl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-dl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">195 × 5</td><td><span class="rpe-tag">8</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-dl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-dl-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 2 min between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-dl-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Grip, legs, back..." data-key="tue-dl-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+
+    <div class="ex-card" data-ex="tue-pu">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Pull-Up</div><div class="ex-sub">3 sets · 10/8/AMRAP target</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=pull+up+dead+hang" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-pu')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Your max is 13 (benchmark). Continue working at 10/8/AMRAP target — building submax volume is what increases your max.</div>
+        <table class="log-table">
+          <thead><tr><th>Set</th><th>Target</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">10</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="tue-pu-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">8</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="tue-pu-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">AMRAP</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="tue-pu-3" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 90 sec between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-pu-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Notes..." data-key="tue-pu-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+
+    <div class="ex-card" data-ex="tue-lpd">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Lat Pulldown (wide grip) <span class="new-badge">NEW</span></div><div class="ex-sub">3 × 10 · 110 lb · vertical pull variety</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=wide+grip+lat+pulldown" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-lpd')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Wide overhand grip, pull bar to upper chest, elbows drive down and back. Different stimulus than rows or pull-ups. Builds the lat-to-pull-up transfer.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">165 × 5</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-dl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-dl-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">165 × 5</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-dl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-dl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">110 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-lpd-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-lpd-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">110 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-lpd-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-lpd-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">110 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-lpd-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-lpd-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ 2 min rest</div>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-dl-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Notes..." data-key="tue-dl-notes" oninput="saveLog(this)"></textarea>
+        <div class="rest-line">⟳ Rest 75 sec between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-lpd-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Form, lat squeeze..." data-key="tue-lpd-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card" data-ex="tue-row">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Chest-Supported DB Row <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 10 · 55 lb (save back for Wed pull-up test)</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=chest+supported+dumbbell+row" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-row')">✓</span><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Chest-Supported DB Row + Face Pull <span class="superset-badge">superset</span></div><div class="ex-sub">3 rounds · 70 lb × 10 row + 30 × 15 face pull</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=chest+supported+row+face+pull" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-row')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">80 lb was a big jump last week. Dropping to 55 — light. Pull-up test is Wednesday and we want your back fresh.</div>
+        <div class="coaching">You hit 80 in Block 1 but that was a "had to use 35s" moment — 70 is your actual programmed weight. Chest pinned, elbow to hip.</div>
         <table class="log-table">
-          <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
+          <thead><tr><th>Round</th><th>Row wt</th><th>Reps</th><th>FP wt</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-row-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-row-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="tue-row-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-row-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-row-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-row-1-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-fp-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-row-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-row-2-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-fp-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-row-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-row-3-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="tue-fp-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rest-line">⟳ 60 sec rest</div>
+        <div class="rest-line">⟳ Rest 60 sec after each superset round</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-row-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="tue-row-notes" oninput="saveLog(this)"></textarea>
       </div>
@@ -463,18 +520,20 @@
 
     <div class="ex-card" data-ex="tue-bi">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Bicep Superset · Hammer + Cable Curl <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 rounds · 20/hand hammer × 10 + 25 cable × 10 · no hold this week</div></div>
+        <div class="ex-header-info"><div class="ex-name">Bicep Superset · Hammer + Cable Curl <span class="superset-badge">superset</span></div><div class="ex-sub">3 rounds · 25/hand hammer + 30 cable · 10 reps each</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=hammer+curl+cable+curl" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-bi')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Lighter, fewer rounds, no 10-sec hold. Real deload. Block 2 we bring this back with progressive overload.</div>
+        <div class="coaching">10 reps each, no hold this week (deload from the 10-sec hold pattern). Hammer wt is per hand.</div>
         <table class="log-table">
-          <thead><tr><th>Round</th><th>Hammer wt/hand</th><th>Reps</th><th>Cable wt</th><th>Reps</th></tr></thead>
+          <thead><tr><th>Round</th><th>Ham/hand</th><th>Reps</th><th>Cable</th><th>Reps</th></tr></thead>
           <tbody>
             <tr><td><span class="set-badge">1</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-hc-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="10" data-key="tue-hc-1-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-cc-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="10" data-key="tue-cc-1-r" oninput="saveLog(this)"></td></tr>
             <tr><td><span class="set-badge">2</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-hc-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="10" data-key="tue-hc-2-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-cc-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="10" data-key="tue-cc-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-hc-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="10" data-key="tue-hc-3-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="tue-cc-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="10" data-key="tue-cc-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
+        <div class="rest-line">⟳ Rest 60 sec between rounds</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="tue-bi-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="tue-bi-notes" oninput="saveLog(this)"></textarea>
       </div>
@@ -482,28 +541,17 @@
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Peloton Yoga (replacing stretch)</div><div class="phase-duration">15 min</div></div>
-    <div class="peloton-card">
-      <div class="pelo-icon">🧘</div>
-      <div>
-        <div class="pelo-title">Peloton · 15 min Post-Run Yoga</div>
-        <div class="pelo-detail">Suggested: Aditi Shah 15 min Post-Run Yoga, or Anna Greenberg 15 min Hip-Focused. Replaces the stretching block. Save your foam rolling for Wed and Sat.</div>
-      </div>
-    </div>
-    <div class="ex-card" data-ex="tue-yoga">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Log your yoga class</div><div class="ex-sub">Instructor + class name</div></div>
-        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'tue-yoga')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <input class="log-input" placeholder="Instructor and class name" data-key="tue-yoga-class" oninput="saveLog(this)" style="margin-bottom:8px;">
-        <textarea class="notes-area" placeholder="How did it hit?" data-key="tue-yoga-notes" oninput="saveLog(this)"></textarea>
-      </div>
+    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Cooldown</div><div class="phase-duration">7 min</div></div>
+    <div class="recovery-block">
+      <div class="recovery-title">Pull-session cooldown</div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Calf stretch · 60 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=calf+stretch+wall" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Foam Rolling · 4 min <div class="mob-detail">Standard lower body routine</div></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Sleeper stretch · 30 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=sleeper+stretch+shoulder" target="_blank">▶</a></div></div></div>
     </div>
   </div>
 
   <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Felt fresh? Saving energy for Wed pull-up test?" data-key="tue-day-notes" oninput="saveLog(this)"></textarea>
+    <textarea class="notes-area" placeholder="Lat pulldown felt good? Tempo pace progress?" data-key="tue-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'tue')">Mark Tuesday Complete</button>
 </div>
@@ -511,119 +559,132 @@
 <!-- WEDNESDAY -->
 <div id="day-wed" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Wednesday — Pull-Up Test + Light Lower</div>
-    <div class="day-hero-meta"><span class="pill pill-test">Benchmark</span><span class="pill pill-green">Deload</span><span class="pill">⏱ 55 min</span><span class="pill">📍 FFC</span></div>
-    <div class="day-hero-note">Pull-up max test at the START (fresh back — Tue's pull session was deloaded for this exact reason). Then a lighter lower session. Foam rolling block at the end (your 4-min routine).</div>
+    <div class="day-hero-title">Wednesday — Lower + Abs</div>
+    <div class="day-hero-meta"><span class="pill pill-green">Strength</span><span class="pill pill-teal">Abs ×2 of 3</span><span class="pill">⏱ 65 min</span><span class="pill">📍 FFC</span></div>
+    <div class="day-hero-note">Goblet squat 40 lb at NORMAL tempo (your feedback: "much stronger without the 3-sec down"). RFESS added — best unilateral move for your FAI hips.</div>
   </div>
-  <div class="test-callout">
-    <div class="tc-label">🎯 BENCHMARK TEST — Pull-Ups</div>
-    <div class="tc-text">Max strict pull-ups in a single set. Pronated grip (palms away). Full dead hang at the bottom, chin over bar at the top. No kipping, no swinging, no half-reps. Stop when you can't get chin to bar. <strong>Block 1 pull-up baseline.</strong></div>
+  <div class="trainer-callout">
+    <div class="tc-label">Block 2 mix-up · Wednesday</div>
+    <div class="tc-text"><strong>IN:</strong> Rear-Foot Elevated Split Squat (RFESS) — best unilateral lift for hip development. Forces deep hip flexion in a controlled, single-leg pattern. Builds glute strength + reveals side-to-side asymmetries (likely a thing with your FAI history).<br><strong>Removed:</strong> 3-1-1 tempo on goblet squat — you noted "much stronger without." Normal tempo, focus on weight progression.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility + Activation</div><div class="phase-duration">7 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Hip Activation</div><div class="phase-duration">7 min</div></div>
     <div class="ex-card" data-ex="wed-mob">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Pre-Test Activation</div><div class="ex-sub">Warm but don't fatigue · 7 min</div></div>
+        <div class="ex-header-info"><div class="ex-name">Pre-Lower Activation</div><div class="ex-sub">3 movements · 7 min</div></div>
         <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-mob')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
         <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Banded clamshell · 12/side <a class="check-video" href="https://www.youtube.com/results?search_query=banded+clamshell" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Scap pull-up + dead hang · 5 + 20 sec <a class="check-video" href="https://www.youtube.com/results?search_query=scapular+pull+up+dead+hang" target="_blank">▶</a><div class="mob-detail">Wake up the lats for the test</div></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Easy pull-ups × 3 (warm-up only) <div class="mob-detail">Then rest 3-5 min before the test</div></div></div></div>
-        <textarea class="notes-area" placeholder="Activation notes..." data-key="wed-mob-notes" oninput="saveLog(this)"></textarea>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">World's greatest stretch · 5/side <a class="check-video" href="https://www.youtube.com/results?search_query=worlds+greatest+stretch" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Banded clamshell + lateral walk · 12 + 10 each way <a class="check-video" href="https://www.youtube.com/results?search_query=banded+clamshell+lateral+walk" target="_blank">▶</a><div class="mob-detail">Use the thicker band — you said it helped last week</div></div></div></div>
+        <textarea class="notes-area" placeholder="Hip check..." data-key="wed-mob-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num test">2</div><div class="phase-title">🎯 Pull-Up Max Test</div><div class="phase-duration">10 min</div></div>
-    <div class="ex-card test-card" data-ex="wed-test">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Pull-Up Max Test <span class="test-badge">BENCHMARK</span></div><div class="ex-sub">1 set · max strict reps · dead hang start</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=pull+up+strict+form+dead+hang" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-test')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <div class="coaching"><span class="danger-tag">STRICT FORM RULES:</span> dead hang start (full arm extension), chin clears the bar at top, no kipping or swinging, no partial reps at the end. Stop when chin can't clear.<br><br>Your best set of pull-ups in Block 1 was 10. With fresh back + test conditions, target 12-14.</div>
-        <table class="log-table">
-          <thead><tr><th>Test</th><th>Reps</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">MAX</span></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:90px" placeholder="reps" data-key="wed-test-reps" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-test-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="What gave out first — grip, lats, biceps?" data-key="wed-test-notes" oninput="saveLog(this)"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Light Lower Session</div><div class="phase-duration">25 min</div></div>
-
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Copenhagen (groin work)</div><div class="phase-duration">5 min</div></div>
     <div class="ex-card" data-ex="wed-cop">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Copenhagen Plank <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 20 sec/side (was 3 × 30)</div></div>
+        <div class="ex-header-info"><div class="ex-name">Full Copenhagen Plank</div><div class="ex-sub">3 × 25–30 sec/side</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=full+copenhagen+plank+adductor" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-cop')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Groin's been at 8 for two weeks — Copenhagen is working. Lighter this week, full effort returns in Block 2.</div>
+        <div class="coaching">Groin at 8/10 the whole block — keep doing what's working.</div>
+        <div class="rest-line">⟳ Rest 45 sec between rounds</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-cop-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Groin feel..." data-key="wed-cop-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Hold time, groin feel..." data-key="wed-cop-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Lower Body Block</div><div class="phase-duration">35 min</div></div>
+
+    <div class="ex-card" data-ex="wed-gsq">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Goblet Squat (normal tempo)</div><div class="ex-sub">3 × 10 · 40 lb · normal speed</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat+form" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-gsq')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">No more 3-1-1 — normal tempo. Your form is locked, your back tolerates the load, your strength was "much stronger" without the tempo. Time to actually progress weight: 40 this week, test 45 next week if these feel solid.</div>
+        <div class="warm-up-banner">
+          <div class="wu-label">⚙️ Warm-up · don't log</div>
+          <div class="wu-text">25 × 10</div>
+        </div>
+        <table class="log-table">
+          <thead><tr><th>Set</th><th>Target</th><th>RPE</th><th>Weight</th><th>Reps</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">40 × 10</td><td><span class="rpe-tag">6</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-gsq-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-gsq-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">40 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-gsq-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-gsq-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">40 × 10</td><td><span class="rpe-tag">7</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-gsq-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-gsq-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 75 sec between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-gsq-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="How does normal tempo feel? Ready for 45 next week?" data-key="wed-gsq-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+
+    <div class="ex-card" data-ex="wed-rfess">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Rear-Foot Elevated Split Squat <span class="new-badge">NEW</span></div><div class="ex-sub">3 × 8/side · BW or 15 lb DBs · find your range first</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=rear+foot+elevated+split+squat+form" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-rfess')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Back foot on bench, front foot far enough out that the front knee is roughly over your ankle at the bottom (NOT past your toes). Drop hips straight down, drive up through front heel. Bodyweight only this week to find form — DBs in hand from Week 2 onward. Expect noticeable side-to-side asymmetry given your hip history; that's data, not failure.</div>
+        <table class="log-table">
+          <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps/side</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">BW × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="BW/lb" data-key="wed-rfess-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rfess-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">BW × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="BW/lb" data-key="wed-rfess-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rfess-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">BW × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="BW/lb" data-key="wed-rfess-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rfess-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 60 sec between sides + sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-rfess-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Asymmetry? Which side harder? Hip pinching?" data-key="wed-rfess-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
     <div class="ex-card" data-ex="wed-legss">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Leg Extension + Leg Curl <span class="superset-badge">superset</span> <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 sets · 90 ext + 60 curl · 3 sec lower</div></div>
+        <div class="ex-header-info"><div class="ex-name">Leg Extension + Leg Curl <span class="superset-badge">superset</span></div><div class="ex-sub">3 sets · 110 ext + 75 curl · 3 sec lower on both</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=leg+extension+leg+curl+superset" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-legss')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching">Dropped from 110/75 to 90/60. Keep the 3-sec lower (it's not stressful at this load — just maintaining the pattern).</div>
         <table class="log-table">
-          <thead><tr><th>Set</th><th>Ext target</th><th>Actual</th><th>Curl target</th><th>Actual</th></tr></thead>
+          <thead><tr><th>Set</th><th>Ext</th><th>Actual</th><th>Curl</th><th>Actual</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">90 × 12</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-ext-1" oninput="saveLog(this)"></td><td class="target-cell">60 × 10</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-curl-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">90 × 12</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-ext-2" oninput="saveLog(this)"></td><td class="target-cell">60 × 10</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-curl-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">110 × 12</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-ext-1" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-curl-1" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">110 × 12</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-ext-2" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-curl-2" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">110 × 12</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-ext-3" oninput="saveLog(this)"></td><td class="target-cell">75 × 10</td><td><input class="log-input" inputmode="text" style="width:64px" placeholder="lb×reps" data-key="wed-curl-3" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
+        <div class="rest-line">⟳ Rest 60 sec after each superset</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-legss-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="wed-legss-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
 
-    <div class="ex-card" data-ex="wed-gsq">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Goblet Squat <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 8 · 30 lb · normal tempo (no 3-1-1)</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-gsq')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <div class="coaching">Light, fewer reps, normal tempo. Real deload. Block 2 we go 45+.</div>
-        <table class="log-table">
-          <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">30 × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-gsq-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-gsq-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">30 × 8</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-gsq-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-gsq-2-r" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-gsq-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Notes..." data-key="wed-gsq-notes" oninput="saveLog(this)"></textarea>
-      </div>
-    </div>
-
     <div class="ex-card" data-ex="wed-rdl">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">DB Romanian Deadlift <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 10 · 40 lb · normal tempo</div></div>
+        <div class="ex-header-info"><div class="ex-name">DB Romanian Deadlift</div><div class="ex-sub">3 × 10 · 55 lb · 3 sec lower</div></div>
         <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dumbbell+romanian+deadlift" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-rdl')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
+        <div class="coaching">Small bump from 50 → 55. Hip hinge, controlled lower, stop before lower back rounds.</div>
         <table class="log-table">
           <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">40 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-rdl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rdl-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">40 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-rdl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rdl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-rdl-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rdl-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-rdl-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rdl-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">55 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="wed-rdl-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rdl-3-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
+        <div class="rest-line">⟳ Rest 90 sec between sets</div>
         <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-rdl-rpe" oninput="saveLog(this)"></div>
         <textarea class="notes-area" placeholder="Notes..." data-key="wed-rdl-notes" oninput="saveLog(this)"></textarea>
       </div>
@@ -631,22 +692,41 @@
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Recovery + Foam Rolling</div><div class="phase-duration">8 min</div></div>
-    <div class="foam-card">
-      <div class="foam-icon">🧴</div>
-      <div>
-        <div class="foam-title">Foam Rolling · 4 min</div>
-        <div class="foam-detail">Your standard lower body routine — calves, IT bands, hamstrings, groins, quads, hips.</div>
+    <div class="phase-header"><div class="phase-num teal">4</div><div class="phase-title">Ab Block (2 of 3)</div><div class="phase-duration">8 min</div></div>
+    <div class="ex-card" data-ex="wed-rt">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Russian Twist + Woodchop <span class="superset-badge">circuit</span></div><div class="ex-sub">3 rounds · 20 twist (15 lb, feet down) + 12/side woodchop (20 lb)</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=cable+woodchop+russian+twist" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'wed-rt')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Form-locked weights from end of Block 1. Feet down on twist, locked elbows on woodchop.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Twist wt</th><th>Reps</th><th>Chop wt</th><th>Reps/side</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="wed-rt-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rt-1-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="wed-wc-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-wc-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="wed-rt-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rt-2-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="wed-wc-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-wc-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="wed-rt-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-rt-3-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="wed-wc-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="wed-wc-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 45 sec between rounds</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="wed-abs-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Notes..." data-key="wed-abs-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num green">5</div><div class="phase-title">Cooldown</div><div class="phase-duration">5 min</div></div>
     <div class="recovery-block">
+      <div class="recovery-title">Lower-session cooldown</div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Couch stretch · 90 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=couch+stretch+hip+flexor" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Foam Rolling · 4 min <div class="mob-detail">Standard lower body routine</div></div></div></div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pigeon · 90 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=pigeon+pose" target="_blank">▶</a></div></div></div>
     </div>
   </div>
 
   <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Pull-up test result? Energy?" data-key="wed-day-notes" oninput="saveLog(this)"></textarea>
+    <textarea class="notes-area" placeholder="RFESS asymmetry? Goblet w/ normal tempo?" data-key="wed-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'wed')">Mark Wednesday Complete</button>
 </div>
@@ -654,18 +734,67 @@
 <!-- THURSDAY -->
 <div id="day-thu" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Thursday — Hip Yoga (Full Replacement)</div>
-    <div class="day-hero-meta"><span class="pill pill-green">Recovery</span><span class="pill pill-teal">Yoga</span><span class="pill">⏱ 40 min</span></div>
-    <div class="day-hero-note">Replacing the structured hip + shoulder mobility blocks with a long Peloton yoga session. Hips have been at 4-5/10 for the whole block — long yoga sessions move that more than 5-minute warm-ups. Then easy walk if you want.</div>
+    <div class="day-hero-title">Thursday — Recovery + Mobility + Short Yoga</div>
+    <div class="day-hero-meta"><span class="pill pill-green">Recovery</span><span class="pill pill-travel">Travel PM</span><span class="pill">⏱ 45 min</span></div>
+    <div class="day-hero-note">Back to your preferred Thursday format (per your feedback): aerobic flush + structured hip mobility + shoulder mobility + a SHORT 15-min yoga to top it off. Drive to Cincinnati tonight.</div>
+  </div>
+  <div class="trainer-callout">
+    <div class="tc-label">Travel logistics — read in advance</div>
+    <div class="tc-text">Work out at FFC in the morning before work or whenever fits. Drive to Cincinnati Thursday evening. Friday session is at Black Sheep 24/7 — I've designed it to work with their standard equipment. Saturday's hill run at parents' has its own protocol (foot care emphasized — your foot was 6/10 last week).</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">1</div><div class="phase-title">Peloton Hip Yoga</div><div class="phase-duration">30 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Aerobic Flush · pick one</div><div class="phase-duration">20 min</div></div>
+    <div class="cardio-card">
+      <div class="cardio-title">Low-intensity movement · HR &lt;130</div>
+      <div class="cardio-row"><span class="cardio-label">Option A</span><span style="font-size:13px">20 min Peloton low-impact ride</span></div>
+      <div class="cardio-row"><span class="cardio-label">Option B</span><span style="font-size:13px">20 min lakefront walk</span></div>
+      <div class="cardio-row"><span class="cardio-label">Option C</span><span style="font-size:13px">20 min easy swim</span></div>
+      <textarea class="notes-area" placeholder="Which option..." data-key="thu-flush-notes" oninput="saveLog(this)"></textarea>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">FAI Hip Mobility Flow</div><div class="phase-duration">10 min</div></div>
+    <div class="ex-card" data-ex="thu-hip">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Hip Mobility Sequence</div><div class="ex-sub">5 movements</div></div>
+        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'thu-hip')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction both legs <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">90/90 hold + lift-offs · 60 sec + 5 lift-offs/side <a class="check-video" href="https://www.youtube.com/results?search_query=90+90+hip+lift+off" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Banded hip distraction · 2 min/side <a class="check-video" href="https://youtu.be/2b3lbYf8SuE" target="_blank">▶</a><div class="mob-detail">Try heavier band at FFC — you noted home bands aren't strong enough</div></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pigeon · 90 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=pigeon+pose" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Couch stretch · 90 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=couch+stretch" target="_blank">▶</a></div></div></div>
+        <textarea class="notes-area" placeholder="Hip mobility notes..." data-key="thu-hip-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Shoulder Mobility</div><div class="phase-duration">5 min</div></div>
+    <div class="ex-card" data-ex="thu-sh">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Shoulder Maintenance</div><div class="ex-sub">4 movements</div></div>
+        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'thu-sh')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Wall slides × 10 <a class="check-video" href="https://www.youtube.com/results?search_query=wall+slides" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Thread the needle × 8/side <a class="check-video" href="https://www.youtube.com/results?search_query=thread+the+needle" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Sleeper stretch · 30 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=sleeper+stretch" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Band external rotation × 15/side <a class="check-video" href="https://www.youtube.com/results?search_query=band+external+rotation" target="_blank">▶</a></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Short Yoga (your ask)</div><div class="phase-duration">15 min</div></div>
     <div class="peloton-card">
       <div class="pelo-icon">🧘</div>
       <div>
-        <div class="pelo-title">Peloton · 30 min Hip Focus Yoga</div>
-        <div class="pelo-detail">Suggested: Anna Greenberg 30 min Hip-Focused Yoga, or Denis Morton 30 min Yin Yoga (hip openers). Long holds — this is where FAI mobility actually changes over time.</div>
+        <div class="pelo-title">Peloton · 15 min Hip-Focused Yoga</div>
+        <div class="pelo-detail">Suggested: Anna Greenberg 15 min Hip-Focused, or Aditi Shah 15 min Slow Flow. Shorter version of last week's 30-min session.</div>
       </div>
     </div>
     <div class="ex-card" data-ex="thu-yoga">
@@ -675,24 +804,13 @@
       </div>
       <div class="ex-body">
         <input class="log-input" placeholder="Instructor and class name" data-key="thu-yoga-class" oninput="saveLog(this)" style="margin-bottom:8px;">
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="thu-yoga-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Hip feel after? Which poses were toughest?" data-key="thu-yoga-notes" oninput="saveLog(this)"></textarea>
+        <textarea class="notes-area" placeholder="Notes..." data-key="thu-yoga-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
-  <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">2</div><div class="phase-title">Easy Movement (optional)</div><div class="phase-duration">10 min</div></div>
-    <div class="cardio-card">
-      <div class="cardio-title">Optional walk · HR &lt;120</div>
-      <div class="cardio-row"><span class="cardio-label">Duration</span><span style="font-size:13px">10-15 min easy walk</span></div>
-      <div class="cardio-row"><span class="cardio-label">Goal</span><span style="font-size:13px">Blood flow + fresh air, nothing more</span></div>
-      <textarea class="notes-area" placeholder="Walked? Skipped?" data-key="thu-walk-notes" oninput="saveLog(this)"></textarea>
-    </div>
-  </div>
-
   <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Hips feel different after the long yoga?" data-key="thu-day-notes" oninput="saveLog(this)"></textarea>
+    <textarea class="notes-area" placeholder="Like the old format better? Heavy band at FFC for hip distraction?" data-key="thu-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'thu')">Mark Thursday Complete</button>
 </div>
@@ -700,155 +818,129 @@
 <!-- FRIDAY -->
 <div id="day-fri" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Friday — 1-Mile TT + Light Circuit</div>
-    <div class="day-hero-meta"><span class="pill pill-test">Benchmark</span><span class="pill pill-green">Deload</span><span class="pill">⏱ 55 min</span></div>
-    <div class="day-hero-note">1-mile time trial at the start (fresh legs after deloaded week). Then a 2-round light circuit (was 4 rounds at heavy weight). Ab finisher cut to single set each.</div>
+    <div class="day-hero-title">Friday — Black Sheep 24/7 (Cincinnati)</div>
+    <div class="day-hero-meta"><span class="pill pill-travel">Travel</span><span class="pill pill-warn">Full body</span><span class="pill">⏱ 55 min</span><span class="pill">📍 BSP 24/7</span></div>
+    <div class="day-hero-note">New gym, different equipment options. Designed as a flexible full-body session with substitutions for whatever they do or don't have. Goal: keep the hybrid stimulus going during travel without trying to replicate FFC exactly.</div>
   </div>
-  <div class="test-callout">
-    <div class="tc-label">🎯 BENCHMARK TEST — 1-Mile Time Trial</div>
-    <div class="tc-text">Lakefront flat section, or FFC treadmill if &gt;75°F. Run 1 mile as fast as you sustainably can. Strategy: don't go out too hot — your tempo pace is ~9:00/mi at RPE 6, so target somewhere around 7:30-8:30/mi for the TT. Quarter-mile splits help: try negative splits (each quarter faster than the last).<br><br><strong>Block 1 mile baseline.</strong> This sets the bar for race pace work in Block 2 if you choose to train for distance.</div>
+  <div class="trainer-callout">
+    <div class="tc-label">Black Sheep 24/7 — equipment strategy</div>
+    <div class="tc-text">Black Sheep is a performance-focused facility, so they likely have <strong>kettlebells, trap bar, full DBs, racks, and machines</strong>. The session below uses moves that work with standard equipment. If anything's missing, I've listed substitutions inline. Focus: full body, moderate intensity, similar feel to your Friday circuits but with new exercises that take advantage of being in a different gym.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Warm-Up</div><div class="phase-duration">12 min</div></div>
-    <div class="ex-card" data-ex="fri-wu">
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Mobility</div><div class="phase-duration">6 min</div></div>
+    <div class="ex-card" data-ex="fri-mob">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Pre-TT Warm-Up</div><div class="ex-sub">Critical for a real time trial · 12 min</div></div>
-        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-wu')">✓</span><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Full Body Mobility</div><div class="ex-sub">6 min</div></div>
+        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-mob')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching"><span class="accent-tag">Don't skip this.</span> A proper warm-up adds 5-10 seconds to your mile time. 1-mile TT cold-start = bad time.</div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">5 min easy jog @ 10:30+/mi pace</div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Walking lunges × 5/side + leg swings × 10/side <a class="check-video" href="https://www.youtube.com/results?search_query=walking+lunges+leg+swings+warmup" target="_blank">▶</a></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">4 × 20-second strides @ tempo pace <div class="mob-detail">Run hard for 20 sec, walk for 40 sec recovery. Wakes up your fast-twitch fibers.</div></div></div></div>
-        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">2-3 min walk to fully recover before the TT</div></div></div>
-        <textarea class="notes-area" placeholder="Warm-up feel..." data-key="fri-wu-notes" oninput="saveLog(this)"></textarea>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">World's greatest stretch · 5/side <a class="check-video" href="https://www.youtube.com/results?search_query=worlds+greatest+stretch" target="_blank">▶</a></div></div></div>
+        <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Band pull-apart + wall slide · 10 + 8 <a class="check-video" href="https://www.youtube.com/results?search_query=band+pull+apart+wall+slide" target="_blank">▶</a></div></div></div>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num test">2</div><div class="phase-title">🎯 1-Mile Time Trial</div><div class="phase-duration">10 min</div></div>
-    <div class="ex-card test-card" data-ex="fri-test">
+    <div class="phase-header"><div class="phase-num teal">2</div><div class="phase-title">Strength Block · pick what equipment they have</div><div class="phase-duration">25 min</div></div>
+
+    <div class="ex-card" data-ex="fri-kb">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">1-Mile Time Trial <span class="test-badge">BENCHMARK</span></div><div class="ex-sub">All-out effort · 1 mile · log time</div></div>
-        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-test')">✓</span><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Kettlebell Swing <span class="new-badge">NEW exercise</span></div><div class="ex-sub">4 × 15 · 35–53 lb (whatever they have available)</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=kettlebell+swing+form+hip+hinge" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-kb')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <div class="coaching"><span class="danger-tag">Pacing strategy:</span> first quarter mile around tempo pace (~9:00), then build. Second quarter slightly faster. Third quarter at the edge. Last quarter empty the tank. Common mistake: going out at 7:00 pace and dying at mile 0.5. Don't do that.</div>
+        <div class="coaching">Russian style (chest height, NOT overhead — saves your shoulder). Hip hinge dominant — DRIVE with the glutes, KB just floats. Standing tall and squeezing the glutes at the top is the rep. Great Friday move since you don't usually do this. <strong>Sub if no KB:</strong> DB swing with single DB held by both hands, OR replace with 4 × 8 trap bar deadlift at moderate weight.</div>
         <table class="log-table">
-          <thead><tr><th>Test</th><th>Time</th><th>Avg HR</th></tr></thead>
+          <thead><tr><th>Set</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
           <tbody>
-            <tr><td><span class="set-badge">1mi</span></td><td><input class="log-input" inputmode="text" style="width:90px" placeholder="mm:ss" data-key="fri-test-time" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:60px" placeholder="bpm" data-key="fri-test-hr" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">1</span></td><td class="target-cell">35 × 15</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-kb-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="fri-kb-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td class="target-cell">35 × 15</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-kb-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="fri-kb-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td class="target-cell">35 × 15</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-kb-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="fri-kb-3-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">4</span></td><td class="target-cell">35 × 15</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-kb-4-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="fri-kb-4-r" oninput="saveLog(this)"></td></tr>
           </tbody>
         </table>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-test-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Splits if known. Pacing strategy how it went. What faded first — legs or lungs?" data-key="fri-test-notes" oninput="saveLog(this)"></textarea>
+        <div class="rest-line">⟳ Rest 75 sec between sets</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-kb-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="KB weight available? Form feel?" data-key="fri-kb-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+
+    <div class="ex-card" data-ex="fri-dbp">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">DB Floor Press + Single-Arm Row <span class="superset-badge">superset</span></div><div class="ex-sub">3 rounds · 80 lb DB press × 8 + 60 lb row × 10/side</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=dumbbell+floor+press" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-dbp')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Slightly lighter floor press (80 vs 90) to account for unfamiliar gym. Single-arm row at 60. <strong>Sub if no neutral grip DBs:</strong> regular DB floor press, just be careful of shoulder position. <strong>Sub if no bench setup:</strong> push-ups for the press.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Press wt</th><th>Reps</th><th>Row wt</th><th>Reps/s</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-fp-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-fp-1-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-fr-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-fr-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-fp-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-fp-2-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-fr-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-fr-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-fp-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-fp-3-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-fr-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-fr-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 75 sec between superset rounds</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-dbp-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Equipment notes — what they had..." data-key="fri-dbp-notes" oninput="saveLog(this)"></textarea>
+      </div>
+    </div>
+
+    <div class="ex-card" data-ex="fri-gob">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-header-info"><div class="ex-name">Goblet Squat + Push-Up <span class="superset-badge">superset</span></div><div class="ex-sub">3 rounds · 40 lb DB × 12 squat + 15 push-ups</div></div>
+        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-gob')">✓</span><span class="toggle-icon">+</span></div>
+      </div>
+      <div class="ex-body">
+        <div class="coaching">Same goblet weight as Wed (locked at 40 lb), bodyweight push-ups for upper.</div>
+        <table class="log-table">
+          <thead><tr><th>Round</th><th>Gob wt</th><th>Reps</th><th>Push-up</th></tr></thead>
+          <tbody>
+            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-gob-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-gob-1-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-pup-1-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-gob-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-gob-2-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-pup-2-r" oninput="saveLog(this)"></td></tr>
+            <tr><td><span class="set-badge">3</span></td><td><input class="log-input" inputmode="decimal" style="width:50px" placeholder="lb" data-key="fri-gob-3-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:44px" placeholder="reps" data-key="fri-gob-3-r" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-pup-3-r" oninput="saveLog(this)"></td></tr>
+          </tbody>
+        </table>
+        <div class="rest-line">⟳ Rest 60 sec between rounds</div>
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-gob-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="Notes..." data-key="fri-gob-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">3</div><div class="phase-title">Light 2-Round Circuit</div><div class="phase-duration">22 min</div></div>
-    <div style="background:var(--card2);border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:12px;font-size:12px;color:var(--muted);line-height:1.6;">
-      A → B → C → D in sequence. 90 sec rest between rounds. <strong>2 rounds total</strong> (was 4). This is a light maintenance session after the TT.
-    </div>
-
-    <div class="ex-card" data-ex="fri-pu">
+    <div class="phase-header"><div class="phase-num warn">3</div><div class="phase-title">Conditioning Finisher · pick one</div><div class="phase-duration">10 min</div></div>
+    <div class="ex-card" data-ex="fri-cond">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">A · Push-Up <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 12 · normal tempo (no 3-sec down)</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=push+up+form" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-pu')">✓</span><span class="toggle-icon">+</span></div>
+        <div class="ex-header-info"><div class="ex-name">Conditioning Option</div><div class="ex-sub">Pick based on what BSP has</div></div>
+        <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-cond')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <table class="log-table">
-          <thead><tr><th>Round</th><th>Target</th><th>Reps</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">12</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="fri-pu-1" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">12</td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:70px" placeholder="reps" data-key="fri-pu-2" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <textarea class="notes-area" placeholder="Notes..." data-key="fri-pu-notes" oninput="saveLog(this)"></textarea>
-      </div>
-    </div>
-
-    <div class="ex-card" data-ex="fri-gsq">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">B · Goblet Squat <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 10 · 30 lb</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=goblet+squat" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-gsq')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <table class="log-table">
-          <thead><tr><th>Round</th><th>Target</th><th>Weight</th><th>Reps</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">30 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-gsq-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="fri-gsq-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">30 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-gsq-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:48px" placeholder="reps" data-key="fri-gsq-2-r" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <textarea class="notes-area" placeholder="Notes..." data-key="fri-gsq-notes" oninput="saveLog(this)"></textarea>
-      </div>
-    </div>
-
-    <div class="ex-card" data-ex="fri-row">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">C · Single-Arm DB Row <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × 10/side · 50 lb</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=single+arm+dumbbell+row" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-row')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <table class="log-table">
-          <thead><tr><th>Round</th><th>Target</th><th>Weight</th><th>Reps/side</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">1</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-row-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-row-1-r" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td class="target-cell">50 × 10</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-row-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-row-2-r" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <textarea class="notes-area" placeholder="Form clean at 50?" data-key="fri-row-notes" oninput="saveLog(this)"></textarea>
-      </div>
-    </div>
-
-    <div class="ex-card" data-ex="fri-carry">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">D · Farmer Carry <span class="deload-badge">DELOAD</span></div><div class="ex-sub">2 × full turf · 40 lb each hand</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=farmer+carry+dumbbell" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-carry')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <div class="coaching">Lighter carry (40 vs 50). Just a movement maintenance round.</div>
-        <table class="log-table">
-          <thead><tr><th>Round</th><th>Weight/hand</th><th>Distance</th></tr></thead>
-          <tbody>
-            <tr><td><span class="set-badge">1</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-carry-1-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="text" style="width:90px" placeholder="turf" data-key="fri-carry-1-d" oninput="saveLog(this)"></td></tr>
-            <tr><td><span class="set-badge">2</span></td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-carry-2-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="text" style="width:90px" placeholder="turf" data-key="fri-carry-2-d" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <div class="rpe-row"><span class="rpe-label">Circuit overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-circuit-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Circuit feel..." data-key="fri-carry-notes" oninput="saveLog(this)"></textarea>
+        <div class="coaching">Whichever sounds good and matches their equipment. All targets are RPE 7 efforts — not max.</div>
+        <div class="cardio-row"><span class="cardio-label">Option A</span><span style="font-size:13px">10-min rower · steady RPE 7</span></div>
+        <div class="cardio-row"><span class="cardio-label">Option B</span><span style="font-size:13px">10 × 1 min @ tempo / 1 min walk on treadmill</span></div>
+        <div class="cardio-row"><span class="cardio-label">Option C</span><span style="font-size:13px">5 rounds: 20 KB swings + 200m row · sub assault bike for row if available</span></div>
+        <div class="cardio-row"><span class="cardio-label">Option D</span><span style="font-size:13px">Sled push if they have one — 6 × 30 yds heavy push</span></div>
+        <input class="log-input" placeholder="Which option you picked + what you logged" data-key="fri-cond-choice" oninput="saveLog(this)" style="margin: 8px 0;">
+        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-cond-rpe" oninput="saveLog(this)"></div>
+        <textarea class="notes-area" placeholder="How it felt..." data-key="fri-cond-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">4</div><div class="phase-title">Quick Ab Finisher <span class="deload-badge">DELOAD</span></div><div class="phase-duration">6 min</div></div>
-    <div class="ex-card" data-ex="fri-abs">
-      <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Russian Twist + Woodchop (1 set each)</div><div class="ex-sub">1 × 20 twist (15 lb, feet down) + 1 × 12/side woodchop (20 lb)</div></div>
-        <div class="ex-right"><a class="video-btn" href="https://www.youtube.com/results?search_query=cable+woodchop" target="_blank">▶ Demo</a><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'fri-abs')">✓</span><span class="toggle-icon">+</span></div>
-      </div>
-      <div class="ex-body">
-        <div class="coaching">Just a quick maintenance set of each. Form-locked weights from last week.</div>
-        <table class="log-table">
-          <thead><tr><th>Exercise</th><th>Weight</th><th>Reps</th></tr></thead>
-          <tbody>
-            <tr><td>Russian Twist</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-rt-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-rt-r" oninput="saveLog(this)"></td></tr>
-            <tr><td>Woodchop</td><td><input class="log-input" inputmode="decimal" style="width:54px" placeholder="lb" data-key="fri-wc-w" oninput="saveLog(this)"></td><td><input class="log-input" inputmode="numeric" pattern="[0-9]*" style="width:54px" placeholder="reps" data-key="fri-wc-r" oninput="saveLog(this)"></td></tr>
-          </tbody>
-        </table>
-        <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="fri-abs-rpe" oninput="saveLog(this)"></div>
-        <textarea class="notes-area" placeholder="Notes..." data-key="fri-abs-notes" oninput="saveLog(this)"></textarea>
-      </div>
+    <div class="phase-header"><div class="phase-num green">4</div><div class="phase-title">Cooldown</div><div class="phase-duration">6 min</div></div>
+    <div class="recovery-block">
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pigeon · 90 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=pigeon+stretch" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Foam Rolling · 4 min <div class="mob-detail">If they have foam rollers; otherwise lacrosse ball or skip and do at parents'</div></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip flexor · 60 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=low+lunge+hip+flexor" target="_blank">▶</a></div></div></div>
     </div>
   </div>
 
   <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="1-mile time?! How did pacing go?" data-key="fri-day-notes" oninput="saveLog(this)"></textarea>
+    <textarea class="notes-area" placeholder="How was BSP? What equipment did they have? Energy?" data-key="fri-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'fri')">Mark Friday Complete</button>
 </div>
@@ -856,59 +948,65 @@
 <!-- SATURDAY -->
 <div id="day-sat" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Saturday — Easy 4 Miles</div>
-    <div class="day-hero-meta"><span class="pill pill-green">Deload</span><span class="pill">⏱ 60 min</span><span class="pill">📍 Lakefront or treadmill</span></div>
-    <div class="day-hero-note">Long run cut from 7 to 4 miles. Pure easy Z2 effort. Heat protocol still applies — early start or treadmill if &gt;75°F. After the brutal hot run two weeks ago, we're going gentle.</div>
+    <div class="day-hero-title">Saturday — Cincinnati Hill Run</div>
+    <div class="day-hero-meta"><span class="pill pill-travel">Travel</span><span class="pill pill-warn">Hills</span><span class="pill">⏱ 55 min</span><span class="pill">📍 Parents' neighborhood</span></div>
+    <div class="day-hero-note">Rolling hills run. Different stimulus than flat lakefront — hills naturally build strength AND aerobic capacity. Your foot dropped from 7 → 6/10 last week — emphasis on calf/foot prep + controlled downhills.</div>
+  </div>
+  <div class="trainer-callout">
+    <div class="tc-label">Hill running protocol — read before you go</div>
+    <div class="tc-text"><strong>Foot watch:</strong> foot/calf score dropped from 7 to 6 last week. Hills + parents' running surface = higher impact than lakefront. Steps to protect:<br>
+    1. Extra calf warm-up: 20 calf raises (instead of 15) + ankle CARs before running<br>
+    2. <strong>Don't bomb the downhills.</strong> Downhills hammer the shins and feet way harder than uphills. Shorten stride and let the hill do the work. If you feel ANY shin tension, walk.<br>
+    3. Frozen water bottle on the plantar after the run<br>
+    4. Distance target: 4-5 mi, not 7. Hills add stress.<br>
+    5. HR will spike on uphills — that's fine. Walk the steep ones if needed.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Pre-Run Mobility</div><div class="phase-duration">5 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Pre-Run Mobility · extra calf focus</div><div class="phase-duration">8 min</div></div>
     <div class="recovery-block">
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip CARs · 5/direction <a class="check-video" href="https://www.youtube.com/results?search_query=hip+CARs" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Ankle CARs · 10 circles each direction/foot <a class="check-video" href="https://www.youtube.com/results?search_query=ankle+CARs+mobility" target="_blank">▶</a><div class="mob-detail">Important pre-hill — ankles take a beating downhill</div></div></div></div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Leg swings · 10 each direction <a class="check-video" href="https://www.youtube.com/results?search_query=leg+swings" target="_blank">▶</a></div></div></div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Walking lunges × 10 <a class="check-video" href="https://www.youtube.com/results?search_query=walking+lunges" target="_blank">▶</a></div></div></div>
-      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Walk 5 min before running</div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Calf raises × 20 (extra reps for hill prep) <a class="check-video" href="https://www.youtube.com/results?search_query=standing+calf+raise" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">5 min easy walk before running</div></div></div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">2</div><div class="phase-title">Easy Run · 4 miles</div><div class="phase-duration">42 min</div></div>
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Hill Run · 4–5 mi</div><div class="phase-duration">40 min</div></div>
     <div class="cardio-card">
-      <div class="cardio-title">Easy 4-Mile Run · Pure Z2 · RPE 3</div>
-      <div class="cardio-row"><span class="cardio-label">Distance</span><span style="font-size:13px;font-weight:500">4 miles</span></div>
-      <div class="cardio-row"><span class="cardio-label">Target pace</span><span style="font-size:13px;font-weight:500">10:15-10:30/mi</span></div>
-      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span style="font-size:13px;font-weight:500">145 max · walk if over</span></div>
-      <div class="cardio-row"><span class="cardio-label">Heat</span><span style="font-size:13px;font-weight:500">Treadmill if &gt;75°F</span></div>
-      <div class="cardio-row"><span class="cardio-label">Start time</span><span style="font-size:13px;font-weight:500">⏰ Before 7 AM if outside</span></div>
+      <div class="cardio-title">Rolling Hills · effort-based not pace-based</div>
+      <div class="cardio-row"><span class="cardio-label">Distance</span><span style="font-size:13px;font-weight:500">4–5 miles</span></div>
+      <div class="cardio-row"><span class="cardio-label">Pace target</span><span style="font-size:13px;font-weight:500">Don't worry about pace · effort RPE 4-5</span></div>
+      <div class="cardio-row"><span class="cardio-label">Uphills</span><span style="font-size:13px;font-weight:500">RPE 6-7 ok · walk steepest if needed</span></div>
+      <div class="cardio-row"><span class="cardio-label">Downhills</span><span style="font-size:13px;font-weight:500">⚠️ Shorten stride · don't bomb it · protect feet</span></div>
+      <div class="cardio-row"><span class="cardio-label">HR ceiling</span><span style="font-size:13px;font-weight:500">155 sustained · 165 on hills is fine</span></div>
       <div class="cardio-input-row">
         <input class="log-input" inputmode="decimal" placeholder="Distance" data-key="sat-run-dist" oninput="saveLog(this)">
         <input class="log-input" inputmode="numeric" pattern="[0-9]*" placeholder="Avg HR" data-key="sat-run-hr" oninput="saveLog(this)">
         <input class="log-input" placeholder="Avg pace" data-key="sat-run-pace" oninput="saveLog(this)">
       </div>
       <div class="rpe-row"><span class="rpe-label">Overall RPE</span><input class="log-input rpe-input" inputmode="decimal" placeholder="1-10" data-key="sat-run-rpe" oninput="saveLog(this)"></div>
-      <textarea class="notes-area" placeholder="Easy feel? Recovery from Fri TT good?" data-key="sat-run-notes" oninput="saveLog(this)"></textarea>
+      <textarea class="notes-area" placeholder="How were the hills? Foot/calf check? Any shin tension on downhills?" data-key="sat-run-notes" oninput="saveLog(this)"></textarea>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num green">3</div><div class="phase-title">Post-Run Recovery + Foam Rolling</div><div class="phase-duration">12 min</div></div>
-    <div class="foam-card">
-      <div class="foam-icon">🧴</div>
-      <div>
-        <div class="foam-title">Foam Rolling · 4 min</div>
-        <div class="foam-detail">Your standard lower body routine.</div>
-      </div>
-    </div>
+    <div class="phase-header"><div class="phase-num green">3</div><div class="phase-title">Post-Run Recovery</div><div class="phase-duration">10 min</div></div>
     <div class="recovery-block">
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Walk 3-5 min until HR &lt;110</div></div></div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Calf stretch · 90 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=calf+stretch" target="_blank">▶</a></div></div></div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Hip flexor · 60 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=hip+flexor+stretch" target="_blank">▶</a></div></div></div>
       <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Pigeon · 60 sec/side <a class="check-video" href="https://www.youtube.com/results?search_query=pigeon+pose" target="_blank">▶</a></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Foam Rolling · 4 min (if available at parents') <div class="mob-detail">Otherwise lacrosse ball or tennis ball for trigger points</div></div></div></div>
+      <div class="mob-row"><div class="mob-check" onclick="toggleCheck(this)">✓</div><div class="mob-content"><div class="mob-name">Frozen water bottle roll · 5 min on each foot <div class="mob-detail">Plantar care — extra important after hill running</div></div></div></div>
     </div>
   </div>
 
   <div class="day-notes-wrap"><div class="day-notes-label">Day notes</div>
-    <textarea class="notes-area" placeholder="Easy 4 mi feel? Legs recovered from Fri TT?" data-key="sat-day-notes" oninput="saveLog(this)"></textarea>
+    <textarea class="notes-area" placeholder="Hills felt? Foot care?" data-key="sat-day-notes" oninput="saveLog(this)"></textarea>
   </div>
   <button class="day-complete-btn" onclick="markComplete(this,'sat')">Mark Saturday Complete</button>
 </div>
@@ -916,47 +1014,39 @@
 <!-- SUNDAY -->
 <div id="day-sun" class="day-panel">
   <div class="day-hero">
-    <div class="day-hero-title">Sunday — Block 1 Reflection + Restorative Yoga</div>
-    <div class="day-hero-meta"><span class="pill pill-green">Rest</span><span class="pill pill-teal">Yoga</span><span class="pill">⏱ 45 min</span></div>
-    <div class="day-hero-note">Final day of Block 1. Restorative yoga + the most important reflection of the block — what worked, what didn't, what we're chasing in Block 2.</div>
+    <div class="day-hero-title">Sunday — Drive Back + Rest</div>
+    <div class="day-hero-meta"><span class="pill pill-green">Rest</span><span class="pill pill-travel">Travel</span></div>
+    <div class="day-hero-note">Drive Cincinnati → Chicago. Long sit means stiff hips. Build in 1-2 stops for short walks. Optional Peloton restorative yoga when you get home.</div>
   </div>
 
-  <div class="block-progress">
-    <div class="bp-title">📊 Block 1 Baseline Numbers</div>
-    <div class="bp-row"><span class="bp-label">Floor Press 3RM (peak)</span><span class="bp-value">90 lb × 8 × 3</span></div>
-    <div class="bp-row"><span class="bp-label">Trap Bar Deadlift (peak)</span><span class="bp-value">195 lb × 5 × 3</span></div>
-    <div class="bp-row"><span class="bp-label">Goblet Squat (peak)</span><span class="bp-value">40 lb × 10 × 3</span></div>
-    <div class="bp-row"><span class="bp-label">Tue Row (peak)</span><span class="bp-value">80 lb × 10 × 3</span></div>
-    <div class="bp-row"><span class="bp-label">Tempo pace</span><span class="bp-value">9:07/mi for 3.4 mi</span></div>
-    <div class="bp-row"><span class="bp-label">Long run</span><span class="bp-value">7 mi</span></div>
-    <div class="bp-row"><span class="bp-label">Push-up test</span><span class="bp-value">TBD Mon</span></div>
-    <div class="bp-row"><span class="bp-label">Pull-up test</span><span class="bp-value">TBD Wed</span></div>
-    <div class="bp-row"><span class="bp-label">1-mile TT</span><span class="bp-value">TBD Fri</span></div>
+  <div class="trainer-callout">
+    <div class="tc-label">Travel rest day tips</div>
+    <div class="tc-text">Long drives wreck your hips. Two protective moves:<br>1. Every 90 min driving — stop, get out, walk 2-3 min, do 5 hip CARs each side<br>2. When you get home: even 15 min of restorative yoga or just lying-down stretching is huge. Hips will thank you Monday.</div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num warn">1</div><div class="phase-title">Restorative Yoga</div><div class="phase-duration">30 min</div></div>
+    <div class="phase-header"><div class="phase-num">1</div><div class="phase-title">Optional Yoga</div><div class="phase-duration">15–30 min</div></div>
     <div class="peloton-card">
       <div class="pelo-icon">🧘</div>
       <div>
-        <div class="pelo-title">Peloton · 30 min Restorative Yoga</div>
-        <div class="pelo-detail">Suggested: Anna Greenberg or Ross Rayburn 30-min Restorative. Long passive holds. End of block recovery.</div>
+        <div class="pelo-title">Peloton · 15-30 min Restorative</div>
+        <div class="pelo-detail">Optional but smart after a driving day. Suggested: Anna Greenberg or Ross Rayburn restorative.</div>
       </div>
     </div>
     <div class="ex-card" data-ex="sun-yoga">
       <div class="ex-header" onclick="toggleEx(this)">
-        <div class="ex-header-info"><div class="ex-name">Log your yoga class</div><div class="ex-sub">Instructor + class name</div></div>
+        <div class="ex-header-info"><div class="ex-name">Log if you did yoga</div><div class="ex-sub">Optional</div></div>
         <div class="ex-right"><span class="ex-check" onclick="event.stopPropagation();toggleExCheck(this,'sun-yoga')">✓</span><span class="toggle-icon">+</span></div>
       </div>
       <div class="ex-body">
-        <input class="log-input" placeholder="Instructor and class name" data-key="sun-yoga-class" oninput="saveLog(this)" style="margin-bottom:8px;">
+        <input class="log-input" placeholder="Class or skipped" data-key="sun-yoga-class" oninput="saveLog(this)" style="margin-bottom:8px;">
         <textarea class="notes-area" placeholder="Notes..." data-key="sun-yoga-notes" oninput="saveLog(this)"></textarea>
       </div>
     </div>
   </div>
 
   <div class="phase-block">
-    <div class="phase-header"><div class="phase-num">2</div><div class="phase-title">Weekly Body Check</div></div>
+    <div class="phase-header"><div class="phase-num warn">2</div><div class="phase-title">Weekly Body Check</div></div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px;">
       <div class="check-row"><span class="check-label">Right shoulder</span><div class="rating-btns" id="rshoulder"></div></div>
       <div class="check-row"><span class="check-label">Left shoulder</span><div class="rating-btns" id="lshoulder"></div></div>
@@ -965,43 +1055,31 @@
       <div class="check-row"><span class="check-label">Foot / calf</span><div class="rating-btns" id="foot"></div></div>
       <div class="check-row"><span class="check-label">Avg sleep (hrs)</span><div class="rating-btns" id="sleep"></div></div>
     </div>
-  </div>
-
-  <div class="phase-block">
-    <div class="phase-header"><div class="phase-num teal">3</div><div class="phase-title">Block 1 Reflection · Important</div></div>
-    <div class="trainer-callout">
-      <div class="tc-label">For Block 2 planning</div>
-      <div class="tc-text">These questions shape what we build next. Take 10 minutes — the more specific your answers, the better Block 2 will fit you.</div>
+    <div style="margin-bottom:10px;">
+      <div class="day-notes-label">What felt easy → progress next</div>
+      <textarea class="notes-area" placeholder="What was lighter than RPE target?" data-key="sun-easy" oninput="saveLog(this)"></textarea>
     </div>
     <div style="margin-bottom:10px;">
-      <div class="day-notes-label">Block 1 wins · what got better</div>
-      <textarea class="notes-area" placeholder="Strength PRs, body part improvements, habit consistency..." data-key="sun-wins" oninput="saveLog(this)"></textarea>
-    </div>
-    <div style="margin-bottom:10px;">
-      <div class="day-notes-label">Block 1 misses · what didn't progress</div>
-      <textarea class="notes-area" placeholder="Lifts that stalled, body issues that lingered, things you skipped..." data-key="sun-misses" oninput="saveLog(this)"></textarea>
-    </div>
-    <div style="margin-bottom:10px;">
-      <div class="day-notes-label">Goals for Block 2 · what you want to chase</div>
-      <textarea class="notes-area" placeholder="Specific PR target? Race? Body composition? More hybrid balance? Different focus?" data-key="sun-block2-goals" oninput="saveLog(this)"></textarea>
-    </div>
-    <div style="margin-bottom:10px;">
-      <div class="day-notes-label">App / format feedback</div>
-      <textarea class="notes-area" placeholder="What's working in the format? What should change for Block 2?" data-key="sun-format-feedback" oninput="saveLog(this)"></textarea>
+      <div class="day-notes-label">What was hard → keep or modify</div>
+      <textarea class="notes-area" placeholder="What needs to stay or change?" data-key="sun-hard" oninput="saveLog(this)"></textarea>
     </div>
     <div>
-      <div class="day-notes-label">Anything else for next planning conversation</div>
-      <textarea class="notes-area" placeholder="Travel coming up? Schedule changes? Equipment changes? Injuries?" data-key="sun-misc" oninput="saveLog(this)"></textarea>
+      <div class="day-notes-label">Anything that hurt that shouldn't have</div>
+      <textarea class="notes-area" placeholder="Flag for Week 2..." data-key="sun-hurt" oninput="saveLog(this)"></textarea>
     </div>
+  </div>
+
+  <div class="day-notes-wrap"><div class="day-notes-label">Week 1 of Block 2 reflection</div>
+    <textarea class="notes-area" placeholder="How was the mix-up? Travel work out OK? Anything to change for Week 2?" data-key="sun-week-notes" oninput="saveLog(this)"></textarea>
   </div>
 
   <div class="footer-actions">
-    <button class="export-btn" onclick="exportLogs()">📤 Export Block 1 Final Week</button>
+    <button class="export-btn" onclick="exportLogs()">📤 Export Week</button>
     <button class="reset-btn" onclick="resetLogs()">Reset logs</button>
   </div>
   <div class="export-toast" id="export-toast">
     <div style="font-weight:700;margin-bottom:6px;">Copied to clipboard ✓</div>
-    <div style="color:var(--muted);">Paste into chat for Block 2 planning.</div>
+    <div style="color:var(--muted);">Paste into chat for Week 2 build.</div>
     <div class="toast-actions">
       <button class="toast-btn" onclick="copyAgain()">Copy again</button>
       <button class="toast-btn" onclick="shareLogs()">Share…</button>
@@ -1012,9 +1090,9 @@
 </div>
 
 <script>
-var STORE_KEY='workout-logs-jun15';
-var RATE_KEY='workout-ratings-jun15';
-var EXCHECK_KEY='workout-exchecks-jun15';
+var STORE_KEY='workout-logs-jun22';
+var RATE_KEY='workout-ratings-jun22';
+var EXCHECK_KEY='workout-exchecks-jun22';
 var logs    = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
 var ratings = JSON.parse(localStorage.getItem(RATE_KEY)  || '{}');
 var exChecks= JSON.parse(localStorage.getItem(EXCHECK_KEY) || '{}');
@@ -1038,10 +1116,10 @@ buildRatings('hips',['1','2','3','4','5','6','7','8','9','10']);
 buildRatings('groin',['1','2','3','4','5','6','7','8','9','10']);
 buildRatings('foot',['1','2','3','4','5','6','7','8','9','10']);
 buildRatings('sleep',['5','5.5','6','6.5','7','7.5','8','8+']);
-function buildExport(){var days=['mon','tue','wed','thu','fri','sat','sun'];var names={mon:'Monday — Push-Up TEST + Light Push',tue:'Tuesday — Easy Run + Light Pull + Yoga',wed:'Wednesday — Pull-Up TEST + Light Lower',thu:'Thursday — Hip Yoga',fri:'Friday — 1-Mile TT + Light Circuit',sat:'Saturday — Easy 4mi',sun:'Sunday — Block 1 Reflection + Yoga'};var lines=['=== Week of Jun 15-21 — BLOCK 1 FINALE (Deload + Benchmark) ===\n'];days.forEach(function(d){lines.push('--- '+names[d]+(logs['complete-'+d]?' ✓':'')+' ---');Object.keys(logs).filter(function(k){return k.startsWith(d+'-')&&k!=='complete-'+d;}).forEach(function(k){if(logs[k])lines.push('  '+k.replace(d+'-','').replace(/-/g,' ')+': '+logs[k]);});lines.push('');});lines.push('--- 🎯 BENCHMARK RESULTS ---');if(logs['mon-test-reps'])lines.push('Push-up max: '+logs['mon-test-reps']);if(logs['wed-test-reps'])lines.push('Pull-up max: '+logs['wed-test-reps']);if(logs['fri-test-time'])lines.push('1-Mile TT: '+logs['fri-test-time']);lines.push('');lines.push('--- Body Check ---');['rshoulder','lshoulder','hips','groin','foot','sleep'].forEach(function(k){if(ratings[k])lines.push(k+': '+ratings[k]);});return lines.join('\n');}
+function buildExport(){var days=['mon','tue','wed','thu','fri','sat','sun'];var names={mon:'Monday — Push + Abs',tue:'Tuesday — Tempo + Pull',wed:'Wednesday — Lower + Abs',thu:'Thursday — Recovery + Travel',fri:'Friday — BSP Cincinnati',sat:'Saturday — Hill Run',sun:'Sunday — Drive + Rest'};var lines=['=== Week of Jun 22–28 — BLOCK 2 Week 1 (Refresh + Travel) ===\n'];days.forEach(function(d){lines.push('--- '+names[d]+(logs['complete-'+d]?' ✓':'')+' ---');Object.keys(logs).filter(function(k){return k.startsWith(d+'-')&&k!=='complete-'+d;}).forEach(function(k){if(logs[k])lines.push('  '+k.replace(d+'-','').replace(/-/g,' ')+': '+logs[k]);});lines.push('');});lines.push('--- Body Check ---');['rshoulder','lshoulder','hips','groin','foot','sleep'].forEach(function(k){if(ratings[k])lines.push(k+': '+ratings[k]);});return lines.join('\n');}
 function exportLogs(){var text=buildExport();navigator.clipboard.writeText(text).catch(function(){});document.getElementById('export-toast').classList.add('visible');}
 function copyAgain(){navigator.clipboard.writeText(buildExport());}
-function shareLogs(){if(navigator.share)navigator.share({title:'Block 1 Final Week',text:buildExport()});else copyAgain();}
+function shareLogs(){if(navigator.share)navigator.share({title:'Week of Jun 22 Logs',text:buildExport()});else copyAgain();}
 function resetLogs(){if(confirm('Reset all logs for this week? Cannot be undone.')){localStorage.removeItem(STORE_KEY);localStorage.removeItem(RATE_KEY);localStorage.removeItem(EXCHECK_KEY);location.reload();}}
 window.addEventListener('load',loadLogs);
 </script>
