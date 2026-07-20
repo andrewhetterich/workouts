@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="version" content="jul20">
-<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0720">
+<meta name="version" content="jul20c">
+<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0720c">
 <title>B2 W5 · Deload + Benchmark</title>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -23,6 +23,7 @@
   .tab { flex: 0 0 auto; padding: 7px 13px; border-radius: 8px; background: #18181d; border: 1px solid transparent; font-size: 13px; font-weight: 600; color: #8a8a92; min-width: 44px; text-align: center; }
   .tab.active { background: #f2f2f7; color: #0a0a0c; }
   .tab .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #34c759; margin-left: 4px; vertical-align: middle; }
+  .tab.rest .dot { background: #5a5a62; }
   .tab.active .dot { background: #0a0a0c; }
   main { padding: 16px; max-width: 640px; margin: 0 auto; }
   .day-h { margin: 0 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
@@ -32,6 +33,7 @@
   .banner.coach { background: linear-gradient(135deg, #1a2a1f 0%, #1d281d 100%); border-color: #2a4830; color: #b5d8b8; }
   .banner.test { background: linear-gradient(135deg, #2a2410 0%, #2a1f10 100%); border-color: #5a4a15; color: #ffd97a; }
   .banner.otf { background: linear-gradient(135deg, #2a1a1a 0%, #2a1518 100%); border-color: #5a2a2a; color: #f0b8b8; }
+  .banner.rest { background: linear-gradient(135deg, #16161d 0%, #18181f 100%); border-color: #2a2a34; color: #b8b8c5; }
   .banner b { color: #fff; font-weight: 700; }
   .section-h { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #6a6a72; margin: 22px 0 10px; }
   .section-h:first-child { margin-top: 0; }
@@ -118,7 +120,7 @@
     </div>
     <button class="plan-btn" onclick="document.getElementById('planModal').classList.add('on')">Plan ↗</button>
   </div>
-  <div class="hdr-sub">Test week · OTF Wed + Fri · Block 3 next</div>
+  <div class="hdr-sub">Patch Tue/Wed · gym Thu · OTF Fri · mile Sat</div>
   <div class="tabs" id="tabs"></div>
 </div>
 
@@ -128,16 +130,16 @@
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('planModal').classList.remove('on')">Close</button>
     <h2 class="modal-h">Deload + Re-Benchmark</h2>
-    <div class="modal-sub">Block 2 capstone · Jul 20-26</div>
+    <div class="modal-sub">Block 2 capstone · Jul 20-26 · reworked around your patch test</div>
 
     <h3>The Week</h3>
     <ul>
-      <li>Mon — Upper benchmarks: pull-up max + push-up max (fresh)</li>
-      <li>Tue — Mile time trial (fresh legs before OTF)</li>
-      <li>Wed — OTF Full Body class</li>
-      <li>Thu — Recovery</li>
-      <li>Fri — OTF Lower Body class</li>
-      <li>Sat — Easy 3-4 mi shakeout</li>
+      <li>Mon — Upper benchmarks: pull-up max + push-up max (train BEFORE your patch appt)</li>
+      <li>Tue — Rest (patch test window — no sweat)</li>
+      <li>Wed — Rest (patch test window — no sweat)</li>
+      <li>Thu — Gym: Upper Body + Core (after your follow-up appt)</li>
+      <li>Fri — OTF Lower Body</li>
+      <li>Sat — Mile time trial</li>
       <li>Sun — Rest + export → Block 3 handoff</li>
     </ul>
 
@@ -148,12 +150,12 @@
       <li>Mile: <b>sub-6:40</b> &nbsp;(Block 1 = 6:52)</li>
     </ul>
 
-    <h3>Why It's Structured This Way</h3>
+    <h3>Note on the Mile</h3>
     <ul>
-      <li>All volume is way down — the max tests ARE the intensity</li>
-      <li>Tests are front-loaded on fresh days; OTF classes come after</li>
-      <li>Mile is Tuesday so your legs are fresh (no lifting or OTF before it)</li>
-      <li>Sat kept to an easy shakeout after a demanding week</li>
+      <li>It lands Saturday, the day after OTF lower body, so legs won't be 100% fresh</li>
+      <li>Keep Friday's OTF lower class moderate (don't crush the sled/lunges) to leave something for the mile</li>
+      <li>The two rest days (Tue/Wed) bank real recovery, so you'll be fresher than a normal Sat</li>
+      <li>Warm up thoroughly Saturday — a great time is still very much on the table</li>
     </ul>
 
     <h3>Block 2 Progress (full block)</h3>
@@ -176,7 +178,7 @@
 </div>
 
 <script>
-const VERSION = 'jul20';
+const VERSION = 'jul20c';
 const STORAGE_KEY = 'workout-logs-' + VERSION;
 
 const data = {
@@ -184,7 +186,8 @@ const data = {
     title: 'Monday · Upper Benchmarks',
     meta: 'FFC Gold Coast · 45 min · TEST DAY',
     banners: [
-      { type: 'test', html: '<b>Test day — this is the payoff of the block.</b> Two max tests: pull-ups then push-ups. Warm up thoroughly, rest fully between, and go to true failure with STRICT form. Everything else is light.' }
+      { type: 'warn', html: '<b>Train BEFORE your patch appointment this morning.</b> Once the patches are on, no sweating for ~48h — so get this session done early (your usual 5 AM slot is perfect).' },
+      { type: 'test', html: '<b>Test day — the payoff of the block.</b> Two max tests: pull-ups then push-ups. Warm up thoroughly, rest fully between, go to true failure with STRICT form. Everything else is light.' }
     ],
     sections: [
       {
@@ -233,111 +236,79 @@ const data = {
     ]
   },
   tue: {
-    title: 'Tuesday · Mile Time Trial',
-    meta: 'Lakefront or track · 40 min · TEST DAY',
+    title: 'Tuesday · Rest (Patch Test)',
+    meta: 'No exercise — patch window',
     banners: [
-      { type: 'test', html: '<b>The big one — mile time trial on fresh legs.</b> Block 1 was 6:52. With VO2 max now 49.5 and your 400s flying at ~1:33, sub-6:40 is very much in play. Warm up properly — a cold mile test is always slow.' },
-      { type: 'warn', html: '<b>Air quality check:</b> wildfire smoke lingered last weekend. If AQI is bad, move this to a treadmill mile — a slightly less "true" test beats breathing smoke at max effort.' }
+      { type: 'rest', html: '<b>Rest day — patch test on.</b> No sweating or exercise while the patches are on (sweat can loosen them and ruin the read). Keep the skin dry, avoid back-stretching movements.' },
+      { type: 'coach', html: 'A gentle flat walk is usually fine if it doesn\'t make you sweat — but when in doubt, follow your dermatologist\'s guidance. Otherwise, enjoy the forced recovery: it sets up fresh legs for the weekend.' }
+    ],
+    sections: []
+  },
+  wed: {
+    title: 'Wednesday · Rest (Patch Test)',
+    meta: 'No exercise — patch window',
+    banners: [
+      { type: 'rest', html: '<b>Rest day — patches still on / reading day.</b> Same rules: no sweating, keep dry, no back-stretching. You\'ll likely get patches removed and read today.' },
+      { type: 'coach', html: 'Two full rest days back-to-back is a real recovery bump — you\'ll walk into Thursday\'s OTF and Saturday\'s mile fresher than usual. Hydrate and sleep well.' }
+    ],
+    sections: []
+  },
+  thu: {
+    title: 'Thursday · Gym Upper + Core',
+    meta: 'FFC · after your appointment · ~55 min',
+    banners: [
+      { type: 'coach', html: '<b>Post-appointment gym session (once you\'re cleared to sweat).</b> Deliberately UPPER + core — keeps your legs fresh for Friday\'s OTF lower and Saturday\'s mile. Deload loads: moderate, RPE 6-7 ceiling. Don\'t grind.' }
     ],
     sections: [
       {
-        h: 'Warm-up (don\'t skip — it makes or breaks the test)',
+        h: 'Warm-up',
         items: [
           { type: 'checklist', items: [
-            { n: 'Easy Jog', d: '0.5-0.75 mi very easy', cue: 'Gradually raise HR, loosen legs.', v: 'https://www.youtube.com/results?search_query=running+warm+up+jog' },
-            { n: 'Leg Swings', d: '10/side each direction', cue: 'Front-back and side-side.', v: 'https://www.youtube.com/results?search_query=leg+swings+dynamic' },
-            { n: 'World\'s Greatest Stretch', d: '4/side', cue: 'Open hips and t-spine.', v: 'https://www.youtube.com/results?search_query=worlds+greatest+stretch' },
-            { n: 'Strides', d: '3 × ~30m', cue: '3 gradual accelerations to ~90% over ~30m, walk back between. Wakes up top-end before the test.', v: 'https://www.youtube.com/results?search_query=running+strides+drill' }
+            { n: 'Hip CARs', d: '5/side', cue: 'Loosen up.', v: 'https://www.youtube.com/results?search_query=hip+cars' },
+            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Arms straight, squeeze blades.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
+            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Elbow pinned to side, forearm rotates OUTWARD. Preps the shoulder.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' },
+            { n: 'Scapular Pull-ups', d: '8 reps', cue: 'Hang, pull shoulder blades down without bending elbows.', v: 'https://www.youtube.com/results?search_query=scapular+pull+ups' },
+            { n: 'Push-ups (activation)', d: '10 reps', cue: 'Prime the chest.', v: 'https://www.youtube.com/results?search_query=push+up+form' }
           ]}
         ]
       },
       {
-        h: 'The Test',
+        h: 'Push',
         items: [
-          { id: 'mile', n: 'Mile Time Trial', sub: '1 mile all-out · log time + peak HR', rest: 'This is the effort', v: 'https://www.youtube.com/results?search_query=mile+time+trial+pacing+strategy', cue: '<b>Pacing for sub-6:40 = ~1:38-1:40 per quarter mile.</b> Don\'t blast the first 200m — go out controlled at goal pace, settle in the middle, then empty the tank over the last 400m. Even or slightly negative split is fastest. Flat ground (lakefront or track), not hills.', type: 'cardio', isTest: true, pr: 'Block 1 = 6:52 &nbsp;·&nbsp; Target sub-6:40' }
+          { id: 'fp', n: 'DB Floor Press (Neutral Grip)', sub: '3 × 8 @ 90 lb', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=dumbbell+floor+press+neutral+grip', cue: 'Deload — 90 lb (below your 100 peak), RPE 6-7. Neutral grip protects the right shoulder, tuck elbows. Easy, clean reps.', sets: 3 },
+          { id: 'mcp', n: 'Machine Chest Press (Hammer MTS)', sub: '3 × 10 @ 105 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=hammer+strength+chest+press', cue: 'Deload from 120 — keep it ~105, RPE 6-7. Squeeze chest at top, control the return.', sets: 3 }
+        ]
+      },
+      {
+        h: 'Pull',
+        items: [
+          { id: 'lpd', n: 'Lat Pulldown (Neutral Grip)', sub: '3 × 10 · ~115 lb equivalent', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=neutral+grip+lat+pulldown', cue: 'Moderate, RPE 7. Lean back ~15°, drive elbows down/back. Note which machine you use (they vary).', sets: 3 },
+          { id: 'row', n: 'Chest-Supported Row', sub: '3 × 10 @ 70 lb', rest: 'Superset ↓', v: 'https://www.youtube.com/results?search_query=chest+supported+row', cue: 'Pull to lower ribs, squeeze blades. RPE 6-7.', sets: 3, ssTop: true },
+          { id: 'fp2', n: 'Face Pulls', sub: '3 × 15 @ 30 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=face+pull+rope', cue: 'Superset with the rows. Rope high, pull to forehead, external rotation. Shoulder hygiene.', sets: 3, ssBottom: true, ssLabel: 'SUPERSET · Row + Face Pull' }
+        ]
+      },
+      {
+        h: 'Shoulders + Arms',
+        items: [
+          { id: 'lat', n: 'DB Lateral Raise', sub: '3 × 15 @ 12.5 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=dumbbell+lateral+raise', cue: 'Slight forward lean, thumbs slightly up. Stop at shoulder height — no higher (protects the shoulder).', sets: 3 },
+          { id: 'hc', n: 'Hammer Curl', sub: '3 × 10 @ 25 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=dumbbell+hammer+curl', cue: 'Neutral grip, control the eccentric.', sets: 3 },
+          { id: 'tri', n: 'Cable Tricep Extension (light)', sub: '2 × 12 @ 45 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=cable+tricep+pushdown', cue: '<b>Light — watch the elbow.</b> It felt funky at 60 last week, so keep it ~45 and pain-free. Skip entirely if it complains at all.', sets: 2 }
+        ]
+      },
+      {
+        h: 'Core',
+        items: [
+          { id: 'hlr', n: 'Hanging Leg Raises', sub: '3 × 12', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=hanging+leg+raises', cue: 'Posterior pelvic tilt, control down.', sets: 3, noWeight: true },
+          { id: 'plk', n: 'Plank', sub: '3 × 45 sec', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=plank+hold+form', cue: 'Brace, squeeze glutes. Log seconds.', sets: 3, noWeight: true, repUnit: 'sec' }
         ]
       },
       {
         h: 'Cooldown',
         items: [
-          { id: 'cd', n: 'Cooldown Jog', sub: '0.5 mi very easy + walk', v: 'https://www.youtube.com/results?search_query=running+cool+down', cue: 'Bring the HR down gradually. Don\'t just stop.', type: 'cardio' },
           { type: 'stretch-list', items: [
-            { n: 'Standing Hamstring Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=standing+hamstring+stretch' },
-            { n: 'Couch Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=couch+stretch' },
-            { n: 'Calf Stretch (wall)', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=wall+calf+stretch' },
-            { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
-          ]}
-        ]
-      }
-    ]
-  },
-  wed: {
-    title: 'Wednesday · OTF Full Body',
-    meta: 'Orangetheory · with fiancé',
-    banners: [
-      { type: 'otf', html: '<b>OTF Full Body class.</b> Enjoy it. Sensible effort — you tested hard Mon/Tue, so don\'t feel you have to win the class. Ease off pressing/overhead if the right shoulder or that elbow speaks up.' }
-    ],
-    sections: [
-      {
-        h: 'The Class',
-        items: [
-          { id: 'otf', n: 'OTF Full Body Class', sub: 'Log effort + how you felt', v: '', cue: 'Note total time, avg/peak HR, splat points if you track them, and how the body handled it (shoulder, elbow, hips).', type: 'cardio' }
-        ]
-      },
-      {
-        h: 'Post-Class Recovery',
-        items: [
-          { type: 'checklist', items: [
-            { n: '90/90 Hip Switches', d: '10 total', cue: 'Reset the hips.', v: 'https://www.youtube.com/results?search_query=90+90+hip+switches' },
-            { n: 'Pigeon Pose', d: '1 min/side', cue: 'Open hips.', v: 'https://www.youtube.com/results?search_query=pigeon+pose' },
-            { n: 'Doorway Pec Stretch', d: '45 sec/side', cue: 'Shoulders after pressing.', v: 'https://www.youtube.com/results?search_query=doorway+pec+stretch' }
-          ]},
-          { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '5 min · full body', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' }
-          ]}
-        ]
-      }
-    ]
-  },
-  thu: {
-    title: 'Thursday · Recovery',
-    meta: 'FFC · 40 min (all AM)',
-    banners: [
-      { type: 'coach', html: '<b>Easy recovery — everything in one AM session.</b> Flush + hip mobility + shoulder mobility + yoga + roll. Hamstrings were a little tight Thursday last week; give them attention.' }
-    ],
-    sections: [
-      {
-        h: 'Aerobic Flush',
-        items: [
-          { id: 'flush', n: 'Easy Walk or Bike', sub: '15 min · Zone 1 (HR <120)', v: 'https://www.youtube.com/results?search_query=zone+1+easy+spin', cue: 'Conversational. Just log duration + a note.', type: 'cardio' }
-        ]
-      },
-      {
-        h: 'Hip + Hamstring Mobility',
-        items: [
-          { type: 'checklist', items: [
-            { n: '90/90 Hip Switches', d: '15 total (slow)', cue: 'Rotate both knees side to side.', v: 'https://www.youtube.com/results?search_query=90+90+hip+switches' },
-            { n: 'Banded Hip Distraction', d: '~1 min/side · rock gently', cue: 'Band at hip crease, rock on both knees.', v: 'https://www.youtube.com/results?search_query=banded+hip+distraction+rocking' },
-            { n: 'Pigeon w/ Active Hold', d: '~1 min/side', cue: 'Gently press hips down.', v: 'https://www.youtube.com/results?search_query=active+pigeon+pose' },
-            { n: 'Standing Hamstring Stretch', d: '45 sec/side', cue: 'For the tight hamstrings — gentle, don\'t force.', v: 'https://www.youtube.com/results?search_query=standing+hamstring+stretch' }
-          ]}
-        ]
-      },
-      {
-        h: 'Shoulder Mobility',
-        items: [
-          { type: 'checklist', items: [
-            { n: 'Doorway Pec Stretch', d: '45 sec/side', cue: 'Forearm on frame, step through gently.', v: 'https://www.youtube.com/results?search_query=doorway+pec+stretch' },
-            { n: 'Side-Lying Shoulder ER', d: '15/side · light (5-7.5 lb)', cue: 'Lie on side, elbow at ribs, rotate top forearm UP. External rotation.', v: 'https://www.youtube.com/results?search_query=side+lying+external+rotation+dumbbell' }
-          ]}
-        ]
-      },
-      {
-        h: 'Yoga + Roll (finish here)',
-        items: [
-          { id: 'yoga', n: 'Peloton Yoga · 10 min', sub: 'Hip-focused flow', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Aditi hip focus has been your go-to. Just log a note.', type: 'class' },
-          { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '5-10 min · full body', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' }
+            { n: 'Doorway Pec Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=doorway+pec+stretch' },
+            { n: 'Standing Lat Stretch', d: '30 sec/side', v: 'https://www.youtube.com/results?search_query=standing+lat+stretch' },
+            { n: 'Foam Rolling', d: '4 min · upper back + lats', v: 'https://www.youtube.com/results?search_query=foam+rolling+upper+back' }
           ]}
         ]
       }
@@ -347,14 +318,14 @@ const data = {
     title: 'Friday · OTF Lower Body',
     meta: 'Orangetheory · with fiancé',
     banners: [
-      { type: 'otf', html: '<b>OTF Lower Body class.</b> Legs will get cooked. That\'s fine — Saturday is just an easy shakeout. Watch the hips on deep loaded movements; keep depth where they feel free (FAI).' },
-      { type: 'warn', html: 'Lots of lunging/squatting/running in a lower class. If a hip pinches or the groin flags, scale range rather than pushing through. The post-class recovery below matters — hit the foot rolling too.' }
+      { type: 'otf', html: '<b>OTF Lower Body class.</b> Keep this one MODERATE — you\'re testing the mile tomorrow. Don\'t crush the sled/lunges; leave some gas in the legs. Watch the hips on deep loaded movements (FAI — keep depth where they feel free).' },
+      { type: 'warn', html: 'If a hip pinches or the groin flags, scale range rather than pushing through. Hit the foot rolling in the recovery block.' }
     ],
     sections: [
       {
         h: 'The Class',
         items: [
-          { id: 'otf', n: 'OTF Lower Body Class', sub: 'Log effort + how you felt', v: '', cue: 'Note time, avg/peak HR, and how hips/groin/foot handled the volume.', type: 'cardio' }
+          { id: 'otf', n: 'OTF Lower Body Class', sub: 'Log effort + how you felt', v: '', cue: 'Note time, avg/peak HR, and how hips/groin/foot handled the volume. Remember: moderate effort to protect tomorrow\'s mile.', type: 'cardio' }
         ]
       },
       {
@@ -376,35 +347,38 @@ const data = {
     ]
   },
   sat: {
-    title: 'Saturday · Easy Shakeout',
-    meta: 'Lakefront · ~35 min',
+    title: 'Saturday · Mile Time Trial',
+    meta: 'Lakefront or track · 40 min · TEST DAY',
     banners: [
-      { type: 'coach', html: '<b>Easy 3-4 mi shakeout.</b> Truly easy — flush out the legs after a big week. Not a workout, just movement. Full permission to cut it short or walk if the body\'s cooked.' },
-      { type: 'warn', html: 'Air quality check again for smoke. Frozen ball on the foot after.' }
+      { type: 'test', html: '<b>The big one — mile time trial.</b> Block 1 was 6:52. VO2 max is now 49.5 and your 400s were flying at ~1:33, so sub-6:40 is in play. Only Friday\'s OTF lower is in the legs, and the mid-week rest banked real recovery — warm up fully and go get it.' },
+      { type: 'warn', html: '<b>Air quality check:</b> if wildfire smoke is back, move this to a treadmill mile. A slightly less "true" test beats redlining in smoke.' }
     ],
     sections: [
       {
-        h: 'Pre-run Warm-up',
+        h: 'Warm-up (don\'t skip — it makes or breaks the test)',
         items: [
           { type: 'checklist', items: [
-            { n: 'Leg Swings', d: '10/side each direction', cue: 'Loosen up.', v: 'https://www.youtube.com/results?search_query=leg+swings+dynamic' },
-            { n: 'Calf Raises (slow)', d: '15 reps', cue: 'Prep calves + Achilles.', v: 'https://www.youtube.com/results?search_query=calf+raises+slow+eccentric' },
-            { n: 'Ankle Circles + Foot Roll', d: '~1 min/side', cue: 'Wake up the feet.', v: 'https://www.youtube.com/results?search_query=ankle+mobility+routine' }
+            { n: 'Easy Jog', d: '0.5-0.75 mi very easy', cue: 'Gradually raise HR, loosen legs — extra important with OTF in the legs from yesterday.', v: 'https://www.youtube.com/results?search_query=running+warm+up+jog' },
+            { n: 'Leg Swings', d: '10/side each direction', cue: 'Front-back and side-side.', v: 'https://www.youtube.com/results?search_query=leg+swings+dynamic' },
+            { n: 'World\'s Greatest Stretch', d: '4/side', cue: 'Open hips and t-spine.', v: 'https://www.youtube.com/results?search_query=worlds+greatest+stretch' },
+            { n: 'Strides', d: '3 × ~30m', cue: '3 gradual accelerations to ~90% over ~30m, walk back between. Wakes up the legs before the test.', v: 'https://www.youtube.com/results?search_query=running+strides+drill' }
           ]}
         ]
       },
       {
-        h: 'Run',
+        h: 'The Test',
         items: [
-          { id: 'lrun', n: 'Easy Shakeout Run', sub: '3-4 miles @ 10:00-10:30 · Zone 2', rest: 'Walk whenever you want', v: 'https://www.youtube.com/results?search_query=recovery+run+zone+2', cue: '<b>Recovery pace only.</b> This should feel almost too easy. No pace goals, no HR chasing. Legs will be tired from OTF — that\'s expected.', type: 'cardio' }
+          { id: 'mile', n: 'Mile Time Trial', sub: '1 mile all-out · log time + peak HR', rest: 'This is the effort', v: 'https://www.youtube.com/results?search_query=mile+time+trial+pacing+strategy', cue: '<b>Pacing for sub-6:40 = ~1:38-1:40 per quarter mile.</b> Go out controlled (don\'t blast the first 200), settle in the middle, empty the tank over the last 400. Even or slightly negative split is fastest. Flat ground. If the legs feel dead from OTF, run by effort and treat whatever you hit as a strong benchmark.', type: 'cardio', isTest: true, pr: 'Block 1 = 6:52 &nbsp;·&nbsp; Target sub-6:40' }
         ]
       },
       {
-        h: 'Post-run Yoga + Roll',
+        h: 'Cooldown',
         items: [
-          { id: 'syoga', n: 'Peloton Yoga · 10 min', sub: 'Post-run / restorative', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Per your preference — yoga here instead of a stretch list.', type: 'class' },
+          { id: 'cd', n: 'Cooldown Jog', sub: '0.5 mi very easy + walk', v: 'https://www.youtube.com/results?search_query=running+cool+down', cue: 'Bring the HR down gradually. Don\'t just stop.', type: 'cardio' },
           { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '5 min · lower body', v: 'https://www.youtube.com/results?search_query=foam+rolling+lower+body' },
+            { n: 'Standing Hamstring Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=standing+hamstring+stretch' },
+            { n: 'Couch Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=couch+stretch' },
+            { n: 'Calf Stretch (wall)', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=wall+calf+stretch' },
             { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
           ]}
         ]
@@ -415,7 +389,7 @@ const data = {
     title: 'Sunday · Rest + Block 3 Handoff',
     meta: 'Body Check + Export',
     banners: [
-      { type: 'coach', html: '<b>Full rest — block\'s done.</b> Fill in the body check, then export and send me your logs + Apple Health. I\'ll write your Block 2 → Block 3 handoff and we\'ll design the next block around OTF 2x/week and finally cracking that foot.' }
+      { type: 'coach', html: '<b>Full rest — block\'s done.</b> Fill in the body check + benchmark results, then export and send me your logs + Apple Health. I\'ll write your Block 2 → Block 3 handoff and design the next block around OTF 2x/week and finally cracking that foot.' }
     ],
     sections: [
       { type: 'body-check' },
@@ -447,9 +421,11 @@ function set(k, v) { logs[k] = v; save(); }
 
 function renderTabs() {
   const days = [['mon','M'],['tue','T'],['wed','W'],['thu','Th'],['fri','F'],['sat','Sa'],['sun','Su']];
+  const restDays = ['tue','wed'];
   document.getElementById('tabs').innerHTML = days.map(([k,l]) => {
-    const done = logs[`${k}_done`] ? '<span class="dot"></span>' : '';
-    return `<div class="tab ${k===activeDay?'active':''}" onclick="setDay('${k}')">${l}${done}</div>`;
+    const done = logs[`${k}_done`] ? `<span class="dot"></span>` : '';
+    const restClass = restDays.includes(k) ? 'rest' : '';
+    return `<div class="tab ${restClass} ${k===activeDay?'active':''}" onclick="setDay('${k}')">${l}${done}</div>`;
   }).join('');
 }
 
@@ -619,7 +595,7 @@ function renderDay() {
     <div class="day-meta">${day.meta}</div>
     ${(day.banners||[]).map(b => `<div class="banner ${b.type}">${b.html}</div>`).join('')}
   `;
-  day.sections.forEach(s => {
+  (day.sections||[]).forEach(s => {
     if (s.type === 'body-check') {
       html += renderItem(s, activeDay);
       return;
@@ -648,8 +624,8 @@ function toggleDay() {
 }
 
 function exportWeek() {
-  let out = '=== Week of Jul 20–26 — BLOCK 2 Week 5 (Deload + Re-Benchmark · OTF Wed/Fri) ===\n\n';
-  const dayOrder = [['mon','Monday — Upper Benchmarks'],['tue','Tuesday — Mile Time Trial'],['wed','Wednesday — OTF Full Body'],['thu','Thursday — Recovery'],['fri','Friday — OTF Lower Body'],['sat','Saturday — Easy Shakeout'],['sun','Sunday — Rest']];
+  let out = '=== Week of Jul 20–26 — BLOCK 2 Week 5 (Deload + Re-Benchmark · patch Tue/Wed · gym Thu · OTF Fri) ===\n\n';
+  const dayOrder = [['mon','Monday — Upper Benchmarks'],['tue','Tuesday — Rest (patch)'],['wed','Wednesday — Rest (patch)'],['thu','Thursday — Gym Upper + Core'],['fri','Friday — OTF Lower Body'],['sat','Saturday — Mile Time Trial'],['sun','Sunday — Rest']];
   dayOrder.forEach(([k,l]) => {
     const done = logs[`${k}_done`] ? '✓' : '○';
     out += `--- ${l} ${done} ---\n`;
