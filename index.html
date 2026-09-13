@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="version" content="sep07">
-<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0907">
-<title>B3 W7 · Benchmark</title>
+<meta name="version" content="sep14">
+<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0914">
+<title>B4 W1 · Reset + Protect</title>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; padding: 0; background: #0a0a0c; color: #e8e8ea; font-family: -apple-system, system-ui, sans-serif; }
@@ -24,7 +24,7 @@
   .tab.active { background: #f2f2f7; color: #0a0a0c; }
   .tab .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #34c759; margin-left: 4px; vertical-align: middle; }
   .tab.rest .dot { background: #5a5a62; }
-  .tab.test .dot { background: #f2b544; }
+  .tab.travel .dot { background: #d8a24a; }
   .tab.active .dot { background: #0a0a0c; }
   main { padding: 16px; max-width: 640px; margin: 0 auto; }
   .day-h { margin: 0 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
@@ -34,17 +34,17 @@
   .banner.coach { background: linear-gradient(135deg, #1a2a1f 0%, #1d281d 100%); border-color: #2a4830; color: #b5d8b8; }
   .banner.otf { background: linear-gradient(135deg, #2a1a1a 0%, #2a1518 100%); border-color: #5a2a2a; color: #f0b8b8; }
   .banner.zone { background: linear-gradient(135deg, #10222a 0%, #10202a 100%); border-color: #1f4a5a; color: #8ad8e8; }
+  .banner.hammy { background: linear-gradient(135deg, #2a1015 0%, #2a1018 100%); border-color: #6a2030; color: #f0a0b0; }
+  .banner.travel { background: linear-gradient(135deg, #2a2410 0%, #281f10 100%); border-color: #5a4a20; color: #e8cd8a; }
   .banner.pr { background: linear-gradient(135deg, #2a2410 0%, #2e2410 100%); border-color: #7a5e1a; color: #f2d488; }
   .banner.rest { background: linear-gradient(135deg, #16161d 0%, #18181f 100%); border-color: #2a2a34; color: #b8b8c5; }
   .banner b { color: #fff; font-weight: 700; }
   .section-h { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #6a6a72; margin: 22px 0 10px; }
   .section-h:first-child { margin-top: 0; }
-  .superset-tag { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #0a0a0c; background: #f2b544; padding: 4px 10px; border-radius: 6px; margin-bottom: 8px; }
+  .optional-tag { color: #d8a24a; font-weight: 700; }
   .new-tag { display: inline-block; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #0a0a0c; background: #b58cff; padding: 2px 7px; border-radius: 5px; margin-left: 6px; vertical-align: middle; }
-  .test-tag { display: inline-block; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #0a0a0c; background: #f2b544; padding: 2px 7px; border-radius: 5px; margin-left: 6px; vertical-align: middle; }
   .card { background: #16161b; border: 1px solid #20202a; border-radius: 14px; margin-bottom: 10px; overflow: hidden; }
   .card.done { background: #142016; border-color: #1f3a25; }
-  .card.test { border: 1px solid #5a481a; background: #1c1808; }
   .card-head { display: flex; align-items: center; padding: 14px 14px; cursor: pointer; }
   .chk { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid #3a3a44; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-right: 12px; transition: all 0.15s; }
   .chk.on { background: #34c759; border-color: #34c759; }
@@ -64,8 +64,8 @@
   .ramp b { color: #ffd97a; }
   .cue { background: #1c1c22; border-left: 2px solid #4a4a52; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #b8b8bf; line-height: 1.5; margin-bottom: 12px; }
   .cue b { color: #e8e8ea; }
-  .prcue { background: #241d0a; border-left: 2px solid #f2b544; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #e8cd8a; line-height: 1.5; margin-bottom: 12px; }
-  .prcue b { color: #ffd97a; }
+  .hammycue { background: #24101a; border-left: 2px solid #d84a6a; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #f0a8b8; line-height: 1.5; margin-bottom: 12px; }
+  .hammycue b { color: #ffd0da; }
   .sets { display: flex; flex-direction: column; gap: 6px; }
   .set-row { display: grid; grid-template-columns: 28px 1fr 1fr; gap: 8px; align-items: center; }
   .set-row.norep { grid-template-columns: 28px 1fr; }
@@ -110,8 +110,6 @@
   .modal p, .modal li { font-size: 13px; color: #c8c8d0; line-height: 1.6; }
   .modal ul { padding-left: 18px; margin: 6px 0; }
   .modal-close { position: sticky; top: 0; float: right; background: #25252e; border: none; color: #e8e8ea; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; }
-  .interval-box { background: #1a1525; border: 1px solid #48284a; border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; font-size: 12px; color: #e8c8e8; line-height: 1.6; }
-  .interval-box b { color: #fff; }
 </style>
 </head>
 <body>
@@ -119,12 +117,12 @@
 <div class="hdr">
   <div class="hdr-top">
     <div>
-      <div class="hdr-ttl">Block 3 · Week 7</div>
-      <div class="hdr-wk">Sep 7 – Sep 13 · Benchmark</div>
+      <div class="hdr-ttl">Block 4 · Week 1</div>
+      <div class="hdr-wk">Sep 14 – Sep 20 · Reset + Protect</div>
     </div>
     <button class="plan-btn" onclick="document.getElementById('planModal').classList.add('on')">Plan ↗</button>
   </div>
-  <div class="hdr-sub">Upper tests Mon · mile Tue · OTF Wed/Fri</div>
+  <div class="hdr-sub">Hamstring care · mobility up · Columbus wedding wknd</div>
   <div class="tabs" id="tabs"></div>
 </div>
 
@@ -133,268 +131,239 @@
 <div class="modal-bg" id="planModal">
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('planModal').classList.remove('on')">Close</button>
-    <h2 class="modal-h">Block 3 · Week 7 — Benchmark</h2>
-    <div class="modal-sub">The clean test window · measure everything Block 3 built</div>
+    <h2 class="modal-h">Block 4 · Week 1 — Reset + Protect</h2>
+    <div class="modal-sub">Post-benchmark recovery · hamstring-first · travel weekend</div>
 
-    <h3>🎯 Targets to Beat</h3>
+    <h3>🏆 Block 3 Final — You Crushed It</h3>
     <ul>
-      <li><b>Push-ups:</b> beat 43</li>
-      <li><b>Pull-ups:</b> beat 15</li>
-      <li><b>Mile:</b> beat 6:05 (you had HR to spare last time — sub-6:00 is live)</li>
+      <li>Push-ups <b>43 → 51</b> · Pull-ups <b>15 → 17</b> · Mile <b>6:05 → 5:48</b></li>
+      <li>VO2 max new high of <b>51</b> · RDL climbed 65 → 85</li>
+      <li>Shoulder held on the pull-up test. Complete block.</li>
+    </ul>
+
+    <h3>Why This Week Is Light</h3>
+    <ul>
+      <li>Coming off a hard benchmark → a back-off is smart regardless</li>
+      <li><b>Right hamstring is tweaked</b> — we protect it, don't test it</li>
+      <li>Back sore + hips cracking → mobility gets dialed back UP (you flagged dropping it)</li>
+    </ul>
+
+    <h3>Hamstring Rules (all week)</h3>
+    <ul>
+      <li><b>No running</b> — elliptical/bike only (you called this right)</li>
+      <li><b>No loaded hinges</b> — RDL is out this week</li>
+      <li>Gentle pain-free isometrics only — no aggressive stretching of a strain</li>
+      <li>Sharp pain, bruising, or weakness → see a physio. Otherwise nurse it.</li>
     </ul>
 
     <h3>The Week</h3>
     <ul>
-      <li>Mon — Upper tests (pull-ups + push-ups, fresh from weekend)</li>
-      <li>Tue — Mile time trial (fresh legs)</li>
-      <li>Wed — OTF Full Body (running)</li>
-      <li>Thu — Gym strength (loads keep moving)</li>
-      <li>Fri — OTF Full Body (running)</li>
-      <li>Sat — Long run (easy by feel, HR under 150)</li>
-      <li>Sun — Rest + export</li>
+      <li>Mon — OTF 2G (elliptical, not tread)</li>
+      <li>Tue — Upper + Core (hamstring rests) · floor press 110</li>
+      <li>Wed — Active recovery: low-impact cardio + mobility + hammy rehab</li>
+      <li>Thu — OTF 2G (elliptical)</li>
+      <li>Fri — Quick light apartment session pre-travel</li>
+      <li>Sat — Columbus: optional hotel session + wedding</li>
+      <li>Sun — Travel home + rest</li>
     </ul>
 
-    <h3>Why This Order</h3>
+    <h3>Nutrition Note (you asked)</h3>
     <ul>
-      <li>Upper tests Mon don't touch your legs → Tuesday mile runs on fresh legs</li>
-      <li>Both OTF running days land AFTER the mile so they can't sandbag it</li>
-      <li>Pull-ups before push-ups Monday — shoulder is freshest/safest first</li>
-    </ul>
-
-    <h3>Safety First</h3>
-    <ul>
-      <li>Left shoulder twinged on pulls 3 weeks running — full prep before the pull-up test, strict form, and <b>stop if it sharpens.</b> A number is never worth the shoulder.</li>
-      <li>Warm up thoroughly before the mile — it's a max effort, unlike your easy runs</li>
-    </ul>
-
-    <h3>Where You Stand</h3>
-    <ul>
-      <li>VO2 back to 50.1 · RDL 65→85 this block · floor press 3×10 @ 100</li>
-      <li>Zone 2 settled: rested = naturally under 150 (Sat proved it at avg 132)</li>
+      <li>Lean into whole foods + protein + veg, hydrate well</li>
+      <li>The "face/neck" look before an event is mostly <b>water retention</b> — easing off alcohol, excess sodium, and processed carbs (plus good sleep) does more in a week than cutting calories</li>
+      <li>Don't under-fuel while training or risk a Crohn's flare — steady beats crash</li>
     </ul>
   </div>
 </div>
 
 <script>
-const VERSION = 'sep07';
+const VERSION = 'sep14';
 const STORAGE_KEY = 'workout-logs-' + VERSION;
 
 const data = {
   mon: {
-    title: 'Monday · Upper Benchmark',
-    meta: 'FFC Gold Coast · test day',
-    banners: [
-      { type: 'pr', html: '<b>🎯 Benchmark day: pull-ups + push-ups.</b> Fresh off the weekend. Warm up fully, then give each test one honest all-out set. Targets: <b>15 pull-ups</b>, <b>43 push-ups</b>.' },
-      { type: 'warn', html: 'Left shoulder has twinged on pulls three weeks straight. Do the full shoulder prep, keep pull-ups strict, and if it sharpens mid-set — STOP and log what you got. Not worth an injury.' }
-    ],
-    sections: [
-      {
-        h: 'Warm-up (thorough — this matters today)',
-        items: [
-          { type: 'checklist', items: [
-            { n: 'Band Pull-Aparts', d: '25 reps', cue: 'Wake up the upper back.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
-            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Prep the shoulder before max pulling. Don\'t skip.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' },
-            { n: 'Scapular Pull-ups', d: '2 × 6', cue: 'Grooves safe pull-up mechanics + primes the lats.', v: 'https://www.youtube.com/results?search_query=scapular+pull+ups' },
-            { n: 'Easy Pull-ups', d: '3-4 reps (not to failure)', cue: 'A few smooth reps to feel the groove. Stop well short.', v: 'https://www.youtube.com/results?search_query=pull+up+strict+form' },
-            { n: 'Incline / Easy Push-ups', d: '8-10 reps', cue: 'Prime the chest/triceps, stay fresh.', v: 'https://www.youtube.com/results?search_query=push+up+form' }
-          ]}
-        ]
-      },
-      {
-        h: 'Test 1 · Pull-ups',
-        items: [
-          { id: 'putest', n: 'Max Pull-ups', sub: 'One all-out set · target: beat 15', rest: 'Rest as long as you need after', v: 'https://www.youtube.com/results?search_query=pull+up+strict+form', newTag: true, prcue: '<b>Strict, dead hang to chin over bar.</b> No kipping/swinging — that\'s what twinged the shoulder. Go until honest failure OR any sharp shoulder pain (stop there, no ego). Log your number.', sets: 1, noWeight: true },
-        ]
-      },
-      {
-        h: 'Test 2 · Push-ups',
-        items: [
-          { id: 'phtest', n: 'Max Push-ups', sub: 'One all-out set · target: beat 43', rest: 'Full rest before you start', v: 'https://www.youtube.com/results?search_query=push+up+form', newTag: true, prcue: '<b>Rest 5+ min after pull-ups so this is a clean test.</b> Chest to fist-height, full lockout, no sagging hips. Go to honest failure. Log your number.', sets: 1, noWeight: true }
-        ]
-      },
-      {
-        h: 'Light Finisher (optional)',
-        items: [
-          { id: 'cop', n: 'Copenhagen Plank', sub: '2 × 30 sec/side', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=copenhagen+plank', cue: 'Keep the groin prehab going. Skip if the tests took a lot out of you.', sets: 2, noWeight: true, repUnit: 'sec' },
-          { id: 'ccr', n: 'Captain\'s Chair Leg Raise', sub: '2 × 12', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=captains+chair+leg+raise', cue: 'Easy core to round out the day.', sets: 2, noWeight: true }
-        ]
-      },
-      {
-        h: 'Recovery',
-        items: [
-          { type: 'stretch-list', items: [
-            { n: 'Doorway Pec Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=doorway+pec+stretch' },
-            { n: 'Lat Stretch (hang or bar)', d: '30 sec/side', v: 'https://www.youtube.com/results?search_query=lat+stretch' },
-            { n: 'Foam Rolling', d: '4 min · upper back', v: 'https://www.youtube.com/results?search_query=foam+rolling+upper+back' }
-          ]}
-        ]
-      }
-    ]
-  },
-  tue: {
-    title: 'Tuesday · Mile Time Trial',
-    meta: 'Track or lakefront · test day',
-    banners: [
-      { type: 'pr', html: '<b>🎯 Mile benchmark. Target: beat 6:05.</b> Fresh legs (Monday was upper only). You ran 6:05 last time with HR only at 158 — you left gas in the tank. Pace it smart and there\'s a sub-6:00 here.' },
-      { type: 'zone', html: 'A track is ideal (4 laps = mile). If you\'re on the lakefront, use a known measured mile or let the watch call it. Warm up FULLY — this is the one run where that matters most.' }
-    ],
-    sections: [
-      {
-        h: 'Pre-Run Mobility',
-        items: [
-          { type: 'checklist', items: [
-            { n: 'Leg Swings', d: '10/side each direction', cue: 'Front-back and side-side.', v: 'https://www.youtube.com/results?search_query=leg+swings+dynamic' },
-            { n: 'World\'s Greatest Stretch', d: '4/side', cue: 'Open hips + t-spine.', v: 'https://www.youtube.com/results?search_query=worlds+greatest+stretch' },
-            { n: 'Glute Bridges', d: '15 reps', cue: 'Fire up the glutes.', v: 'https://www.youtube.com/results?search_query=glute+bridge+activation' },
-            { n: 'Ankle Circles + Foot Roll', d: '~45 sec/side', cue: 'Prep feet + ankles.', v: 'https://www.youtube.com/results?search_query=ankle+mobility+routine' }
-          ]}
-        ]
-      },
-      {
-        h: 'The Warm-up (do this, it makes the mile faster)',
-        items: [
-          { type: 'interval-box', html: '<b>Full warm-up before the TT:</b><br><br>🏃 <b>Easy jog</b> — 0.75 mi, very relaxed<br>⚡ <b>3 × strides</b> — ~20 sec accelerations to ~90%, walk back between<br>😮‍💨 <b>2-3 min</b> easy walk / shake out, then line up<br><br>Then hit the mile fresh but fully primed.' }
-        ]
-      },
-      {
-        h: 'The Test',
-        items: [
-          { id: 'mile', n: 'Mile Time Trial', sub: '1 mile all-out · target sub-6:05', rest: 'Then cool down', v: 'https://www.youtube.com/results?search_query=mile+time+trial+pacing', prcue: '<b>Pacing to PR:</b> ~1:29-1:31 per quarter is 6:00 pace. Go out controlled — don\'t sprint the first 200. Settle into rhythm laps 2-3, then empty the tank the last 400. Last time HR only hit 158; today, finish gasping. Log time + peak HR.', type: 'cardio' }
-        ]
-      },
-      {
-        h: 'Cooldown',
-        items: [
-          { id: 'cd', n: 'Cooldown Jog + Walk', sub: '0.5 mi easy jog → walk', rest: '—', v: '', cue: 'Flush the legs. Don\'t just stop — jog easy then walk it out.', type: 'cardio' },
-          { type: 'stretch-list', items: [
-            { n: 'Standing Quad Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=standing+quad+stretch' },
-            { n: 'Calf Stretch (wall)', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=wall+calf+stretch' },
-            { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
-          ]}
-        ]
-      }
-    ]
-  },
-  wed: {
-    title: 'Wednesday · OTF Full Body',
+    title: 'Monday · OTF 2G',
     meta: 'Orangetheory · with fiancé',
     banners: [
-      { type: 'otf', html: '<b>OTF Full Body (with running).</b> Legs may be a little cooked from yesterday\'s mile — that\'s fine, ride the tread effort by feel. Enjoy it.' }
+      { type: 'hammy', html: '<b>Hamstring protect:</b> use the ELLIPTICAL for the run blocks (not the tread), and skip/sub any aggressive hamstring work — deadlifts, hamstring curls, heavy KB swings, sprinting. Pick a lighter option or a machine if a movement pulls at it.' },
+      { type: 'otf', html: 'OTF 2G = strength + cardio blocks. Keep effort moderate this week (you\'re post-benchmark). Enjoy it, log below.' }
     ],
     sections: [
       {
         h: 'The Class',
         items: [
-          { id: 'otf', n: 'OTF Full Body Class', sub: 'Log duration + avg HR + how it felt', v: '', cue: 'Note how the legs feel the day after the mile.', type: 'otf' }
+          { id: 'otf', n: 'OTF 2G Class', sub: 'Log duration + avg HR + how it felt', v: '', cue: 'Elliptical for run blocks. Note how the hamstring behaves during any lower-body work.', type: 'otf' }
         ]
       }
     ]
   },
-  thu: {
-    title: 'Thursday · Gym Strength',
+  tue: {
+    title: 'Tuesday · Upper + Core',
     meta: 'FFC Gold Coast · 60 min',
     banners: [
-      { type: 'coach', html: '<b>Keep the loads moving.</b> Tests are behind you — this is a normal strength day. Single-arm row back to 60 for clean form. RDL holds at 85. Watch the left shoulder on the pulldown.' }
+      { type: 'coach', html: '<b>Upper day — hamstring rests completely.</b> No lower-body loading today. Floor press earns the jump to 110. Move well and keep the pressing clean (shoulder\'s good, keep it that way).' }
     ],
     sections: [
       {
         h: 'Warm-up',
         items: [
           { type: 'checklist', items: [
-            { n: 'Hip CARs', d: '5/side', cue: 'Loosen the hips.', v: 'https://www.youtube.com/results?search_query=hip+cars' },
-            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Squeeze blades.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
-            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Elbow pinned, forearm rotates OUTWARD.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' }
+            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Wake up the upper back.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
+            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Elbow pinned, forearm rotates OUTWARD.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' },
+            { n: 'Cat-Cow + Thoracic Rotations', d: '8 each', cue: 'Loosen the sore lower back + mid-back.', v: 'https://www.youtube.com/results?search_query=cat+cow+thoracic+rotation' },
+            { n: 'Hip CARs', d: '5/side', cue: 'Gentle — help the hips that want to pop.', v: 'https://www.youtube.com/results?search_query=hip+cars' }
           ]}
         ]
       },
       {
-        h: 'Push + Pull',
+        h: 'Push',
         items: [
-          { id: 'fp', n: 'DB Floor Press (Neutral Grip)', sub: '3 × 8-10 @ 100 lb', rest: 'Rest 2:30', warmup: '<b>Ramp:</b> 8 light → 5 moderate → working sets', v: 'https://www.youtube.com/results?search_query=dumbbell+floor+press+neutral+grip', cue: 'Hold 100, push for 3×10. If the 50s feel easy again, grab 52.5s (105). Neutral grip, tuck elbows.', sets: 3 },
-          { id: 'sadb', n: 'Single-Arm DB Row', sub: '3 × 10/side @ 60 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=single+arm+dumbbell+row+bench', cue: '<b>Back to 60</b> — 65 got heavy and form slipped. Own the movement clean here: row to the hip, full stretch at the bottom, no yanking.', sets: 3 },
-          { id: 'lpd', n: 'Lat Pulldown (Neutral Grip)', sub: '3 × 10 @ 110', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=neutral+grip+lat+pulldown', cue: 'Hold 110. Neutral grip, don\'t overreach at the top (shoulder), blades down first.', sets: 3 }
+          { id: 'fp', n: 'DB Floor Press (Neutral Grip)', sub: '3 × 8-10 @ 110 lb', rest: 'Rest 2:30', warmup: '<b>Ramp:</b> 8 light → 5 moderate → working sets', v: 'https://www.youtube.com/results?search_query=dumbbell+floor+press+neutral+grip', cue: '<b>Bump to 110</b> (the 55s) — you called it last week (100×10 @ RPE 7.5). Neutral grip, tuck elbows. If 10s are tough, 3×8 is a win at the new load.', sets: 3 },
+          { id: 'lm', n: 'Landmine Press (single-arm)', sub: '3 × 10/side @ 20-25 lb', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=single+arm+landmine+press', cue: 'Around 20, push the last set to 25 if it moves well. Left side\'s a touch weaker — match reps to the weaker side.', sets: 3 },
+          { id: 'tri', n: 'Cable Tricep Extension', sub: '3 × 12 @ 55 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=cable+tricep+pushdown', cue: 'Hold 55. Elbows pinned.', sets: 3 }
         ]
       },
       {
-        h: 'Posterior + Groin',
+        h: 'Pull',
         items: [
-          { id: 'rdl', n: 'Romanian Deadlift', sub: '3 × 10 @ 85 lb', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=romanian+deadlift+form', cue: 'Hold 85 (RPE 7 last week — consolidate the jump). Barbell, flat back, hinge from the hips.', sets: 3 },
-          { id: 'cop', n: 'Copenhagen Plank', sub: '3 × 30 sec/side', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=copenhagen+plank', cue: 'Groin work. Log seconds.', sets: 3, noWeight: true, repUnit: 'sec' }
+          { id: 'sadb', n: 'Single-Arm DB Row', sub: '3 × 10/side @ 60 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=single+arm+dumbbell+row+bench', cue: '60 was "perfect weight, form really solid" last week — hold it and own it. Row to the hip.', sets: 3 },
+          { id: 'lpd', n: 'Lat Pulldown (Neutral Grip)', sub: '3 × 10 @ 110', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=neutral+grip+lat+pulldown', cue: 'Hold 110 (felt stronger last week). Neutral grip, don\'t overreach at the top.', sets: 3 }
         ]
       },
       {
-        h: 'Arms + Core',
+        h: 'Core (no hamstring load)',
         items: [
-          { id: 'bihc', n: 'Hammer Curl', sub: '3 × 10 @ 25 lb', rest: 'Superset ↓', v: 'https://www.youtube.com/results?search_query=dumbbell+hammer+curl', cue: 'Superset with reverse curls. Neutral grip, control down.', sets: 3 },
-          { id: 'bicc', n: 'Reverse Cable Curl', sub: '3 × 12 @ 25 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=reverse+cable+curl', cue: 'Superset with hammers. Hold 25. Overhand grip.', sets: 3 },
-          { id: 'rt', n: 'Russian Twist (DB)', sub: '3 × 20 total · 10/side @ 20 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=russian+twist+dumbbell', cue: 'Feet off floor. Rotate from the torso.', sets: 3 }
+          { id: 'ccr', n: 'Captain\'s Chair Leg Raise', sub: '3 × 15', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=captains+chair+leg+raise', cue: 'Bend the knees if straight legs tug the hamstring at all. Controlled, no swing.', sets: 3, noWeight: true },
+          { id: 'rt', n: 'Russian Twist (DB)', sub: '3 × 20 total @ 25 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=russian+twist+dumbbell', cue: 'Bump to 25 (you called it — 20 was RPE 6.5). Feet off floor if the hamstring allows, otherwise heels down.', sets: 3 }
         ]
       },
       {
-        h: 'Recovery',
+        h: 'Mobility Finish (dial it back up)',
         items: [
-          { id: 'yoga', n: 'Peloton Yoga · 10 min', sub: 'Recovery flow', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Do it now. Hip or full-body focus.', type: 'class' },
+          { id: 'yoga', n: 'Peloton Yoga · 10-15 min', sub: 'Hips + lower back', v: 'https://members.onepeloton.com/classes/yoga', cue: 'You flagged the stiffness from dropping mobility — this is the fix. Hip + back focus. GENTLE on any hamstring stretch.', type: 'class' },
           { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '5 min · full body', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' }
+            { n: 'Foam Rolling', d: '4 min · upper back + glutes', v: 'https://www.youtube.com/results?search_query=foam+rolling+upper+back' }
           ]}
         ]
       }
     ]
   },
-  fri: {
-    title: 'Friday · OTF Full Body',
-    meta: 'Orangetheory · with fiancé',
+  wed: {
+    title: 'Wednesday · Active Recovery',
+    meta: 'FFC or home · ~50 min',
     banners: [
-      { type: 'otf', html: '<b>OTF Full Body (with running), round two.</b> Normal effort. Long run is tomorrow, so if the tread really cooks the legs, keep Saturday easy.' }
+      { type: 'hammy', html: '<b>The hamstring\'s recovery day.</b> Low-impact cardio to keep the engine going, gentle rehab to help it heal, and a real mobility block for your back/hips. Nothing here should hurt — if the hamstring pulls, back off.' }
     ],
     sections: [
       {
-        h: 'The Class',
+        h: 'Low-Impact Cardio',
         items: [
-          { id: 'otf', n: 'OTF Full Body Class', sub: 'Log duration + avg HR + how it felt', v: '', cue: 'Note how hips/shoulder/foot handled the week.', type: 'otf' }
-        ]
-      }
-    ]
-  },
-  sat: {
-    title: 'Saturday · Long Run',
-    meta: 'Lakefront · ~70 min',
-    banners: [
-      { type: 'zone', html: '<b>Easy long run — easy by feel, HR under 150.</b> After a test-heavy week, this is pure aerobic flushing. Rested + not-too-hot = your HR should sit low naturally (like last Saturday\'s 132). Don\'t force the pace.' }
-    ],
-    sections: [
-      {
-        h: 'Pre-run Warm-up',
-        items: [
-          { type: 'checklist', items: [
-            { n: 'Leg Swings', d: '8/side each direction', cue: 'Loosen up — keep it light.', v: 'https://www.youtube.com/results?search_query=leg+swings+dynamic' },
-            { n: 'Ankle Circles + Foot Roll', d: '~45 sec/side', cue: 'Wake up the feet.', v: 'https://www.youtube.com/results?search_query=ankle+mobility+routine' }
-          ]}
+          { id: 'cardio', n: 'Bike or Elliptical · Zone 2', sub: '30-40 min easy · HR under 150', rest: '—', v: 'https://www.youtube.com/results?search_query=zone+2+cardio+bike', cue: 'Easy, conversational. Bike or elliptical — zero pounding on the hamstring. Peloton bike counts if you\'re home. Keep it truly easy.', type: 'cardio' }
         ]
       },
       {
-        h: 'Long Run',
+        h: 'Gentle Hamstring Rehab (pain-free only)',
         items: [
-          { id: 'lrun', n: 'Easy Long Run', sub: '6-7 miles · easy by feel, HR under 150', rest: 'First mile easy = warm-up', v: 'https://www.youtube.com/results?search_query=zone+2+running+heart+rate', cue: 'Conversational the whole way. Legs may be tired from OTF Fri — settle in, no pace pressure. Time on feet.', type: 'cardio' }
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec · gentle', rest: 'Rest 30 sec', newTag: true, v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', hammycue: '<b>Lie on your back, knee bent ~90°, heel dug into the floor. Gently press the heel down (like curling) at ~30-40% effort, hold.</b> Isometrics help a strain heal — but PAIN-FREE only. If it tweaks, ease off the effort. Do NOT stretch the hamstring hard this week.', sets: 3, noWeight: true, repUnit: 'sec' },
+          { id: 'gb', n: 'Glute Bridge (double-leg)', sub: '3 × 15 · slow', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=glute+bridge', cue: 'Drive through the heels, squeeze glutes at the top. Keeps the posterior chain active without straining the hamstring. Stop if it pulls.', sets: 3, noWeight: true }
         ]
       },
       {
-        h: 'Post-run Yoga + Roll',
+        h: 'Mobility Block (your back + hips need this)',
         items: [
-          { id: 'syoga', n: 'Peloton Yoga · 10 min', sub: 'Post-run / restorative', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Yoga instead of a stretch list. Hip + lower body focus.', type: 'class' },
+          { id: 'yoga', n: 'Peloton Yoga · 20-30 min', sub: 'Full hip + back flow', v: 'https://members.onepeloton.com/classes/yoga', cue: 'A proper session — this is the antidote to the cracking/popping. Ross Rayburn restorative or an Aditi hip flow. Skip or ease any deep hamstring stretch.', type: 'class' },
           { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '5 min · lower body', v: 'https://www.youtube.com/results?search_query=foam+rolling+lower+body' },
+            { n: 'Cat-Cow', d: '10 slow reps', v: 'https://www.youtube.com/results?search_query=cat+cow+stretch' },
+            { n: 'Foam Rolling', d: '5 min · back + glutes + calves', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' },
             { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
           ]}
         ]
       }
     ]
   },
+  thu: {
+    title: 'Thursday · OTF 2G',
+    meta: 'Orangetheory · with fiancé',
+    banners: [
+      { type: 'hammy', html: '<b>Elliptical again for the run blocks.</b> By now the hamstring should be settling — but keep protecting it. Sub any deadlift/hamstring-curl/sprint work. If it feels good, still don\'t test it today; there\'s a wedding weekend ahead.' },
+      { type: 'otf', html: 'OTF 2G. Moderate effort. Last structured day before travel — enjoy it.' }
+    ],
+    sections: [
+      {
+        h: 'The Class',
+        items: [
+          { id: 'otf', n: 'OTF 2G Class', sub: 'Log duration + avg HR + how it felt', v: '', cue: 'Elliptical for cardio. Log how the hamstring is trending vs Monday.', type: 'otf' }
+        ]
+      }
+    ]
+  },
+  fri: {
+    title: 'Friday · Light Pre-Travel',
+    meta: 'Apartment gym · ~25 min · before 6am',
+    banners: [
+      { type: 'travel', html: '<b>Quick and light before your 6am drive to Columbus.</b> A short upper + core + mobility hit so you leave feeling loose, not smoked. Keep it moving, no rest hunting. Skip anything if you\'re tight on time — the mobility is the priority.' }
+    ],
+    sections: [
+      {
+        h: 'Move + Loosen (~25 min)',
+        items: [
+          { type: 'checklist', items: [
+            { n: 'Cat-Cow + Hip CARs', d: '8 each', cue: 'Wake the back + hips up early.', v: 'https://www.youtube.com/results?search_query=cat+cow+hip+cars' },
+            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Shoulders.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' }
+          ]}
+        ]
+      },
+      {
+        h: 'Quick Circuit (2-3 rounds)',
+        items: [
+          { id: 'press', n: 'DB Press (floor or bench)', sub: '2-3 × 10 · moderate', rest: 'Flow through', v: 'https://www.youtube.com/results?search_query=dumbbell+floor+press+neutral+grip', cue: 'Whatever DBs the apartment gym has — moderate, not maximal.', sets: 3 },
+          { id: 'row', n: 'DB or Machine Row', sub: '2-3 × 12', rest: 'Flow through', v: 'https://www.youtube.com/results?search_query=dumbbell+row', cue: 'Squeeze the back. Use the universal machine if easier.', sets: 3 },
+          { id: 'plk', n: 'Plank', sub: '2-3 × 45 sec', rest: 'Flow through', v: 'https://www.youtube.com/results?search_query=plank+hold+form', cue: 'Core. Log seconds.', sets: 3, noWeight: true, repUnit: 'sec' }
+        ]
+      },
+      {
+        h: 'Before You Go',
+        items: [
+          { type: 'stretch-list', items: [
+            { n: 'Couch Stretch', d: '45 sec/side', v: 'https://www.youtube.com/results?search_query=couch+stretch' },
+            { n: 'Foot Rolling · ball or bottle', d: '1 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
+          ]}
+        ]
+      }
+    ]
+  },
+  sat: {
+    title: 'Saturday · Columbus (Wedding)',
+    meta: 'Hotel gym · optional',
+    banners: [
+      { type: 'travel', html: '<b>Wedding day — enjoy it.</b> The hotel session is <span class="optional-tag">optional</span>. If you move, go low-impact (bike/elliptical) to keep protecting the hamstring, plus mobility. A structured cardio flush + stretch is the perfect way to feel good in a suit all night.' },
+      { type: 'hammy', html: 'Outdoor run is Option B <b>only if the hamstring is 100% pain-free</b> — test it with a 2-min easy jog first, and bail to the elliptical/bike the second it complains. Not worth it right before the wedding.' }
+    ],
+    sections: [
+      {
+        h: 'Option A · Low-Impact Cardio + Mobility (recommended)',
+        items: [
+          { id: 'cardio', n: 'Bike or Elliptical · Zone 2', sub: '25-35 min easy · HR under 150', rest: '—', v: 'https://www.youtube.com/results?search_query=zone+2+cardio+bike', cue: 'Easy flush. Hotel bike or elliptical. Then the mobility below.', type: 'cardio' },
+          { id: 'hammy', n: 'Hamstring Isometric + Glute Bridge', sub: '3 × 30 sec iso + 3 × 15 bridge', rest: 'Gentle', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Same gentle rehab as Wednesday, pain-free. Keeps it progressing while you travel.', sets: 3, noWeight: true, repUnit: 'sec' },
+          { type: 'stretch-list', items: [
+            { n: 'Peloton Yoga · 15 min', d: 'hips + back', v: 'https://members.onepeloton.com/classes/yoga' },
+            { n: 'Foam Roll (or towel roll)', d: '5 min', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' }
+          ]}
+        ]
+      },
+      {
+        h: 'Option B · Easy Run (only if hamstring is 100%)',
+        items: [
+          { id: 'run', n: 'Easy Run', sub: '2-3 mi easy · abort if hamstring talks', rest: 'Test 2 min first', v: 'https://www.youtube.com/results?search_query=easy+run+zone+2', cue: 'ONLY if pain-free on a 2-min test jog. Easy by feel, HR under 150. The moment it pulls, switch to the bike. No heroics before the wedding.', type: 'cardio' }
+        ]
+      }
+    ]
+  },
   sun: {
-    title: 'Sunday · Rest + Export',
+    title: 'Sunday · Travel Home + Rest',
     meta: 'Body Check + Export',
     banners: [
-      { type: 'rest', html: '<b>Full rest.</b> Fill in the body check, then export and send your logs + Apple Health. Big one this week: <b>report your benchmark numbers</b> — push-ups, pull-ups, mile — vs 43 / 15 / 6:05. That tells us what Block 3 built and where Block 4 starts.' }
+      { type: 'rest', html: '<b>Travel home + rest.</b> Fill in the body check, then export and send your logs + Apple Health. Biggest thing to report: <b>how\'s the hamstring trending</b> — better, same, or worse? That decides how fast we ramp back into Block 4 running/hinging next week.' }
     ],
     sections: [
       { type: 'body-check' },
@@ -420,11 +389,11 @@ function set(k, v) { logs[k] = v; save(); }
 
 function renderTabs() {
   const days = [['mon','M'],['tue','T'],['wed','W'],['thu','Th'],['fri','F'],['sat','Sa'],['sun','Su']];
-  const testDays = ['mon','tue'];
+  const travelDays = ['fri','sat'];
   const restDays = ['sun'];
   document.getElementById('tabs').innerHTML = days.map(([k,l]) => {
     const done = logs[`${k}_done`] ? `<span class="dot"></span>` : '';
-    const cls = testDays.includes(k) ? 'test' : (restDays.includes(k) ? 'rest' : '');
+    const cls = travelDays.includes(k) ? 'travel' : (restDays.includes(k) ? 'rest' : '');
     return `<div class="tab ${cls} ${k===activeDay?'active':''}" onclick="setDay('${k}')">${l}${done}</div>`;
   }).join('');
 }
@@ -459,15 +428,13 @@ function renderItem(it, dayKey) {
         ${s.v ? `<a href="${s.v}" target="_blank">▶</a>` : ''}
       </div>`).join('')}</div>`;
   }
-  if (it.type === 'interval-box') {
-    return `<div class="interval-box">${it.html}</div>`;
-  }
   if (it.type === 'body-check') {
     const fields = [
       ['rshoulder', 'Right Shoulder (1-10)'],
       ['lshoulder', 'Left Shoulder (1-10)'],
       ['hips', 'Hips (1-10)'],
       ['groin', 'Groin (1-10)'],
+      ['hamstring', 'Right Hamstring (1-10)'],
       ['foot', 'Foot/Plantar (1-10)'],
       ['sleep', 'Sleep Quality (1-10)']
     ];
@@ -477,10 +444,10 @@ function renderItem(it, dayKey) {
   }
   if (it.type === 'week-notes') {
     return `
-      <textarea class="note-area" placeholder="🎯 BENCHMARK RESULTS: push-ups / pull-ups / mile time" onchange="set('wk_bench', this.value)">${get('wk_bench')}</textarea>
-      <textarea class="note-area" placeholder="How did the tests feel? PRs? Anything leave gas in the tank?" onchange="set('wk_easy', this.value)">${get('wk_easy')}</textarea>
-      <textarea class="note-area" placeholder="Anything hurt / off? (left shoulder especially)" onchange="set('wk_hurt', this.value)">${get('wk_hurt')}</textarea>
-      <textarea class="note-area" placeholder="Thoughts on Block 4 / what you want next" onchange="set('wk_notes', this.value)">${get('wk_notes')}</textarea>
+      <textarea class="note-area" placeholder="How is the right hamstring trending? (better / same / worse)" onchange="set('wk_hammy', this.value)">${get('wk_hammy')}</textarea>
+      <textarea class="note-area" placeholder="Did the extra mobility help the back/hips?" onchange="set('wk_easy', this.value)">${get('wk_easy')}</textarea>
+      <textarea class="note-area" placeholder="How did nutrition / the weekend go?" onchange="set('wk_hard', this.value)">${get('wk_hard')}</textarea>
+      <textarea class="note-area" placeholder="Ready to ramp back into running/hinging next week? Notes" onchange="set('wk_notes', this.value)">${get('wk_notes')}</textarea>
       <button class="export-btn" onclick="exportWeek()">📤 Export My Week</button>`;
   }
 
@@ -488,7 +455,6 @@ function renderItem(it, dayKey) {
   const isDone = logs[`${cid}_done`];
   const isOpen = logs[`${cid}_open`];
   const repUnit = it.repUnit || 'reps';
-  const isTest = !!it.prcue && (it.id === 'putest' || it.id === 'phtest' || it.id === 'mile');
   let setRows = '';
   if (it.sets) {
     for (let i=1; i<=it.sets; i++) {
@@ -497,7 +463,7 @@ function renderItem(it, dayKey) {
       if (it.noWeight) {
         setRows += `
           <div class="set-row norep">
-            <div class="set-lbl">${it.sets===1?'MAX':i}</div>
+            <div class="set-lbl">${i}</div>
             <input class="ipt" inputmode="numeric" placeholder="${repUnit}" value="${get(rKey)}" onchange="set('${rKey}', this.value)">
           </div>`;
       } else {
@@ -513,8 +479,8 @@ function renderItem(it, dayKey) {
     setRows = `
       <div class="set-row">
         <div class="set-lbl">Log</div>
-        <input class="ipt" placeholder="${it.id==='mile'?'mile time':'distance / time'}" value="${get(cid+'_dist')}" onchange="set('${cid}_dist', this.value)">
-        <input class="ipt" placeholder="${it.id==='mile'?'peak HR':'avg HR / pace'}" value="${get(cid+'_hr')}" onchange="set('${cid}_hr', this.value)">
+        <input class="ipt" placeholder="distance / time" value="${get(cid+'_dist')}" onchange="set('${cid}_dist', this.value)">
+        <input class="ipt" placeholder="avg HR" value="${get(cid+'_hr')}" onchange="set('${cid}_hr', this.value)">
       </div>`;
   } else if (it.type === 'otf') {
     setRows = `
@@ -525,14 +491,14 @@ function renderItem(it, dayKey) {
       </div>`;
   }
 
-  const cardClass = (isDone?'done ':'') + (isOpen?'open ':'') + (isTest?'test':'');
+  const cardClass = (isDone?'done ':'') + (isOpen?'open':'');
 
   return `
     <div class="card ${cardClass}" id="card-${cid}">
       <div class="card-head" onclick="toggleCard('${cid}', event)">
         <div class="chk ${isDone?'on':''}" onclick="toggleDone('${cid}', event)"></div>
         <div class="card-ttl">
-          <div class="nm">${it.n}${it.newTag ? '<span class="test-tag">Test</span>' : ''}</div>
+          <div class="nm">${it.n}${it.newTag ? '<span class="new-tag">New</span>' : ''}</div>
           <div class="sub">${it.sub||''}</div>
           ${it.rest && it.rest !== '—' ? `<div class="rest">⏱ ${it.rest}</div>` : ''}
         </div>
@@ -541,7 +507,7 @@ function renderItem(it, dayKey) {
       <div class="card-body">
         ${it.v ? `<a class="video-link" href="${it.v}" target="_blank">Form check</a>` : ''}
         ${it.warmup ? `<div class="ramp">🔥 ${it.warmup}</div>` : ''}
-        ${it.prcue ? `<div class="prcue">${it.prcue}</div>` : ''}
+        ${it.hammycue ? `<div class="hammycue">${it.hammycue}</div>` : ''}
         ${it.cue ? `<div class="cue">${it.cue}</div>` : ''}
         <div class="sets">${setRows}</div>
         <div class="rpe-row">
@@ -593,7 +559,7 @@ function renderDay() {
   html += `
     <div class="day-notes">
       <div class="day-notes-ttl">Day notes</div>
-      <textarea class="note-area" placeholder="Overall feel, sleep, energy, anything off..." onchange="set('${activeDay}_notes', this.value)">${get(activeDay+'_notes')}</textarea>
+      <textarea class="note-area" placeholder="Overall feel, sleep, energy, hamstring status..." onchange="set('${activeDay}_notes', this.value)">${get(activeDay+'_notes')}</textarea>
     </div>`;
   const dayDone = logs[`${activeDay}_done`];
   html += `
@@ -611,8 +577,8 @@ function toggleDay() {
 }
 
 function exportWeek() {
-  let out = '=== Week of Sep 7–13 — BLOCK 3 Week 7 (BENCHMARK · upper tests Mon · mile Tue · OTF Wed/Fri) ===\n\n';
-  const dayOrder = [['mon','Monday — Upper Benchmark (pull-ups + push-ups)'],['tue','Tuesday — Mile Time Trial'],['wed','Wednesday — OTF Full Body'],['thu','Thursday — Gym Strength'],['fri','Friday — OTF Full Body'],['sat','Saturday — Long Run'],['sun','Sunday — Rest']];
+  let out = '=== Week of Sep 14–20 — BLOCK 4 Week 1 (Reset + Protect · hamstring care · OTF Mon/Thu · Columbus wknd) ===\n\n';
+  const dayOrder = [['mon','Monday — OTF 2G'],['tue','Tuesday — Upper + Core'],['wed','Wednesday — Active Recovery'],['thu','Thursday — OTF 2G'],['fri','Friday — Light Pre-Travel'],['sat','Saturday — Columbus (Wedding)'],['sun','Sunday — Travel Home + Rest']];
   dayOrder.forEach(([k,l]) => {
     const done = logs[`${k}_done`] ? '✓' : '○';
     out += `--- ${l} ${done} ---\n`;
@@ -625,13 +591,8 @@ function exportWeek() {
     });
     out += '\n';
   });
-  out += '--- BENCHMARK RESULTS ---\n';
-  out += `push-ups: ${logs['mon_phtest_1_r'] || '—'} (prev 43)\n`;
-  out += `pull-ups: ${logs['mon_putest_1_r'] || '—'} (prev 15)\n`;
-  out += `mile: ${logs['tue_mile_dist'] || '—'} (prev 6:05), peak HR ${logs['tue_mile_hr'] || '—'}\n`;
-  out += (logs['wk_bench'] ? `notes: ${logs['wk_bench']}\n` : '');
-  out += '\n--- Body Check ---\n';
-  ['rshoulder','lshoulder','hips','groin','foot','sleep'].forEach(f => {
+  out += '--- Body Check ---\n';
+  ['rshoulder','lshoulder','hips','groin','hamstring','foot','sleep'].forEach(f => {
     out += `${f}: ${logs['bc_'+f] || '—'}\n`;
   });
 
