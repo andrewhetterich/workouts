@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="version" content="sep28">
-<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=0928">
-<title>B4 W3 · Recover + Rehab</title>
+<meta name="version" content="oct05">
+<link rel="canonical" href="https://andrewhetterich.github.io/workouts/?v=1005">
+<title>B4 W4 · Rest the Leg</title>
 <style>
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; padding: 0; background: #0a0a0c; color: #e8e8ea; font-family: -apple-system, system-ui, sans-serif; }
@@ -24,7 +24,6 @@
   .tab.active { background: #f2f2f7; color: #0a0a0c; }
   .tab .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #34c759; margin-left: 4px; vertical-align: middle; }
   .tab.rest .dot { background: #5a5a62; }
-  .tab.travel .dot { background: #d8a24a; }
   .tab.active .dot { background: #0a0a0c; }
   main { padding: 16px; max-width: 640px; margin: 0 auto; }
   .day-h { margin: 0 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
@@ -32,11 +31,8 @@
   .banner { background: linear-gradient(135deg, #1a1f2e 0%, #1d1d28 100%); border: 1px solid #2a3148; border-radius: 12px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; line-height: 1.5; color: #c5cae0; }
   .banner.warn { background: linear-gradient(135deg, #2a1f15 0%, #281d1a 100%); border-color: #482e15; color: #e0c8a5; }
   .banner.coach { background: linear-gradient(135deg, #1a2a1f 0%, #1d281d 100%); border-color: #2a4830; color: #b5d8b8; }
-  .banner.otf { background: linear-gradient(135deg, #2a1a1a 0%, #2a1518 100%); border-color: #5a2a2a; color: #f0b8b8; }
   .banner.zone { background: linear-gradient(135deg, #10222a 0%, #10202a 100%); border-color: #1f4a5a; color: #8ad8e8; }
-  .banner.shoulder { background: linear-gradient(135deg, #2a1015 0%, #2a1018 100%); border-color: #6a2030; color: #f0a0b0; }
-  .banner.hammy { background: linear-gradient(135deg, #241528 0%, #221528 100%); border-color: #5a2a5a; color: #e0a8e0; }
-  .banner.travel { background: linear-gradient(135deg, #2a2410 0%, #281f10 100%); border-color: #5a4a20; color: #e8cd8a; }
+  .banner.leg { background: linear-gradient(135deg, #241528 0%, #221528 100%); border-color: #5a2a5a; color: #e0a8e0; }
   .banner.rest { background: linear-gradient(135deg, #16161d 0%, #18181f 100%); border-color: #2a2a34; color: #b8b8c5; }
   .banner b { color: #fff; font-weight: 700; }
   .section-h { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #6a6a72; margin: 22px 0 10px; }
@@ -64,10 +60,8 @@
   .ramp b { color: #ffd97a; }
   .cue { background: #1c1c22; border-left: 2px solid #4a4a52; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #b8b8bf; line-height: 1.5; margin-bottom: 12px; }
   .cue b { color: #e8e8ea; }
-  .shouldercue { background: #24101a; border-left: 2px solid #d84a6a; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #f0a8b8; line-height: 1.5; margin-bottom: 12px; }
-  .shouldercue b { color: #ffd0da; }
-  .newcue { background: #1e1a2a; border-left: 2px solid #8c6aff; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #cbb8e8; line-height: 1.5; margin-bottom: 12px; }
-  .newcue b { color: #e0d0ff; }
+  .legcue { background: #1e1428; border-left: 2px solid #a86ad8; padding: 8px 11px; border-radius: 6px; font-size: 12px; color: #d8b8f0; line-height: 1.5; margin-bottom: 12px; }
+  .legcue b { color: #ecd8ff; }
   .sets { display: flex; flex-direction: column; gap: 6px; }
   .set-row { display: grid; grid-template-columns: 28px 1fr 1fr; gap: 8px; align-items: center; }
   .set-row.norep { grid-template-columns: 28px 1fr; }
@@ -119,12 +113,12 @@
 <div class="hdr">
   <div class="hdr-top">
     <div>
-      <div class="hdr-ttl">Block 4 · Week 3</div>
-      <div class="hdr-wk">Sep 28 – Oct 4 · Recover + Rehab</div>
+      <div class="hdr-ttl">Block 4 · Week 4</div>
+      <div class="hdr-wk">Oct 5 – Oct 11 · Rest the Leg</div>
     </div>
     <button class="plan-btn" onclick="document.getElementById('planModal').classList.add('on')">Plan ↗</button>
   </div>
-  <div class="hdr-sub">Shoulder rests · hamstring protected · legs + core + bike</div>
+  <div class="hdr-sub">True lower rest · upper rebuild + bike + mobility</div>
   <div class="tabs" id="tabs"></div>
 </div>
 
@@ -133,142 +127,126 @@
 <div class="modal-bg" id="planModal">
   <div class="modal">
     <button class="modal-close" onclick="document.getElementById('planModal').classList.remove('on')">Close</button>
-    <h2 class="modal-h">Block 4 · Week 3 — Recover + Rehab</h2>
-    <div class="modal-sub">Let the body catch up · legs, core, bike, rehab</div>
+    <h2 class="modal-h">Block 4 · Week 4 — Rest the Leg</h2>
+    <div class="modal-sub">One genuine down-week for the hamstring — and a decision point</div>
 
-    <h3>Why This Week Looks Different</h3>
+    <h3>The Call</h3>
     <ul>
-      <li><b>Left shoulder at 3</b> (impact/fall) — we rest it from ALL loading: no pressing, pulling, overhead, rows, push-ups, hangs</li>
-      <li><b>Hamstring still protected</b> (your call) — no running, no hinges</li>
-      <li>Ankle 4, hips 5, foot 6, recovery crashed at the wedding — a lot stacking. Best move is to let it all settle together.</li>
-      <li>So: lower-body isolation + shoulder-safe core + bike cardio + rehab. A real recovery week.</li>
+      <li>The hamstring has nagged 4 weeks and regressed to 3 — because our "protect" weeks were still a full leg-training load</li>
+      <li>This week the leg <b>truly rests</b>: no leg extensions, leg press, bridges, leg raises, squatting, or running</li>
+      <li>Only leg work that stays: gentle pain-free hamstring isometrics (the one evidence-based piece)</li>
     </ul>
 
-    <h3>⚠️ On the Shoulder</h3>
+    <h3>You Won't Lose Progress</h3>
     <ul>
-      <li>An impact injury on top of your old left-shoulder history is worth a real look if it doesn't improve in a few days</li>
-      <li>See someone sooner if there's a visible bump/step, weakness, numbness, or you can't raise the arm</li>
-      <li>Pain-free gentle range only this week — no loaded shoulder rehab yet</li>
+      <li>Cardio takes 2-3 weeks of total inactivity to decline — and you're still biking</li>
+      <li>Strength holds even longer, and you're training upper all week</li>
+      <li>One rest week is recoverable in days. This is the fastest path back to running.</li>
     </ul>
 
-    <h3>The Week</h3>
+    <h3>"Something Every Morning" — Covered</h3>
     <ul>
-      <li>Mon — Lower + core + rehab (no upper)</li>
-      <li>Tue — Active recovery: bike + mobility + rehab</li>
-      <li>Wed — OTF 2G (bike + heavily modified)</li>
-      <li>Thu — Lower + core + rehab (no upper)</li>
-      <li>Fri — OTF 2G (modified) → travel to Indy</li>
-      <li>Sat — Cabins (Columbus, IN) — optional walk/mobility</li>
-      <li>Sun — Rest + export</li>
+      <li>Shoulder's healed to 7, so upper body is back — 3 lifting days</li>
+      <li>Bike keeps your cardio engine (2 days) · mobility throughout</li>
+      <li>All of it loads the hamstring zero</li>
     </ul>
 
-    <h3>OTF This Week</h3>
+    <h3>⚕️ The Decision Rule</h3>
     <ul>
-      <li><b>Bike for all cardio</b> (no tread/rower — hamstring + shoulder)</li>
-      <li>Strength: lower-body + core only. Skip anything overhead, pressing, rowing, TRX, or that pulls on the left shoulder or hinges the hamstring.</li>
-      <li>It's 100% okay to do a partial class or make it a bike + core session. Don't let the format aggravate an injury.</li>
+      <li>This rested week IS the diagnostic (since no physio right now)</li>
+      <li><b>Improves →</b> we rebuild running/hinging slowly next week</li>
+      <li><b>Still stuck at 3 →</b> time to get it looked at: telehealth PT, urgent care, or ask your PCP for a referral. 4+ weeks stalled isn't something to keep guessing at.</li>
     </ul>
 
-    <h3>The Good News</h3>
+    <h3>The Real Healing Lever: Sleep</h3>
     <ul>
-      <li>Hamstring is healing well (no feedback by Wed, isometrics no longer cramping)</li>
-      <li>VO2 holding at 51 · leg extension already at 115</li>
-      <li>Get whole this week and we open the real Block 4 build next week</li>
+      <li>You averaged 6.5h with two near-zero nights. Muscle heals during sleep.</li>
+      <li>This week, 7-8h a night does more for the hamstring than any exercise. Genuinely the priority.</li>
+    </ul>
+
+    <h3>If You Do OTF With Mckenzie</h3>
+    <ul>
+      <li>Swap it in for a bike day — but <b>bike for cardio, upper/core for strength, sit out EVERY leg movement</b> (squats, lunges, deadlifts, step-ups)</li>
+      <li>If you can't keep it leg-free, do the bike day here instead and skip OTF this week</li>
     </ul>
   </div>
 </div>
 
 <script>
-const VERSION = 'sep28';
+const VERSION = 'oct05';
 const STORAGE_KEY = 'workout-logs-' + VERSION;
 
 const data = {
   mon: {
-    title: 'Monday · Lower + Core',
-    meta: 'FFC Gold Coast · 50 min · no upper',
+    title: 'Monday · Upper Push + Core',
+    meta: 'FFC Gold Coast · 55 min',
     banners: [
-      { type: 'shoulder', html: '<b>Left shoulder rests fully today.</b> Nothing that presses, pulls, or bears weight through the arm. Everything below is legs + supine core + rehab — all shoulder-safe.' },
-      { type: 'hammy', html: 'Hamstring stays protected: quad/glute isolation only, no hinging. Ankle: no deep flexion (keep knees/depth moderate).' }
+      { type: 'coach', html: '<b>Upper is back — shoulder\'s healed to 7.</b> First real pressing in two weeks, so ease into the loads and keep an eye on the left shoulder (it just recovered from the impact). Reclaim your strength while the leg rests.' },
+      { type: 'leg', html: '<b>Leg rests.</b> Nothing here loads it. The hamstring isometric at the end is the only leg work all day — gentle and pain-free.' }
     ],
     sections: [
       {
-        h: 'Warm-up (gentle)',
+        h: 'Warm-up',
         items: [
           { type: 'checklist', items: [
-            { n: 'Hip CARs', d: '5/side', cue: 'Loosen the hips (reading 5).', v: 'https://www.youtube.com/results?search_query=hip+cars' },
-            { n: '90/90 Hip Switches', d: '10 total', cue: 'Gentle hip mobility.', v: 'https://www.youtube.com/results?search_query=90+90+hip+switches' },
-            { n: 'Ankle Circles (gentle)', d: '10/side', cue: 'Left ankle — easy range only, stay out of the painful deep position.', v: 'https://www.youtube.com/results?search_query=ankle+mobility+circles' },
-            { n: 'Shoulder Pendulums', d: '30 sec/side', cue: 'Let the arm hang and gently sway/circle. PAIN-FREE only — this is soothing ROM, not a workout.', v: 'https://www.youtube.com/results?search_query=shoulder+pendulum+exercise' }
+            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Wake up the upper back.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
+            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Prep both shoulders before pressing — especially the left.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' },
+            { n: 'Cat-Cow + Thoracic Rotations', d: '8 each', cue: 'Open the mid-back.', v: 'https://www.youtube.com/results?search_query=cat+cow+thoracic+rotation' }
           ]}
         ]
       },
       {
-        h: 'Lower (hamstring-safe, shoulder-safe)',
+        h: 'Push',
         items: [
-          { id: 'legext', n: 'Leg Extension', sub: '3 × 12 @ ~115', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=leg+extension+machine', cue: 'Pure quad. 115 was RPE 7.5 last week with a slow lower — keep that tempo. No hamstring, no shoulder.', sets: 3 },
-          { id: 'lp', n: 'Leg Press', sub: '3 × 12 · moderate depth', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=leg+press+form', cue: 'Quad/glute, shoulders fully passive. <b>Moderate depth only</b> — don\'t let the knees crowd the chest (protects the ankle). Pick an RPE 7 load.', sets: 3 },
-          { id: 'gb', n: 'Glute Bridge (bodyweight)', sub: '3 × 15 · slow', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=glute+bridge', cue: 'Drive through heels, squeeze at top. Keeps the posterior chain active without hinging.', sets: 3, noWeight: true }
+          { id: 'fp', n: 'DB Floor Press (Neutral Grip)', sub: '3 × 8-10 @ 100 lb (build to 110)', rest: 'Rest 2:30', warmup: '<b>Ramp:</b> 8 light → 5 moderate → working sets', v: 'https://www.youtube.com/results?search_query=dumbbell+floor+press+neutral+grip', cue: 'Start at 100 (you were at 110 before the 2-week layoff). If the left shoulder feels 100% and it moves well, build to 110. Neutral grip, tuck elbows. Stop if the shoulder pinches.', sets: 3 },
+          { id: 'lm', n: 'Landmine Press (single-arm)', sub: '3 × 10/side @ 20 lb', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=single+arm+landmine+press', cue: 'Shoulder-friendly angled press. Keep it at 20 this week — re-grooving the pattern. Match the weaker left side.', sets: 3 },
+          { id: 'tri', n: 'Cable Tricep Extension', sub: '3 × 12 @ 55 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=cable+tricep+pushdown', cue: 'Hold 55. Elbows pinned.', sets: 3 }
         ]
       },
       {
-        h: 'Hips + Groin (shoulder-safe)',
+        h: 'Core (no leg load)',
         items: [
-          { id: 'add', n: 'Side-Lying Hip Adduction', sub: '3 × 12/side', rest: 'Rest 45 sec', newTag: true, v: 'https://www.youtube.com/results?search_query=side+lying+hip+adduction', newcue: '<b>Replaces Copenhagen this week</b> — the side plank loads the down shoulder, which is off-limits. Lie on your side, top leg crossed in front, lift the bottom (inner-thigh) leg. Same groin work, zero shoulder.', sets: 3, noWeight: true },
-          { id: 'clam', n: 'Clamshells', sub: '3 × 15/side', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=clamshell+exercise', cue: 'Glute med / hip health (hips at 5). Knees bent, lift top knee, keep hips stacked.', sets: 3, noWeight: true }
+          { id: 'pallof', n: 'Pallof Press', sub: '3 × 12/side @ 30 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=pallof+press', cue: 'Anti-rotation, no leg involvement. Press straight out, resist the twist.', sets: 3 },
+          { id: 'db', n: 'Dead Bugs', sub: '3 × 10/side', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=dead+bug+exercise', cue: 'Low back glued to the floor. Keep the heels close / knees bent so the hamstring stays quiet.', sets: 3, noWeight: true }
         ]
       },
       {
-        h: 'Core (supine — no shoulder load)',
+        h: 'Hamstring (the only leg work)',
         items: [
-          { id: 'db', n: 'Dead Bugs', sub: '3 × 10/side', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=dead+bug+exercise', cue: 'On your back, low back glued to the floor. Zero shoulder stress. Slow and controlled.', sets: 3, noWeight: true },
-          { id: 'rc', n: 'Reverse Crunch', sub: '3 × 15', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=reverse+crunch', cue: 'Knees to chest, curl the hips up. Supine, shoulder-safe.', sets: 3, noWeight: true }
-        ]
-      },
-      {
-        h: 'Hamstring Rehab (pain-free)',
-        items: [
-          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec · gentle', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'It stopped cramping last week — that\'s healing. Knee bent ~90°, heel dug in, ~30-40% effort. Pain-free.', sets: 3, noWeight: true, repUnit: 'sec' }
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec · gentle', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', legcue: '<b>Keep this — it\'s the real rehab, and it\'s not been cramping (good).</b> Knee bent ~90°, heel dug in, ~30-40% effort. Pain-free. But know the healing this week comes mostly from NOT loading the leg + sleeping well, not from this.', sets: 3, noWeight: true, repUnit: 'sec' }
         ]
       },
       {
         h: 'Mobility Finish',
         items: [
-          { id: 'yoga', n: 'Peloton Yoga · 10-15 min', sub: 'Gentle hips + back', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Pick a gentle/restorative flow. SKIP anything that loads the shoulder (down dog, plank, chaturanga) or deep-flexes the ankle (hero pose).', type: 'class' },
+          { id: 'yoga', n: 'Peloton Yoga · 10 min', sub: 'Hips + back', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Gentle flow. Skip deep hamstring stretches and deep-ankle poses.', type: 'class' },
           { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '4 min · quads + glutes', v: 'https://www.youtube.com/results?search_query=foam+rolling+lower+body' },
-            { n: 'Foot Rolling · frozen ball', d: '2 min/side · DAILY (home now)', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
+            { n: 'Foot Rolling · frozen ball', d: '2 min/side · DAILY', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
           ]}
         ]
       }
     ]
   },
   tue: {
-    title: 'Tuesday · Active Recovery',
+    title: 'Tuesday · Bike + Mobility',
     meta: 'FFC or home · ~50 min',
     banners: [
-      { type: 'zone', html: '<b>Easy recovery day.</b> Low-impact cardio to keep the engine going (VO2\'s at 51, let\'s hold it), full mobility for the hips/back, and rehab for the hamstring + gentle shoulder ROM. Nothing should hurt.' }
+      { type: 'zone', html: '<b>Cardio day — bike only.</b> Zero impact, zero hamstring load. This is how we hold your aerobic engine (and VO2) while the leg rests. Keep it easy.' }
     ],
     sections: [
       {
-        h: 'Low-Impact Cardio',
+        h: 'Cardio',
         items: [
-          { id: 'cardio', n: 'Bike · Zone 2', sub: '30-40 min easy · HR under 150', rest: '—', v: 'https://www.youtube.com/results?search_query=zone+2+cardio+bike', cue: 'Bike is the pick — zero impact on the hamstring, zero load on the shoulder. Easy, conversational. Peloton free ride works at home.', type: 'cardio' }
+          { id: 'cardio', n: 'Bike · Zone 2', sub: '35-45 min easy · HR under 150', rest: '—', v: 'https://www.youtube.com/results?search_query=zone+2+cardio+bike', cue: 'Easy, conversational. Peloton free ride or any bike. Smooth pedaling — if you ever feel the hamstring, lighten the resistance (don\'t grind).', type: 'cardio' }
         ]
       },
       {
-        h: 'Rehab (pain-free)',
+        h: 'Rehab + Mobility',
         items: [
-          { id: 'hammy', n: 'Hamstring Isometric + Glute Bridge', sub: '3 × 30 sec iso + 3 × 15 bridge', rest: 'Gentle', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Keep it progressing. Pain-free.', sets: 3, noWeight: true, repUnit: 'sec' },
-          { id: 'shldr', n: 'Gentle Shoulder ROM', sub: 'Pendulums + pain-free reaches', rest: '—', v: 'https://www.youtube.com/results?search_query=shoulder+pendulum+exercise', shouldercue: '<b>Pain-free only.</b> Pendulums, gentle table slides, easy reaches within a comfortable range. Do NOT push into pain or load it — we\'re just keeping it moving while it settles.', sets: 1, noWeight: true, repUnit: 'min' }
-        ]
-      },
-      {
-        h: 'Mobility Block',
-        items: [
-          { id: 'yoga', n: 'Peloton Yoga · 20-30 min', sub: 'Full hip + back flow', v: 'https://members.onepeloton.com/classes/yoga', cue: 'A proper session for the hips/back (both flagged). Restorative or gentle flow — skip shoulder-loading and deep-ankle poses.', type: 'class' },
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec · gentle', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Pain-free, ~30-40% effort.', sets: 3, noWeight: true, repUnit: 'sec' },
+          { id: 'yoga', n: 'Peloton Yoga · 20 min', sub: 'Full hip + back flow', v: 'https://members.onepeloton.com/classes/yoga', cue: 'A proper mobility session for the hips/back. Gentle on the hamstring.', type: 'class' },
           { type: 'stretch-list', items: [
-            { n: 'Cat-Cow', d: '10 slow', v: 'https://www.youtube.com/results?search_query=cat+cow+stretch' },
-            { n: 'Foam Rolling', d: '5 min · lower body', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' },
+            { n: 'Foam Rolling', d: '5 min · upper back + glutes (skip hamstring belly)', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' },
             { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
           ]}
         ]
@@ -276,110 +254,142 @@ const data = {
     ]
   },
   wed: {
-    title: 'Wednesday · OTF 2G',
-    meta: 'Orangetheory · heavily modified',
+    title: 'Wednesday · Upper Pull + Core',
+    meta: 'FFC Gold Coast · 55 min',
     banners: [
-      { type: 'shoulder', html: '<b>Two things to protect today.</b> Bike for ALL cardio (no tread/rower). Strength: lower-body + core only — skip everything overhead, pressing, rowing, TRX, or that pulls on the left shoulder or hinges the hamstring.' },
-      { type: 'otf', html: 'It\'s completely fine to make this a bike + lower-body + core session and sit out the rest. Do NOT let the class push you into aggravating the shoulder or hamstring. A partial class is a win this week.' }
+      { type: 'coach', html: '<b>Pull day — reclaim it carefully.</b> First time hanging/pulling in two weeks, and the left shoulder just came back from an impact injury. Pull-ups are sub-max and strict (no swing). Back off anything that pinches.' },
+      { type: 'leg', html: 'Leg still fully resting. Core is seated/supine only — nothing that loads the hamstring.' }
     ],
     sections: [
       {
-        h: 'The Class (modified)',
-        items: [
-          { id: 'otf', n: 'OTF 2G Class', sub: 'Log duration + avg HR + how it felt', v: '', cue: 'Bike cardio. Lower/core strength only. Note anything that flared the shoulder or hamstring so we know.', type: 'otf' }
-        ]
-      }
-    ]
-  },
-  thu: {
-    title: 'Thursday · Lower + Core',
-    meta: 'FFC Gold Coast · 50 min · no upper',
-    banners: [
-      { type: 'shoulder', html: '<b>Shoulder rests again — legs + core + rehab.</b> Same rules: nothing loads the arm. By now the shoulder should be a touch better; keep protecting it regardless.' }
-    ],
-    sections: [
-      {
-        h: 'Warm-up (gentle)',
+        h: 'Warm-up',
         items: [
           { type: 'checklist', items: [
-            { n: 'Hip CARs', d: '5/side', cue: 'Loosen the hips.', v: 'https://www.youtube.com/results?search_query=hip+cars' },
-            { n: 'Leg Swings', d: '10/side (gentle, front-back)', cue: 'Easy — no aggressive hamstring stretch at the top.', v: 'https://www.youtube.com/results?search_query=leg+swings+dynamic' },
-            { n: 'Ankle Circles (gentle)', d: '10/side', cue: 'Left ankle — easy range only.', v: 'https://www.youtube.com/results?search_query=ankle+mobility+circles' },
-            { n: 'Shoulder Pendulums', d: '30 sec/side', cue: 'Pain-free gentle sway/circle.', v: 'https://www.youtube.com/results?search_query=shoulder+pendulum+exercise' }
+            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Squeeze blades.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
+            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Prep the shoulders.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' },
+            { n: 'Scapular Pull-ups', d: '8 reps', cue: 'Grooves safe pull-up mechanics — important after the layoff.', v: 'https://www.youtube.com/results?search_query=scapular+pull+ups' }
           ]}
         ]
       },
       {
-        h: 'Lower (hamstring-safe, shoulder-safe)',
+        h: 'Pull',
         items: [
-          { id: 'legext', n: 'Leg Extension', sub: '3 × 12 @ ~115-120', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=leg+extension+machine', cue: 'Nudge slightly if 115 felt good. Slow lower. Pure quad.', sets: 3 },
-          { id: 'lp', n: 'Leg Press', sub: '3 × 12 · moderate depth', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=leg+press+form', cue: 'Quad/glute. Moderate depth (ankle). RPE 7.', sets: 3 },
-          { id: 'ham', n: 'Single-Leg Glute Bridge', sub: '3 × 12/side · slow', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=single+leg+glute+bridge', cue: 'A step up from double-leg. Drive through the heel, glute-focused. Back off if the hamstring pulls (it shouldn\'t at this range).', sets: 3, noWeight: true }
+          { id: 'pu', n: 'Pull-ups', sub: '4 × 6 (well sub-max)', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=pull+up+strict+form', cue: 'Ease back in — only 6 per set, leave plenty in the tank. Strict, dead hang, no swing. If the left shoulder complains, switch to lat pulldown and skip these.', sets: 4, noWeight: true },
+          { id: 'csr', n: 'Chest-Supported DB Row', sub: '3 × 10 @ 45-50/hand', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=chest+supported+dumbbell+row', cue: 'Chest on an incline bench, both arms row. Zero leg/hamstring involvement. RPE 7-8.', sets: 3 },
+          { id: 'lpd', n: 'Lat Pulldown (Neutral Grip)', sub: '3 × 10 @ 110', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=neutral+grip+lat+pulldown', cue: 'Hold 110. Neutral grip, don\'t overreach at the top (shoulder).', sets: 3 },
+          { id: 'fp2', n: 'Face Pulls', sub: '3 × 15 @ 30 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=face+pull+rope', cue: 'Shoulder hygiene — great for the recovering left shoulder. Rope high, pull to forehead.', sets: 3 }
         ]
       },
       {
-        h: 'Hips + Groin (shoulder-safe)',
+        h: 'Arms',
         items: [
-          { id: 'add', n: 'Side-Lying Hip Adduction', sub: '3 × 12/side', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=side+lying+hip+adduction', cue: 'Groin work, no shoulder. Lift the bottom (inner-thigh) leg.', sets: 3, noWeight: true },
-          { id: 'abd', n: 'Side-Lying Hip Abduction', sub: '3 × 15/side', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=side+lying+hip+abduction', cue: 'Glute med for hip health. Top leg lifts, toe slightly down.', sets: 3, noWeight: true }
+          { id: 'bihc', n: 'Hammer Curl', sub: '3 × 10 @ 25 lb', rest: 'Superset ↓', v: 'https://www.youtube.com/results?search_query=dumbbell+hammer+curl', cue: 'Superset with reverse curls. Control down.', sets: 3 },
+          { id: 'bicc', n: 'Reverse Cable Curl', sub: '3 × 12 @ 25 lb', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=reverse+cable+curl', cue: 'Superset with hammers. Hold 25.', sets: 3 }
         ]
       },
       {
-        h: 'Core (supine — no shoulder load)',
+        h: 'Core (no leg load)',
         items: [
-          { id: 'bike', n: 'Bicycle Crunches', sub: '3 × 20 total', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=bicycle+crunch', cue: 'Hands light behind head (don\'t pull the neck). Rotate through the torso. Supine, shoulder-safe.', sets: 3, noWeight: true },
-          { id: 'llr', n: 'Lying Leg Raise', sub: '3 × 12', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=lying+leg+raise', cue: 'Low back pinned. Lower slow. Bend knees slightly if the hamstring tugs.', sets: 3, noWeight: true }
+          { id: 'bike', n: 'Bicycle Crunches', sub: '3 × 20 total', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=bicycle+crunch', cue: 'Light hands behind head. Rotate through the torso. Keep the motion smooth — ease off if the hamstring chimes in.', sets: 3, noWeight: true }
         ]
       },
       {
-        h: 'Hamstring Rehab (pain-free)',
+        h: 'Hamstring + Mobility',
         items: [
-          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Pain-free, ~30-40% effort.', sets: 3, noWeight: true, repUnit: 'sec' }
-        ]
-      },
-      {
-        h: 'Mobility Finish',
-        items: [
-          { id: 'yoga', n: 'Peloton Yoga · 10-15 min', sub: 'Gentle hips + back', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Gentle flow. Skip shoulder-loading + deep-ankle poses.', type: 'class' },
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Pain-free, gentle.', sets: 3, noWeight: true, repUnit: 'sec' },
+          { id: 'yoga', n: 'Peloton Yoga · 10 min', sub: 'Hips + back', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Gentle flow.', type: 'class' },
           { type: 'stretch-list', items: [
-            { n: 'Foam Rolling', d: '4 min · quads + glutes', v: 'https://www.youtube.com/results?search_query=foam+rolling+lower+body' },
             { n: 'Foot Rolling · frozen ball', d: '2 min/side · DAILY', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
           ]}
         ]
       }
     ]
   },
-  fri: {
-    title: 'Friday · OTF 2G + Travel',
-    meta: 'Orangetheory → Indy (evening)',
+  thu: {
+    title: 'Thursday · Bike + Mobility',
+    meta: 'FFC or home · ~50 min',
     banners: [
-      { type: 'shoulder', html: '<b>Same modifications as Wednesday.</b> Bike cardio, lower + core strength only, protect the shoulder + hamstring. Partial class is fine — you travel to Indy tonight, so don\'t leave it all in there.' }
+      { type: 'zone', html: '<b>Cardio day — bike only.</b> Same as Tuesday. Keep the engine going, keep the leg off. Easy effort.' }
     ],
     sections: [
       {
-        h: 'The Class (modified)',
+        h: 'Cardio',
         items: [
-          { id: 'otf', n: 'OTF 2G Class', sub: 'Log duration + avg HR + how it felt', v: '', cue: 'Bike + lower + core. Note how the shoulder + hamstring are trending vs Wednesday.', type: 'otf' }
+          { id: 'cardio', n: 'Bike · Zone 2', sub: '35-45 min easy · HR under 150', rest: '—', v: 'https://www.youtube.com/results?search_query=zone+2+cardio+bike', cue: 'Easy, conversational. Lighten resistance if you feel the hamstring at all.', type: 'cardio' }
+        ]
+      },
+      {
+        h: 'Rehab + Mobility',
+        items: [
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec · gentle', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Pain-free.', sets: 3, noWeight: true, repUnit: 'sec' },
+          { id: 'yoga', n: 'Peloton Yoga · 20 min', sub: 'Full hip + back flow', v: 'https://members.onepeloton.com/classes/yoga', cue: 'Proper mobility session. Gentle on the hamstring.', type: 'class' },
+          { type: 'stretch-list', items: [
+            { n: 'Foam Rolling', d: '5 min · upper back + glutes', v: 'https://www.youtube.com/results?search_query=foam+rolling+full+body' },
+            { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
+          ]}
+        ]
+      }
+    ]
+  },
+  fri: {
+    title: 'Friday · Upper (Mixed)',
+    meta: 'FFC Gold Coast · 45 min',
+    banners: [
+      { type: 'coach', html: '<b>A lighter mixed-upper day to close the week.</b> Push + pull + arms, moderate. Nothing to prove — just quality reps and a good way to start the day. Leg stays off.' }
+    ],
+    sections: [
+      {
+        h: 'Warm-up',
+        items: [
+          { type: 'checklist', items: [
+            { n: 'Band Pull-Aparts', d: '20 reps', cue: 'Upper back.', v: 'https://www.youtube.com/results?search_query=band+pull+apart' },
+            { n: 'Band External Rotation (Shoulder ER)', d: '15/side', cue: 'Shoulder prep.', v: 'https://www.youtube.com/results?search_query=band+external+rotation+shoulder' }
+          ]}
+        ]
+      },
+      {
+        h: 'Upper',
+        items: [
+          { id: 'lm', n: 'Landmine Press (single-arm)', sub: '3 × 10/side @ 20-25 lb', rest: 'Rest 2:00', v: 'https://www.youtube.com/results?search_query=single+arm+landmine+press', cue: 'If the shoulder felt good Mon/Wed, push the last set to 25. Shoulder-friendly angle.', sets: 3 },
+          { id: 'csr', n: 'Chest-Supported DB Row', sub: '3 × 10 @ 45-50/hand', rest: 'Rest 1:30', v: 'https://www.youtube.com/results?search_query=chest+supported+dumbbell+row', cue: 'Both arms, chest supported. Squeeze the back.', sets: 3 },
+          { id: 'fp2', n: 'Face Pulls', sub: '3 × 15 @ 30 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=face+pull+rope', cue: 'Shoulder health. Pull to forehead, external rotation.', sets: 3 },
+          { id: 'tri', n: 'Cable Tricep Extension', sub: '3 × 12 @ 55 lb', rest: 'Rest 1:00', v: 'https://www.youtube.com/results?search_query=cable+tricep+pushdown', cue: 'Elbows pinned.', sets: 3 }
+        ]
+      },
+      {
+        h: 'Core + Hamstring',
+        items: [
+          { id: 'pallof', n: 'Pallof Press', sub: '3 × 12/side @ 30 lb', rest: 'Rest 45 sec', v: 'https://www.youtube.com/results?search_query=pallof+press', cue: 'Anti-rotation, no leg.', sets: 3 },
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec', rest: 'Rest 30 sec', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Pain-free, gentle.', sets: 3, noWeight: true, repUnit: 'sec' }
+        ]
+      },
+      {
+        h: 'Mobility',
+        items: [
+          { type: 'stretch-list', items: [
+            { n: 'Peloton Yoga · 10 min', d: 'hips + back', v: 'https://members.onepeloton.com/classes/yoga' },
+            { n: 'Foot Rolling · frozen ball', d: '2 min/side · DAILY', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
+          ]}
         ]
       }
     ]
   },
   sat: {
-    title: 'Saturday · Cabins (Columbus, IN)',
-    meta: 'Travel to cabins · optional',
+    title: 'Saturday · Easy Movement',
+    meta: 'Optional · ~30-40 min',
     banners: [
-      { type: 'travel', html: '<b>Heading to the cabins tonight.</b> Everything is <span class="optional-tag">optional</span>. A walk outside (great low-impact movement, zero risk to anything) plus the 5-minute rehab is the perfect amount. Enjoy the trip.' }
+      { type: 'rest', html: '<b>Keep it easy.</b> A walk outside is the perfect Saturday — low-impact, good for the hips/back, zero hamstring risk. Add the quick rehab + mobility and you\'re done. Or rest fully if you need it.' }
     ],
     sections: [
       {
         h: 'Move + Rehab · optional',
         items: [
-          { id: 'walk', n: 'Easy Walk / Hike', sub: '20-40 min, flat-ish', v: '', cue: 'Get outside. Easy pace — this is movement, not training. Great for the hips/back and totally safe for the shoulder + hamstring.', type: 'cardio' },
-          { id: 'hammy', n: 'Hamstring Iso + Glute Bridge', sub: '3 × 30 sec iso + 3 × 15 bridge', rest: 'Gentle', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Quick floor routine, no gear. Pain-free.', sets: 3, noWeight: true, repUnit: 'sec' },
+          { id: 'walk', n: 'Easy Walk', sub: '20-40 min, flat', v: '', cue: 'Relaxed pace. Movement, not training. Great for recovery and totally safe for the leg.', type: 'cardio' },
+          { id: 'hammy', n: 'Supine Hamstring Isometric', sub: '3 × 30 sec', rest: 'Gentle', v: 'https://www.youtube.com/results?search_query=hamstring+isometric+heel+dig', cue: 'Pain-free.', sets: 3, noWeight: true, repUnit: 'sec' },
           { type: 'stretch-list', items: [
             { n: '90/90 Hip Switches', d: '10 total', v: 'https://www.youtube.com/results?search_query=90+90+hip+switches' },
-            { n: 'Shoulder Pendulums', d: '30 sec/side', v: 'https://www.youtube.com/results?search_query=shoulder+pendulum+exercise' },
-            { n: 'Foot Rolling · ball or bottle', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
+            { n: 'Peloton Yoga · 10-15 min', d: 'restorative', v: 'https://members.onepeloton.com/classes/yoga' },
+            { n: 'Foot Rolling · frozen ball', d: '2 min/side', v: 'https://www.youtube.com/results?search_query=plantar+fascia+rolling+ball' }
           ]}
         ]
       }
@@ -389,7 +399,7 @@ const data = {
     title: 'Sunday · Rest + Export',
     meta: 'Body Check + Export',
     banners: [
-      { type: 'rest', html: '<b>Full rest.</b> Fill in the body check, then export and send logs + Apple Health. The big reads that decide next week: <b>left shoulder</b> (better? did you get it looked at?), <b>hamstring</b> (ready to run/hinge?), and ankle/hips. If shoulder + hamstring are trending up, next week we finally open the Block 4 build.' }
+      { type: 'rest', html: '<b>Full rest.</b> Fill in the body check, then export and send logs + Apple Health. <b>The number that matters most: the hamstring.</b> Did a true rest week finally move it off 3? That answer decides everything — rebuild running, or go get it evaluated.' }
     ],
     sections: [
       { type: 'body-check' },
@@ -415,11 +425,10 @@ function set(k, v) { logs[k] = v; save(); }
 
 function renderTabs() {
   const days = [['mon','M'],['tue','T'],['wed','W'],['thu','Th'],['fri','F'],['sat','Sa'],['sun','Su']];
-  const travelDays = ['sat'];
-  const restDays = ['sun'];
+  const restDays = ['sat','sun'];
   document.getElementById('tabs').innerHTML = days.map(([k,l]) => {
     const done = logs[`${k}_done`] ? `<span class="dot"></span>` : '';
-    const cls = travelDays.includes(k) ? 'travel' : (restDays.includes(k) ? 'rest' : '');
+    const cls = restDays.includes(k) ? 'rest' : '';
     return `<div class="tab ${cls} ${k===activeDay?'active':''}" onclick="setDay('${k}')">${l}${done}</div>`;
   }).join('');
 }
@@ -471,10 +480,10 @@ function renderItem(it, dayKey) {
   }
   if (it.type === 'week-notes') {
     return `
-      <textarea class="note-area" placeholder="Left shoulder — better? Did you get it evaluated?" onchange="set('wk_shldr', this.value)">${get('wk_shldr')}</textarea>
-      <textarea class="note-area" placeholder="Hamstring — ready to run/hinge next week?" onchange="set('wk_hammy', this.value)">${get('wk_hammy')}</textarea>
-      <textarea class="note-area" placeholder="Ankle / hips / foot — how are they?" onchange="set('wk_easy', this.value)">${get('wk_easy')}</textarea>
-      <textarea class="note-area" placeholder="Anything else / notes for next week" onchange="set('wk_notes', this.value)">${get('wk_notes')}</textarea>
+      <textarea class="note-area" placeholder="⚕️ HAMSTRING: did a true rest week move it off 3? Better / same / worse?" onchange="set('wk_hammy', this.value)">${get('wk_hammy')}</textarea>
+      <textarea class="note-area" placeholder="How did upper feel coming back? Left shoulder okay with pressing/pulling?" onchange="set('wk_easy', this.value)">${get('wk_easy')}</textarea>
+      <textarea class="note-area" placeholder="Sleep this week? (the healing lever)" onchange="set('wk_sleep', this.value)">${get('wk_sleep')}</textarea>
+      <textarea class="note-area" placeholder="Notes / how you're feeling about it all" onchange="set('wk_notes', this.value)">${get('wk_notes')}</textarea>
       <button class="export-btn" onclick="exportWeek()">📤 Export My Week</button>`;
   }
 
@@ -509,13 +518,6 @@ function renderItem(it, dayKey) {
         <input class="ipt" placeholder="distance / time" value="${get(cid+'_dist')}" onchange="set('${cid}_dist', this.value)">
         <input class="ipt" placeholder="avg HR" value="${get(cid+'_hr')}" onchange="set('${cid}_hr', this.value)">
       </div>`;
-  } else if (it.type === 'otf') {
-    setRows = `
-      <div class="set-row">
-        <div class="set-lbl">Log</div>
-        <input class="ipt" placeholder="duration (min)" value="${get(cid+'_dur')}" onchange="set('${cid}_dur', this.value)">
-        <input class="ipt" inputmode="numeric" placeholder="avg HR" value="${get(cid+'_hr')}" onchange="set('${cid}_hr', this.value)">
-      </div>`;
   }
 
   const cardClass = (isDone?'done ':'') + (isOpen?'open':'');
@@ -534,8 +536,7 @@ function renderItem(it, dayKey) {
       <div class="card-body">
         ${it.v ? `<a class="video-link" href="${it.v}" target="_blank">Form check</a>` : ''}
         ${it.warmup ? `<div class="ramp">🔥 ${it.warmup}</div>` : ''}
-        ${it.newcue ? `<div class="newcue">${it.newcue}</div>` : ''}
-        ${it.shouldercue ? `<div class="shouldercue">${it.shouldercue}</div>` : ''}
+        ${it.legcue ? `<div class="legcue">${it.legcue}</div>` : ''}
         ${it.cue ? `<div class="cue">${it.cue}</div>` : ''}
         <div class="sets">${setRows}</div>
         <div class="rpe-row">
@@ -605,8 +606,8 @@ function toggleDay() {
 }
 
 function exportWeek() {
-  let out = '=== Week of Sep 28–Oct 4 — BLOCK 4 Week 3 (Recover + Rehab · shoulder rest · hamstring protect · OTF Wed/Fri modified · cabins wknd) ===\n\n';
-  const dayOrder = [['mon','Monday — Lower + Core'],['tue','Tuesday — Active Recovery'],['wed','Wednesday — OTF 2G (modified)'],['thu','Thursday — Lower + Core'],['fri','Friday — OTF 2G (modified) + Travel'],['sat','Saturday — Cabins (Columbus IN)'],['sun','Sunday — Rest']];
+  let out = '=== Week of Oct 5–11 — BLOCK 4 Week 4 (Rest the Leg · true lower rest · upper + bike + mobility) ===\n\n';
+  const dayOrder = [['mon','Monday — Upper Push + Core'],['tue','Tuesday — Bike + Mobility'],['wed','Wednesday — Upper Pull + Core'],['thu','Thursday — Bike + Mobility'],['fri','Friday — Upper (Mixed)'],['sat','Saturday — Easy Movement'],['sun','Sunday — Rest']];
   dayOrder.forEach(([k,l]) => {
     const done = logs[`${k}_done`] ? '✓' : '○';
     out += `--- ${l} ${done} ---\n`;
